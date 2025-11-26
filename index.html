@@ -1,0 +1,1541 @@
+<!doctype html >
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      class="">
+<head>
+    <meta charset="utf-8">
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    window._currentDevice = 'desktop';
+    window.Parameters = window.Parameters || {
+        HomeUrl: 'https://www.abneycustomcarpentry.net/',
+        AccountUUID: '0aa2c4d9ee8a4e298000b98ed92f11bf',
+        SystemID: 'US_DIRECT_PRODUCTION',
+        SiteAlias: 'fc071698',
+        SiteType: atob('RFVEQU9ORQ=='),
+        PublicationDate: 'Fri Nov 14 17:00:37 UTC 2025',
+        ExternalUid: null,
+        IsSiteMultilingual: false,
+        InitialPostAlias: '',
+        InitialPostPageUuid: '',
+        InitialDynamicItem: '',
+        DynamicPageInfo: {
+            isDynamicPage: false,
+            base64JsonRowData: 'null',
+        },
+        InitialPageAlias: 'home',
+        InitialPageUuid: '09dfe9c0e8374d058fb5bf5710a60e29',
+        InitialPageId: '1191680803',
+        InitialEncodedPageAlias: 'aG9tZQ==',
+        InitialHeaderUuid: '41e7b5580ff84bbba9b94173fc5f5fcf',
+        CurrentPageUrl: '',
+        IsCurrentHomePage: true,
+        AllowAjax: false,
+        AfterAjaxCommand: null,
+        HomeLinkText: 'Back To Home',
+        UseGalleryModule: false,
+        CurrentThemeName: 'Layout Theme',
+        ThemeVersion: '500000',
+        DefaultPageAlias: '',
+        RemoveDID: true,
+        WidgetStyleID: null,
+        IsHeaderFixed: false,
+        IsHeaderSkinny: false,
+        IsBfs: true,
+        StorePageAlias: 'null',
+        StorePagesUrls: 'e30=',
+        IsNewStore: 'false',
+        StorePath: '',
+        StoreId: 'null',
+        StoreVersion: 0,
+        StoreBaseUrl: '',
+        StoreCleanUrl: true,
+        StoreDisableScrolling: true,
+        IsStoreSuspended: false,
+        HasCustomDomain: true,
+        SimpleSite: false,
+        showCookieNotification: false,
+        cookiesNotificationMarkup: 'null',
+        translatedPageUrl: '',
+        isFastMigrationSite: false,
+        sidebarPosition: 'NA',
+        currentLanguage: 'en',
+        currentLocale: 'en',
+        NavItems: '{}',
+        errors: {
+            general: 'There was an error connecting to the page.<br/> Make sure you are not offline.',
+            password: 'Incorrect name/password combination',
+            tryAgain: 'Try again'
+        },
+        NavigationAreaParams: {
+            ShowBackToHomeOnInnerPages: true,
+            NavbarSize: -1,
+            NavbarLiveHomePage: 'https://www.abneycustomcarpentry.net/',
+            BlockContainerSelector: '.dmBody',
+            NavbarSelector: '#dmNav:has(a)',
+            SubNavbarSelector: '#subnav_main'
+        },
+        hasCustomCode: true,
+        planID: '7',
+        customTemplateId: 'null',
+        siteTemplateId: 'null',
+        productId: 'DM_DIRECT',
+        disableTracking: false,
+        pageType: 'FROM_SCRATCH',
+        isRuntimeServer: true,
+        isInEditor: false,
+        hasNativeStore: false,
+        defaultLang: 'en',
+        hamburgerMigration: null,
+        isFlexSite: false
+    };
+
+    window.Parameters.LayoutID = {};
+    window.Parameters.LayoutID[window._currentDevice] = 6;
+    window.Parameters.LayoutVariationID = {};
+    window.Parameters.LayoutVariationID[window._currentDevice] = 5;
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Injecting site-wide to the head -->
+
+
+
+
+<!-- End Injecting site-wide to the head -->
+
+<!-- Inject secured cdn script -->
+
+
+<!-- ========= Meta Tags ========= -->
+<!-- PWA settings -->
+<script>
+    function toHash(str) {
+        var hash = 5381, i = str.length;
+        while (i) {
+            hash = hash * 33 ^ str.charCodeAt(--i)
+        }
+        return hash >>> 0
+    }
+</script>
+<script>
+    (function (global) {
+    //const cacheKey = global.cacheKey;
+    const isOffline = 'onLine' in navigator && navigator.onLine === false;
+    const hasServiceWorkerSupport = 'serviceWorker' in navigator;
+    if (isOffline) {
+        console.log('offline mode');
+    }
+    if (!hasServiceWorkerSupport) {
+        console.log('service worker is not supported');
+    }
+    if (hasServiceWorkerSupport && !isOffline) {
+        window.addEventListener('load', function () {
+            const serviceWorkerPath = '/runtime-service-worker.js?v=3';
+            navigator.serviceWorker
+                .register(serviceWorkerPath, { scope: './' })
+                .then(
+                    function (registration) {
+                        // Registration was successful
+                        console.log(
+                            'ServiceWorker registration successful with scope: ',
+                            registration.scope
+                        );
+                    },
+                    function (err) {
+                        // registration failed :(
+                        console.log('ServiceWorker registration failed: ', err);
+                    }
+                )
+                .catch(function (err) {
+                    console.log(err);
+                });
+        });
+
+        // helper function to refresh the page
+        var refreshPage = (function () {
+            var refreshing;
+            return function () {
+                if (refreshing) return;
+                // prevent multiple refreshes
+                var refreshkey = 'refreshed' + location.href;
+                var prevRefresh = localStorage.getItem(refreshkey);
+                if (prevRefresh) {
+                    localStorage.removeItem(refreshkey);
+                    if (Date.now() - prevRefresh < 30000) {
+                        return; // dont go into a refresh loop
+                    }
+                }
+                refreshing = true;
+                localStorage.setItem(refreshkey, Date.now());
+                console.log('refereshing page');
+                window.location.reload();
+            };
+        })();
+
+        function messageServiceWorker(data) {
+            return new Promise(function (resolve, reject) {
+                if (navigator.serviceWorker.controller) {
+                    var worker = navigator.serviceWorker.controller;
+                    var messageChannel = new MessageChannel();
+                    messageChannel.port1.onmessage = replyHandler;
+                    worker.postMessage(data, [messageChannel.port2]);
+                    function replyHandler(event) {
+                        resolve(event.data);
+                    }
+                } else {
+                    resolve();
+                }
+            });
+        }
+    }
+})(window);
+</script>
+<!-- Add manifest -->
+<!-- End PWA settings -->
+
+
+
+<link rel="canonical" href="https://www.abneycustomcarpentry.net/">
+
+<meta id="view" name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=5, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<!--Add favorites icons-->
+
+<link rel="apple-touch-icon"
+      href="https://i.ibb.co/VnQLj65/Whats-App-Image-2025-06-23-at-22-53-29-404b66b2-removebg-white-150x150.webp"/>
+
+<link rel="icon" type="image/x-icon" href="https://i.ibb.co/VnQLj65/Whats-App-Image-2025-06-23-at-22-53-29-404b66b2-removebg-white-150x150.webp"/>
+
+<!-- End favorite icons -->
+<link rel="preconnect" href="https://lirp.cdn-website.com/"/>
+
+
+
+<!-- render the required CSS and JS in the head section -->
+<script id='d-js-dmapi'>
+    window.SystemID = 'US_DIRECT_PRODUCTION';
+
+    if (!window.dmAPI) {
+        window.dmAPI = {
+            registerExternalRuntimeComponent: function () {
+            },
+            getCurrentDeviceType: function () {
+                return window._currentDevice;
+            },
+            runOnReady: (ns, fn) => {
+                const safeFn = dmAPI.toSafeFn(fn);
+                ns = ns || 'global_' + Math.random().toString(36).slice(2, 11);
+                const eventName = 'afterAjax.' + ns;
+
+                if (document.readyState === 'complete') {
+                    $.DM.events.off(eventName).on(eventName, safeFn);
+                    setTimeout(function () {
+                        safeFn({
+                            isAjax: false,
+                        });
+                    }, 0);
+                } else {
+                    window?.waitForDeferred?.('dmAjax', () => {
+                        $.DM.events.off(eventName).on(eventName, safeFn);
+                        safeFn({
+                            isAjax: false,
+                        });
+                    });
+                }
+            },
+            toSafeFn: (fn) => {
+                if (fn?.safe) {
+                    return fn;
+                }
+                const safeFn = function (...args) {
+                    try {
+                        return fn?.apply(null, args);
+                    } catch (e) {
+                        console.log('function failed ' + e.message);
+                    }
+                };
+                safeFn.safe = true;
+                return safeFn;
+            }
+        };
+    }
+
+    if (!window.requestIdleCallback) {
+        window.requestIdleCallback = function (fn) {
+            setTimeout(fn, 0);
+        }
+    }
+</script>
+
+<!-- loadCSS function header.jsp-->
+
+
+
+
+
+
+<script id="d-js-load-css">
+/**
+ * There are a few <link> tags with CSS resource in them that are preloaded in the page
+ * in each of those there is a "onload" handler which invokes the loadCSS callback
+ * defined here.
+ * We are monitoring 3 main CSS files - the runtime, the global and the page.
+ * When each load we check to see if we can append them all in a batch. If threre
+ * is no page css (which may happen on inner pages) then we do not wait for it
+ */
+(function () {
+  let cssLinks = {};
+  function loadCssLink(link) {
+    link.onload = null;
+    link.rel = "stylesheet";
+    link.type = "text/css";
+  }
+  
+    function checkCss() {
+      const pageCssLink = document.querySelector("[id*='CssLink']");
+      const widgetCssLink = document.querySelector("[id*='widgetCSS']");
+
+        if (cssLinks && cssLinks.runtime && cssLinks.global && (!pageCssLink || cssLinks.page) && (!widgetCssLink || cssLinks.widget)) {
+            const storedRuntimeCssLink = cssLinks.runtime;
+            const storedPageCssLink = cssLinks.page;
+            const storedGlobalCssLink = cssLinks.global;
+            const storedWidgetCssLink = cssLinks.widget;
+
+            storedGlobalCssLink.disabled = true;
+            loadCssLink(storedGlobalCssLink);
+
+            if (storedPageCssLink) {
+                storedPageCssLink.disabled = true;
+                loadCssLink(storedPageCssLink);
+            }
+
+            if(storedWidgetCssLink) {
+                storedWidgetCssLink.disabled = true;
+                loadCssLink(storedWidgetCssLink);
+            }
+
+            storedRuntimeCssLink.disabled = true;
+            loadCssLink(storedRuntimeCssLink);
+
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    storedRuntimeCssLink.disabled = false;
+                    storedGlobalCssLink.disabled = false;
+                    if (storedPageCssLink) {
+                      storedPageCssLink.disabled = false;
+                    }
+                    if (storedWidgetCssLink) {
+                      storedWidgetCssLink.disabled = false;
+                    }
+                    // (SUP-4179) Clear the accumulated cssLinks only when we're
+                    // sure that the document has finished loading and the document 
+                    // has been parsed.
+                    if(document.readyState === 'interactive') {
+                      cssLinks = null;
+                    }
+                }, 0);
+            });
+        }
+    }
+  
+
+  function loadCSS(link) {
+    try {
+      var urlParams = new URLSearchParams(window.location.search);
+      var noCSS = !!urlParams.get("nocss");
+      var cssTimeout = urlParams.get("cssTimeout") || 0;
+
+      if (noCSS) {
+        return;
+      }
+      if (link.href && link.href.includes("d-css-runtime")) {
+        cssLinks.runtime = link;
+        checkCss();
+      } else if (link.id === "siteGlobalCss") {
+        cssLinks.global = link;
+        checkCss();
+      } 
+      
+      else if (link.id && link.id.includes("CssLink")) {
+        cssLinks.page = link;
+        checkCss();
+      } else if (link.id && link.id.includes("widgetCSS")) {
+        cssLinks.widget = link;
+        checkCss();
+      }
+      
+      else {
+        requestIdleCallback(function () {
+          window.setTimeout(function () {
+            loadCssLink(link);
+          }, parseInt(cssTimeout, 10));
+        });
+      }
+    } catch (e) {
+      throw e
+    }
+  }
+  window.loadCSS = window.loadCSS || loadCSS;
+})();
+</script>
+
+
+
+<script data-role="deferred-init" type="text/javascript">
+    /* usage: window.getDeferred(<deferred name>).resolve() or window.getDeferred(<deferred name>).promise.then(...)*/
+    function Def() {
+        this.promise = new Promise((function (a, b) {
+            this.resolve = a, this.reject = b
+        }).bind(this))
+    }
+
+    const defs = {};
+    window.getDeferred = function (a) {
+        return null == defs[a] && (defs[a] = new Def), defs[a]
+    }
+    window.waitForDeferred = function (b, a, c) {
+        let d = window?.getDeferred?.(b);
+        d
+            ? d.promise.then(a)
+            : c && ["complete", "interactive"].includes(document.readyState)
+                ? setTimeout(a, 1)
+                : c
+                    ? document.addEventListener("DOMContentLoaded", a)
+                    : console.error(`Deferred  does not exist`);
+    };
+</script>
+<style id="forceCssIncludes">
+    /* This file is auto-generated from a `scss` file with the same name */
+
+.videobgwrapper{overflow:hidden;position:absolute;z-index:0;width:100%;height:100%;top:0;left:0;pointer-events:none;border-radius:inherit}.videobgframe{position:absolute;width:101%;height:100%;top:50%;left:50%;transform:translateY(-50%) translateX(-50%);object-fit:fill}#dm video.videobgframe{margin:0}@media (max-width:767px){.dmRoot .dmPhotoGallery.newPhotoGallery:not(.photo-gallery-done){min-height:80vh}}@media (min-width:1025px){.dmRoot .dmPhotoGallery.newPhotoGallery:not(.photo-gallery-done){min-height:45vh}}@media (min-width:768px) and (max-width:1024px){.responsiveTablet .dmPhotoGallery.newPhotoGallery:not(.photo-gallery-done){min-height:45vh}}#dm [data-show-on-page-only]{display:none!important}#dmRoot div.stickyHeaderFix div.site_content{margin-top:0!important}#dmRoot div.stickyHeaderFix div.hamburger-header-container{position:relative}
+    
+
+</style>
+<style id="cssVariables" type="text/css">
+    :root {
+  --color_1: rgba(17, 65, 139, 1);
+  --color_2: rgba(17, 65, 139, 0.07);
+  --color_3: rgba(0,0,0,1);
+  --color_4: rgba(255,255,255,1);
+  --color_5: rgba(34,34,34,1);
+  --color_6: rgba(246,246,246,1);
+}
+</style>
+
+
+<style id="hideAnimFix">
+  .dmDesktopBody:not(.editGrid) [data-anim-desktop]:not([data-anim-desktop='none']), .dmDesktopBody:not(.editGrid) [data-anim-extended] {
+    visibility: hidden;
+  }
+
+  .dmDesktopBody:not(.editGrid) .dmNewParagraph[data-anim-desktop]:not([data-anim-desktop='none']), .dmDesktopBody:not(.editGrid) .dmNewParagraph[data-anim-extended] {
+    visibility: hidden !important;
+  }
+
+
+  #dmRoot:not(.editGrid) .flex-element [data-anim-extended] {
+    visibility: hidden;
+  }
+
+</style>
+
+
+
+<style id="criticalCss">
+    @charset "UTF-8";.display_None,.dmPopupMask{display:none}@font-face{font-family:FontAwesome;font-display:block;src:url(https://static.cdn-website.com/fonts/fontawesome-webfont.eot?v=6);src:url(https://static.cdn-website.com/fonts/fontawesome-webfont.eot?#iefix&v=6) format("embedded-opentype"),url(https://static.cdn-website.com/fonts/fontawesome-webfont.woff?v=6) format("woff"),url(https://static.cdn-website.com/fonts/fontawesome-webfont.ttf?v=6) format("truetype"),url(https://static.cdn-website.com/fonts/fontawesome-webfont.svg#fontawesomeregular?v=6) format("svg");font-weight:400;font-style:normal}@font-face{font-family:'DM Sans';font-style:normal;font-weight:100 1000;font-display:swap;src:url(https://irp.cdn-website.com/fonts/s/dmsans/v17/rP2Yp2ywxg089UriI5-g4vlH9VoD8Cmcqbu0-K4.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}@font-face{font-family:'DM Sans';font-style:italic;font-weight:100 1000;font-display:swap;src:url(https://irp.cdn-website.com/fonts/s/dmsans/v17/rP2Wp2ywxg089UriCZaSExd86J3t9jz86MvyyKy58Q.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}:root{--color_1:rgba(17, 65, 139, 1);--color_2:rgba(17, 65, 139, 0.07);--color_3:rgba(0,0,0,1);--color_4:rgba(255,255,255,1);--color_5:rgba(34,34,34,1);--color_6:rgba(246,246,246,1)}.dmInner{min-height:100vh!important;position:relative;min-width:768px!important}.dmPopup,.dmPopupMask{position:fixed;left:0}.dmDisplay_None{display:none!important}.clearfix:after{clear:both;visibility:hidden;line-height:0;height:0}.clearfix:after,.clearfix:before{content:" ";display:table}.clearfix{display:inline-block}.dmDesktopBody .shadowEffectToChildren li{box-shadow:none!important}#dm .dmWidget .icon{font-size:26px}body.dmRoot #dm .dmOuter .dmInner .dmWidget .icon.hasFontIcon{height:26px;margin-top:-13px;line-height:normal;text-align:center;background-image:none}.dmRoot .hasFontIcon{background-image:none!important}.dmPopupMask{margin:0;width:10px;z-index:1000000999;top:0}#dmRoot .dmPopup,.dmPopup,.dmPopupClose:before,[data-display-type=block]{display:block}.dmPopup{text-align:left;top:10px;width:93%;z-index:1000009999!important;box-sizing:border-box;background:#f5f5f5;overflow-y:auto;height:100%}.dmPopup .dmPopupTitle{text-align:left;font:700 19px Helvetica,Arial;margin:20px 20px 35px;color:#999}#dmPopup{opacity:0}.dmPopupClose,.dmPopupClose:before{position:absolute;visibility:visible}.dmPopupClose{border-radius:25px;width:27px;height:27px;z-index:1;background-color:rgba(255,255,255,.4);top:12px;right:12px}.dmPopupClose:before{font-size:20px;color:#000;top:3px;right:3px}body.dmDesktopBody:not(.mac) .data::-webkit-scrollbar{width:5px;height:5px}body.dmDesktopBody:not(.mac) .data::-webkit-scrollbar-track{background:rgba(0,0,0,.1)}body.dmDesktopBody:not(.mac) .data::-webkit-scrollbar-thumb{background:#c8c8c8;box-shadow:inset 0 1px 2px #454545;border-radius:45px}#dm .header-over-content #stickyHeaderSpacer{height:0!important}#dm .dmRespRow .dmRespColsWrapper{display:flex}#dm .hasBackgroundOverlay:not(.dmPopupPage):not(.layout-drawer){position:relative!important}#dm .hasBackgroundOverlay:not(.hasExtraLayerOverlay):before{display:block!important;position:absolute!important;top:0!important;left:0!important;width:100%!important;height:100%!important;content:" "!important;border-radius:inherit}#dm .dmInner .dmWidget.align-center,.align-center{margin-left:auto;margin-right:auto}.text-align-center{text-align:center}body.fix-mobile-scrolling{overflow:initial}#dmRoot{text-decoration-skip-ink:none}.dmform-title{padding-right:15px;padding-left:15px}#dm .flexslider[sliderscriptparams*="'isFade':true"] .slides li{width:100%!important;float:left!important;margin-right:-100%!important;position:relative!important}#dm .flexslider .slides li:first-child>img{width:100%;height:100%;object-fit:contain;position:absolute;display:block}#dm .flexslider[sliderscriptparams*="'stretch':true"] .slides li:first-child img{object-fit:cover}body{-webkit-overflow-scrolling:touch}@media (min-width:1025px){:root{--btn-text-font-size:15px}}@media (min-width:768px) and (max-width:1024px){.button_2,:root{--btn-text-font-size:15px}}nav{display:block}html{font-family:Source Sans Pro;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0}img{border:0;max-width:100%;-ms-interpolation-mode:bicubic;display:inline-block}button,input{font-family:inherit;font-size:100%;margin:0;line-height:normal}button{text-transform:none;-webkit-appearance:button}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}*,:after,:before{box-sizing:border-box}.dmRespRow.dmRespRowNoPadding{padding:0}.dmRespRow{padding-top:15px;padding-bottom:15px}.dmRespRow .dmRespRow:after,.dmRespRow .dmRespRow:before,.dmRespRow:after,.dmRespRow:before{content:" ";display:table}.dmRespRow .dmRespRow:after,.dmRespRow:after{clear:both}.dmRespRow,.dmRespRow .dmRespColsWrapper{max-width:960px;position:relative;margin:0 auto;width:100%}@media screen and (min-width:1200px){.rows-1200 .dmRespRow:not(.fullBleedMode) .dmRespColsWrapper{max-width:1200px}}.dmRespRow .dmRespCol{position:relative;width:100%;display:inline-block;vertical-align:top;float:left}.dmRespRow .dmRespCol>*{max-width:100%}.dmRespRow .dmRespRow{width:auto;margin-top:0;margin-bottom:0;max-width:none}.dmDesktopBody .dmRespRow .large-3{position:relative;width:25%}.dmDesktopBody .dmRespRow .large-4{position:relative;width:33.33333%}.dmDesktopBody .dmRespRow .large-6{position:relative;width:50%}.dmDesktopBody .dmRespRow .large-9{position:relative;width:75%}.dmDesktopBody .dmRespRow .large-12{position:relative;width:100%}.socialHubIcon,[class*=" dm-common-icons-"],[class*=" dm-social-icons-"]{font-family:dm-social-icons!important;speak:none;font-style:normal;font-weight:400;font-variant:normal;text-transform:none;line-height:1;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.dm-social-icons-email:before{content:"\eace"}.dm-social-icons-facebook:before{content:"\ea90"}.dm-social-icons-yelp:before{content:"\ead7"}[class*=" dm-common-icons-"]{font-family:dm-common-icons!important}.dm-common-icons-close:before{content:"\e901"}#dm div.dmContent [class*=" icon-"],[class*=" icon-"]{font-family:FontAwesome!important;font-weight:400;font-style:normal;text-decoration:inherit;-webkit-font-smoothing:antialiased}[class*=" icon-"]:before{text-decoration:none;display:inline-block;speak:none}a [class*=" icon-"]{display:inline}[class*=" icon-"]{display:inline;width:auto;height:auto;line-height:normal;vertical-align:baseline;background-image:none;background-position:0 0;background-repeat:repeat;margin-top:0}.icon-star:before{content:"\f005"}.icon-angle-right:before{content:"\f105"}.icon-angle-down:before{content:"\f107"}#dm .dmRespRow .dmRespCol>.dmWidget{overflow:initial}@media (min-width:768px){#dm .dmRespRow .dmRespCol>.dmWidget{width:280px;max-width:100%}}@media (max-width:767px){#dm .dmInner .dmWidget{width:100%}}#dm .dmInner .dmWidget:not(.displayNone){display:inline-block}#dm .dmInner .dmWidget:not(.flexButton):not(.displayNone)[data-display-type=block]{display:block}#dm .dmInner .dmWidget{text-decoration:none;margin:10px 0;clear:both;position:relative;text-align:center;line-height:22px;box-shadow:none;background-image:none;padding:0;height:auto;border-style:solid;white-space:nowrap}#dm .dmInner .dmWidget.slide-button{margin-bottom:0}#dm .dmInner .dmWidget:after{content:"";display:inline-block;height:100%;vertical-align:middle;width:0;margin-right:-.25em}#dm .dmInner .dmWidget .iconBg{position:absolute;left:0;width:50px;top:50%;margin-top:-13px}#dm .dmWidget .text{display:inline-block;vertical-align:middle;font-size:1.125em;line-height:normal;white-space:normal;padding:10px 7px;max-width:98%}#dm .dmWidget.slide-button:after{display:none}.dmImageSlider{height:350px;position:relative;clear:both}.flexslider{-webkit-transform:translate3d(0,0,0);padding:0;-webkit-transform:translateZ(0);direction:ltr;margin:0;zoom:1;opacity:1!important}html:not(.ios-preview) #dm .hasStickyHeader .dmInner div.dmHeaderContainer{position:fixed!important;z-index:101;width:100%;min-width:768px}#dm .header-over-content .dmHeaderContainer{position:absolute;z-index:101;width:100%}.imageWidget{position:relative}.imageWidget a{font-style:italic;text-align:center}.imageWidget img[width][height]{height:auto}#dm div.dmInner .dmform[data-layout=layout-1] .dmforminput>:not(label):not(div):not(small):not(.frc-banner){background:0;border:2px solid #000;display:inline-block}.slides{margin:0;padding:0;list-style:none}.flexslider,.flexslider .slides>li{height:100%;overflow:hidden;position:relative}.flexslider .slides{height:100%;zoom:1}.flexslider .slides>li{display:none;text-align:center}.flexslider .slides img{width:100%;display:block;margin:auto}.slides:after{content:" ";display:block;clear:both;visibility:hidden;line-height:0;height:0}html[xmlns] .slides{display:block}.flexslider .color-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background-color:rgba(0,0,0,.25);display:block}.flexslider .slides>li .slide-inner *{line-height:normal}.flexslider .slides>li .slide-inner .slide-text{margin:0;font-size:19px;font-weight:400}#dm .dmInner .flexslider .slides>li .slide-inner .slide-button{margin-top:20px;margin-left:auto;margin-right:auto}#dm .flexslider .slides .dmWidget .text{max-width:100%;width:100%;padding:10px 20px!important}#dm .dmInner .flexslider.ed-version .slide-button{-js-display:inline-flex;display:inline-flex;justify-content:center;align-items:center}.flexslider.ed-version .slides img{display:none}.flexslider.ed-version:not([layout]) .slides>li[layout=center]{-ms-flex-pack:center;-ms-flex-align:center;display:flex!important;justify-content:center;align-items:center}.flexslider.ed-version:not([layout]) .slides>li[layout=center] .slide-inner .slide-button.slide-button-invisible{display:none!important}.dmNewParagraph[data-version]{line-height:initial}.dmNewParagraph[data-version] .text-align-center{text-align:center!important}.dmNewParagraph[data-version] .text-align-right{text-align:right!important}.dmNewParagraph[data-version] [class*=size-]{width:auto!important;height:auto!important}.dmNewParagraph[data-version] h1,.dmNewParagraph[data-version] h2,.dmNewParagraph[data-version] p{margin-top:0;margin-bottom:0}.dmNewParagraph[data-version] a{vertical-align:initial}@media (max-width:767px){.dmRoot .dmNewParagraph[data-version] .m-text-align-center{text-align:center!important}}.socialHubIcon{display:flex!important;align-items:center;justify-content:center}.dmPhotoGallery .dmPhotoGalleryHolder .photoGalleryThumbs .image-container{height:100%}.dmPhotoGallery .dmPhotoGalleryHolder .photoGalleryThumbs{width:58px;height:58px;margin:2px;display:inline-block;vertical-align:middle;text-align:center;overflow:hidden}.dmPhotoGalleryResp.dmPhotoGallery .dmPhotoGalleryHolder .photoGalleryThumbs img{box-shadow:0 0 3px #888}.dmPhotoGalleryResp.dmPhotoGallery .dmPhotoGalleryHolder .photoGalleryThumbs{margin:0;padding:10px}.dmPhotoGalleryHolder{text-align:center}.dmPhotoGallery .dmPhotoGalleryHolder .photoGalleryThumbs img{display:inline!important;margin:0!important;vertical-align:middle;text-align:center;position:relative}.dmPhotoGallery .image-container{position:relative}#dm .dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .caption-container .caption-inner h3,.dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .caption-container .caption-inner{text-align:center}.dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .caption-container .caption-inner h3{margin:0;line-height:normal;font-size:21px}.dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .caption-container .caption-inner .caption-title{max-width:100%}#dm .dmPhotoGallery.newPhotoGallery .photoGalleryThumbs{list-style:none;position:relative}#dm .dmPhotoGallery.newPhotoGallery.captionAlignment-center_center .photoGalleryThumbs .caption-container .caption-inner:not(:has(>.caption-link)){justify-content:center;align-items:center}#dm .dmPhotoGallery.newPhotoGallery.captionAlignment-center_center .photoGalleryThumbs .caption-container .caption-inner .caption-button{margin:10px auto}#dm .dmPhotoGallery.newPhotoGallery .photoGalleryViewAll{box-shadow:0 0!important;font-size:inherit!important;margin:0!important}#dm .dmPhotoGallery.newPhotoGallery .dmPhotoGalleryHolder{width:100%;padding:0;display:none}#dm .dmPhotoGallery.newPhotoGallery .layout-container .photogallery-column .photoGalleryThumbs .image-container a img{display:none!important}#dm .dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .image-container{overflow:hidden}#dm .dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .image-container a{background-repeat:no-repeat;background-position:center}#dm .dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .caption-container .caption-inner{align-items:center;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;z-index:1;background-color:rgba(255,255,255,.9);color:#333;padding:15px;height:100%;box-sizing:border-box}#dm .dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .caption-container .caption-inner .caption-button{margin:10px auto;max-width:100%}#dm .dmPhotoGallery.newPhotoGallery .photoGalleryThumbs .caption-container .caption-inner .caption-button .text{padding:10px 20px!important}#dm .dmPhotoGallery.newPhotoGallery.text-layout-over .photoGalleryThumbs .caption-container{height:100%;width:100%;position:absolute;top:0;left:0;padding:inherit}#dm .dmPhotoGallery.newPhotoGallery.text-layout-over .photoGalleryThumbs .caption-inner{display:flex;flex-direction:column;justify-content:center;box-sizing:border-box;min-height:0!important;padding:10px;transform:scale(1.05);opacity:0;filter:alpha(opacity=0)}#dm .dmRespRow.dmRespRowNoPadding,.dmContent,.dmInner ul:not(.defaultList),DIV.dmBody{padding:0}#dm .dmPhotoGallery.newPhotoGallery[data-image-hover-effect=zoomout] .photoGalleryThumbs .image-container{-webkit-mask-image:-webkit-radial-gradient(#fff,#000)}#dm .dmPhotoGallery.newPhotoGallery[data-link-gallery=true] .image-container a.has-link{z-index:1px}img[width][height]{height:auto}*{border:0 solid #333;scrollbar-arrow-color:#fff;scrollbar-track-color:#f2f2f2;scrollbar-face-color:silver;scrollbar-highlight-color:silver;scrollbar-3dlight-color:silver;scrollbar-shadow-color:silver;scrollbar-darkshadow-color:silver;scrollbar-width:12px}body{width:100%;overflow:hidden;-webkit-text-size-adjust:100%!important;-ms-text-size-adjust:100%!important;background-color:#eee}A IMG{border:0}h1,h2,h3,ul{margin-left:0;margin-right:0}.dmInner *{-webkit-font-smoothing:antialiased}span.oneIcon:before{display:inline-block}.clearfix,a,img,li,ul{vertical-align:top}#iscrollBody,#site_content{position:relative}.dmOuter{word-wrap:break-word}.dmInner{font-size:16px;background:#fff;color:#666}.dmDesktopBody .dmInner{min-width:960px}.dmInner a{color:#463939}.dmHeader{text-align:center;max-width:100%;background:#68ccd1;color:#666;position:relative;width:100%}DIV.dmBody{clear:both}.dmContent{margin:0}#site_content ul:not(.defaultList){-webkit-padding-start:0;-moz-padding-start:0;list-style-position:inside}#innerBar{position:relative;height:36px;width:100%;font-size:20px;margin:0;z-index:80}.dmRespRowsWrapper{max-width:960px;margin:0 auto}.dmRespCol>[dmle_extension]:not(:first-child){margin-top:10px}.dmLargeBody .imageWidget:not(.displayNone){display:inline-block;max-width:100%}#dm .dmRespColsWrapper{display:block}.imageWidget:not(.displayNone) img{width:100%}h3{font-weight:400;font-size:23px}.dmNewParagraph{text-align:left;margin:8px 0;padding:2px 0}.dmLargeBody .dmRespRowsWrapper>.dmRespRow .dmRespCol,.dmLargeBody .fHeader .dmRespRow .dmRespCol{padding-left:.75%;padding-right:.75%}.dmLargeBody .dmRespRowsWrapper>.dmRespRow .dmRespCol:first-child,.dmLargeBody .fHeader .dmRespRow .dmRespCol:first-child{padding-left:0;padding-right:1.5%}.dmLargeBody .dmRespRowsWrapper>.dmRespRow .dmRespCol:last-child,.dmLargeBody .fHeader .dmRespRow .dmRespCol:last-child{padding-right:0;padding-left:1.5%}.dmLargeBody .dmRespRowsWrapper>.dmRespRow .dmRespCol:only-child{padding-left:0;padding-right:0}#innerBar.lineInnerBar{display:table;width:100%;box-shadow:none;-webkit-box-shadow:none;-moz-box-shadow:none;font-size:20px;margin-top:30px;margin-bottom:30px;background-color:transparent;color:#666}#innerBar .titleLine{display:table-cell;vertical-align:middle;width:50%}.dmPageTitleRow:not(#innerBar){display:none}.titleLine hr{min-height:1px;background-color:rgba(102,102,102,.2)}.dmLinksMenu>ul{display:block;margin:0;font-size:inherit}.dmStandardDesktop{display:block;margin:0 auto}.standardHeaderLayout .dmHeader{float:none}#dmFirstContainer .dmRespRowsWrapper:after,#dmFirstContainer .dmRespRowsWrapper:before{content:"";display:table}.dmInner a{outline:0;vertical-align:inherit}#dm h3.dmwidget-title[hide=true]{display:none}#dm .dmwidget-title{margin:10px 0;font-size:23px;text-shadow:none;text-align:left;text-transform:capitalize;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;word-wrap:normal}#dm .dmDivider{display:block;margin:10px 0}.dmPhotoGalleryHolder{font-size:medium!important;margin:0;list-style:none}#dm .dmPhotoGallery .dmPhotoGalleryHolder,#dm .dmPhotoGallery .dmPhotoGalleryHolder>li{width:100%;padding:0}#dm .dmPhotoGallery .dmPhotoGalleryHolder .photoGalleryThumbs{background:url(https://dd-cdn.multiscreensite.com/runtime-img/galleryLoader.gif) 50% 50% no-repeat #eee;float:left;clear:none;padding:0;margin:0;width:100%}#dm .dmPhotoGallery .dmPhotoGalleryHolder .photoGalleryThumbs img{display:none!important}.dmDesktopBody .dmPhotoGallery .photoGalleryViewAll{background:0 0;border:0;padding:3px 0;font-size:16px;width:auto;height:auto;line-height:normal;box-shadow:0 -2px 0 0;display:block;margin:40px 0;text-align:left}.dmSocialHub{clear:both}#dm .dmSocialHub a{display:inline-block;text-decoration:none;margin:0;vertical-align:bottom}.dmSocialHub>div{text-align:inherit}a span.socialHubIcon{width:36px;height:36px;font-size:31px;display:inline-block;text-align:center;margin-right:0;line-height:36px;box-sizing:content-box;background-image:none!important;margin-bottom:0}.socialHubIcon.style5{color:#fff}#dm .dmSocialHub .socialHubWrapper{display:inline-block;max-width:100%}#dm .dmDividerWrapper{display:block}.dmPhotoGallery:not(.dmFacebookGallery) .dmPhotoGalleryHolder:not(.ready) li.photoGalleryThumbs{display:inline!important;visibility:hidden}#dm div.dmRespCol>*{line-height:normal}#dm .main-navigation.unifiednav .unifiednav__container[data-depth]{background-color:transparent}.flexslider .slides>li .slide-inner .slide-text{white-space:pre-line}.dmDivider{min-height:2px;border:0 currentColor;color:gray;background:0 0}.main-navigation.unifiednav{-js-display:flex;display:flex;justify-content:flex-start;align-items:stretch;overflow:visible}.main-navigation.unifiednav ul{list-style:none;padding:0;margin:0;font-size:1rem}.main-navigation.unifiednav .unifiednav__container{-js-display:flex;display:flex;justify-content:flex-start;list-style:none}.main-navigation.unifiednav .unifiednav__container>.unifiednav__item-wrap{-js-display:flex;display:flex;justify-content:flex-start;position:relative;font-weight:400}.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap::after,.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap::before{content:'';align-self:center;font-weight:700}.main-navigation.unifiednav .unifiednav__container>.unifiednav__item-wrap>.unifiednav__item{-js-display:flex;display:flex;justify-content:flex-start;align-items:center;flex-direction:row;color:inherit;text-decoration:none;position:relative;padding:12px 15px;margin:0;font-weight:inherit;letter-spacing:.03em}.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item{padding:0 15px}.main-navigation.unifiednav .unifiednav__container>.unifiednav__item-wrap>.unifiednav__item .nav-item-text{white-space:nowrap}.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item .nav-item-text::after,.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item .nav-item-text::before{content:'';width:100%;height:0;border:0 solid transparent;border-top-color:currentColor;display:block;opacity:0}.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item.dmNavItemSelected .nav-item-text::after,.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item.dmNavItemSelected .nav-item-text::before{opacity:1}.main-navigation.unifiednav.effect-bottom2{padding:calc(12px - .2em - 2px) 15px}.main-navigation.unifiednav.effect-bottom2 .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item .nav-item-text::after,.main-navigation.unifiednav.effect-bottom2 .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item .nav-item-text::before{transform:scaleX(0);border-top-width:2px}.main-navigation.unifiednav.effect-bottom2 .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item .nav-item-text::after{margin-top:.2em}.main-navigation.unifiednav.effect-bottom2 .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item .nav-item-text::before{margin-bottom:.2em;border-top-color:transparent}.main-navigation.unifiednav.effect-bottom2 .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item.dmNavItemSelected .nav-item-text::after,.main-navigation.unifiednav.effect-bottom2 .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item.dmNavItemSelected .nav-item-text::before{transform:scaleX(1)}.main-navigation.unifiednav.effect-bottom2 .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item .nav-item-text::after,.main-navigation.unifiednav.effect-bottom2 .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item .nav-item-text::before{transform-origin:left}.main-navigation.unifiednav .unifiednav__container .unifiednav__item:not(.unifiednav__item_has-sub-nav) .icon{display:none}.main-navigation.unifiednav .unifiednav__container[data-depth]{position:absolute;top:0;left:0;flex-direction:column;opacity:0;z-index:100;background-color:#faf9f9}.main-navigation.unifiednav .unifiednav__container[data-depth='0']{top:100%;transform:translateY(-10px)}.main-navigation.unifiednav:not(.unifiednav_vertical) .unifiednav__container[data-depth='0']{left:15px}.main-navigation.unifiednav .unifiednav__container>.unifiednav__item-wrap .unifiednav__container>.unifiednav__item-wrap{flex-direction:column}.main-navigation.unifiednav .unifiednav__container[data-depth]>.unifiednav__item-wrap .unifiednav__item{padding:15px 30px 15px 15px;margin:0}.main-navigation.unifiednav .unifiednav__container[data-depth]>.unifiednav__item-wrap:not(:last-child)::after{content:''!important;width:100%;height:0;color:#ececec;align-self:center;border:0 solid currentColor}.main-navigation.unifiednav[layout-sub=submenu_horizontal_2] .unifiednav__container[data-depth]{color:#999}.main-navigation.unifiednav[layout-sub=submenu_horizontal_2] .unifiednav__container[data-depth]>.unifiednav__item-wrap:not(:last-child)::after{border-top-width:1px}.main-navigation.unifiednav .unifiednav__container>.unifiednav__item-wrap>.unifiednav__item.unifiednav__item_has-sub-nav .icon{display:initial;padding-left:10px;margin-left:0}.main-navigation.unifiednav:not(.unifiednav_vertical)>.unifiednav__container{justify-content:inherit}#dm .p_hfcontainer nav.main-navigation.unifiednav{min-width:9em!important;text-align:initial!important}#dm .main-navigation.unifiednav[layout-sub=submenu_horizontal_2] .unifiednav__container[data-depth]{background-color:#faf9f9}#dm .main-navigation.unifiednav .unifiednav__container[data-depth]>.unifiednav__item-wrap:not(:last-child)::after{color:#d1d1d1}#dm .main-navigation.unifiednav:not([data-nav-structure=VERTICAL])>.unifiednav__container{flex-wrap:wrap;justify-content:inherit}#dm .main-navigation.unifiednav:not([data-nav-structure=VERTICAL])>.unifiednav__container .nav-item-text::before{text-align:left}#dm .main-navigation.unifiednav:not([data-nav-structure=VERTICAL]) .unifiednav__container:not([data-depth])>.unifiednav__item-wrap:not(:last-child)::after,#dm .main-navigation.unifiednav:not([data-nav-structure=VERTICAL]) .unifiednav__container:not([data-depth])>.unifiednav__item-wrap:not(:last-child)::before{content:''}#dm .dmBody .dmRespRowsWrapper{max-width:none;background-color:transparent}.dmLargeBody .dmRespRow{width:100%;max-width:none;margin-left:0;margin-right:0;padding-left:40px;padding-right:40px}.dm-bfs.dm-layout-home div.dmInner{background-color:#fff}.dmStandardDesktop .dmHeader{background-color:#68ccd1;max-width:100%}.standardHeaderLayout .dmHeader{display:block;height:auto}#dm div.dmInner{line-height:initial}#dm div.dmInner h1,#dm div.dmInner h2,#dm div.dmInner h3{font-family:Montserrat,"Montserrat Fallback"}#dm DIV.dmInner{background-repeat:no-repeat;background-image:url(https://irt-cdn.multiscreensite.com/ce0bb35f932b47bb809d0e37905542ba/dms3rep/multi/site_background_education-2087x1173.jpg);background-size:cover;background-position:50% 0}#dm div.dmOuter div.dmInner{background-position:center center;background-repeat:repeat;background-size:auto}.dmLargeBody .dmBody .dmRespRowsWrapper{background-color:transparent}#dm .dmRespCol div.dmNewParagraph,#dm div.dmInner,#dm div.dmInner .dmRespCol,#dm div.dmNewParagraph p{color:#222;font-family:"DM Sans","DM Sans Fallback";font-weight:400}#dm div.dmContent h1,#dm div.dmContent h2,#dm div.dmContent h3{direction:ltr;font-family:"Britannic T Regular";font-weight:700;font-style:normal}#dm div.dmContent h1,#dm div.dmContent h2{color:#000}#dm div.dmNewParagraph p{line-height:1.8;direction:ltr;font-style:normal;text-decoration:none}#dm .dmNewParagraph a,#dm div.dmNewParagraph a,.newPhotoGallery .photoGalleryViewAll.link{text-decoration:none;color:#fff}#dm div.dmContent h1{color:var(--color_4);text-decoration:none;line-height:initial}#dm div.dmContent .dmNewParagraph[data-version] h1,#dm div.dmContent .dmNewParagraph[data-version] h2{text-decoration:inherit}#dm div.dmContent .dmNewParagraph[data-version] h1 *,#dm div.dmContent .dmNewParagraph[data-version] h2 *,#dm div.dmContent h2,#dm div.dmContent h3{text-decoration:none}#dm div.dmContent h2{color:var(--color_1)}#dm div.dmContent h3{color:#000}#dm .dmNewParagraph a,#dm div.dmNewParagraph a,.newPhotoGallery .photoGalleryViewAll.link{color:var(--color_1)}.contact--form h3.dmform-title{margin-bottom:0!important}.dmWidget:not([data-buttonstyle]){text-transform:uppercase}#dm DIV.dmOuter DIV.dmInner{background-image:url(https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_woodf-1920w.png);background-color:#fff;background-size:auto;background-repeat:repeat;background-attachment:fixed}#dm div.dmInner,#dm div.dmInner .dmRespCol{font-size:16px}#dm .dmContent .dmRespRow{margin:0;padding:80px 40px}#dm div.dmContent h2{font-size:36px;line-height:normal}#dm div.dmContent h3{font-size:24px;line-height:normal}#dm div.dmContent h1{font-size:48px}@media all{:root{--btn-border-l-color:rgb(17, 65, 139);--btn-border-r-color:rgb(17, 65, 139);--btn-border-b-width:1px;--btn-text-direction:ltr;--btn-border-radius:50px;--btn-border-t-width:1px;--btn-border-tl-radius:0px;--btn-border-br-radius:0px;--btn-border-bl-radius:0px;--btn-bg-color:var(--color_1);--btn-box-shadow:rgba(0, 0, 0, 0.25) 0px 3px 11px 0px;--btn-border-r-width:1px;--btn-border-tr-radius:0px;--btn-border-b-color:rgb(17, 65, 139);--btn-border-l-width:1px;--btn-border-t-color:rgb(17, 65, 139);--btn-text-align:center;--btn-text-color:rgb(255, 255, 255);--btn-text-decoration:none;--btn-text-font-weight:bold;--btn-icon-color:rgb(247, 247, 247);--btn-icon-fill:rgb(247, 247, 247);--btn-icon-wrpr-display:none;--btn-hover-border-b-color:var(--color_1);--btn-hover-bg:var(--color_4);--btn-hover-border-t-color:var(--color_1);--border-top-width:1px;--btn-hover-border-l-color:var(--color_1);--btn-hover-border-r-color:var(--color_1);--border-right-width:1px;--border-bottom-width:1px;--border-style:solid;--border-left-width:1px;--btn-hover-border-color:var(--btn-border-color);--btn-hover-text-color:var(--color_1);--btn-hover-text-font-weight:var(--btn-text-font-weight);--btn-hover-text-decoration:var(--btn-text-decoration);--btn-hover-text-font-style:var(--btn-text-font-style)}.button_2{--btn-border-l-color:var(--color_4);--btn-border-r-color:var(--color_4);--btn-border-b-width:1px;--btn-text-direction:ltr;--btn-border-radius:50px;--btn-border-t-width:1px;--btn-border-tl-radius:0px;--btn-border-br-radius:0px;--btn-border-bl-radius:0px;--btn-bg-color:rgba(0, 0, 0, 0);--btn-box-shadow:none;--btn-border-r-width:1px;--btn-border-tr-radius:0px;--btn-border-b-color:var(--color_4);--btn-border-l-width:1px;--btn-border-t-color:var(--color_4);--btn-text-align:center;--btn-text-color:var(--color_4);--btn-text-decoration:none;--btn-text-font-weight:bold;--btn-icon-color:rgb(247, 247, 247);--btn-icon-fill:rgb(247, 247, 247);--btn-icon-wrpr-display:none;--btn-hover-border-b-color:var(--btn-hover-border-color);--btn-hover-bg:var(--color_4);--btn-hover-border-t-color:var(--btn-hover-border-color);--border-top-width:1px;--btn-hover-border-r-color:var(--btn-hover-border-color);--btn-hover-border-l-color:var(--btn-hover-border-color);--border-right-width:1px;--border-bottom-width:1px;--border-style:solid;--border-left-width:1px;--btn-hover-border-color:var(--color_1);--btn-hover-text-color:var(--color_1);--btn-hover-text-font-weight:var(--btn-text-font-weight);--btn-hover-text-decoration:var(--btn-text-decoration);--btn-hover-text-font-style:var(--btn-text-font-style)}}@media (min-width:0px) and (max-width:767px){.button_2,:root{--btn-text-font-size:15px}}#dm .button_2 .dmWidget:not([data-buttonstyle]),#dm .dmWidget.button_2:not([data-buttonstyle]),#dm .dmWidget:not([data-buttonstyle]){border-radius:50px}#dm .button_2 .dmWidget:not([data-buttonstyle]) .text,#dm .dmWidget.button_2:not([data-buttonstyle]) .text,#dm .dmWidget:not([data-buttonstyle]) .text{padding:10px 0}#dm .button_2 .dmWidget:not([data-buttonstyle]) .iconBg,#dm .dmWidget.button_2:not([data-buttonstyle]) .iconBg,#dm .dmWidget:not([data-buttonstyle]) .iconBg{display:none}#dm div.dmInner #site_content .dmWidget{background-color:var(--btn-bg-color);border-color:var(--btn-border-t-color) var(--btn-border-r-color) var(--btn-border-b-color) var(--btn-border-l-color);border-radius:var(--btn-border-radius);border-bottom-left-radius:var(--btn-border-bl-radius);border-bottom-right-radius:var(--btn-border-br-radius);border-top-left-radius:var(--btn-border-tl-radius);border-top-right-radius:var(--btn-border-tr-radius);border-width:var(--btn-border-t-width) var(--btn-border-r-width) var(--btn-border-b-width) var(--btn-border-l-width);box-shadow:var(--btn-box-shadow);direction:var(--btn-text-direction);text-align:var(--btn-text-align)}#dm div.dmInner #site_content .dmWidget span.text{color:var(--btn-text-color);font-size:var(--btn-text-font-size);font-weight:var(--btn-text-font-weight);text-decoration:var(--btn-text-decoration)}#dm .p_hfcontainer .main-navigation.unifiednav:not(.unifiednav_vertical) .unifiednav__container:not([data-depth])>.unifiednav__item-wrap:not(:last-child)::after,#dm .p_hfcontainer .main-navigation.unifiednav:not(.unifiednav_vertical) .unifiednav__container:not([data-depth])>.unifiednav__item-wrap:not(:last-child)::before,#dm .p_hfcontainer .u_1112353738.main-navigation.unifiednav:not(.unifiednav_vertical) .unifiednav__container:not([data-depth])>.unifiednav__item-wrap:not(:last-child)::after,#dm .p_hfcontainer .u_1112353738.main-navigation.unifiednav:not(.unifiednav_vertical) .unifiednav__container:not([data-depth])>.unifiednav__item-wrap:not(:last-child)::before{font-size:14px!important}#dm div.dmInner #site_content .dmWidget span.icon{color:var(--btn-icon-color);fill:var(--btn-icon-fill)}#dm div.dmInner #site_content .dmWidget:not([data-buttonstyle]) .iconBg{display:var(--btn-icon-wrpr-display)}#dm .p_hfcontainer .u_1112353738.main-navigation.unifiednav .unifiednav__container[data-depth="0"],#dm .p_hfcontainer .u_1112353738.main-navigation.unifiednav:not([image]) .unifiednav__container[data-depth="0"]{top:calc(100% - 0px - 0px)!important}#dm .p_hfcontainer .u_1112353738.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap:not(:last-child) .unifiednav__container[data-depth="0"]{left:15px!important}#dm .p_hfcontainer nav.u_1112353738{color:#000!important}#dm .p_hfcontainer .u_1112353738.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item{padding:0 0 0 40px!important;margin:0!important}#dm .p_hfcontainer nav.u_1112353738.main-navigation.unifiednav:not([data-nav-structure=VERTICAL]) .unifiednav__container[data-depth]{box-shadow:rgba(0,0,0,.25) 0 3px 11px 0!important;-moz-box-shadow:rgba(0,0,0,.25) 0 3px 11px 0!important;-webkit-box-shadow:rgba(0,0,0,.25) 0 3px 11px 0!important}#dm .p_hfcontainer .u_1112353738.main-navigation.unifiednav .unifiednav__container[data-depth] .unifiednav__item{margin:0!important;padding:15px 30px 15px 15px!important}#dm .p_hfcontainer .u_1112353738.main-navigation.unifiednav:not([data-nav-structure=VERTICAL]) .unifiednav__container:not([data-depth])>.unifiednav__item-wrap:not(:last-child)::after,#dm .p_hfcontainer .u_1112353738.main-navigation.unifiednav:not([data-nav-structure=VERTICAL]) .unifiednav__container:not([data-depth])>.unifiednav__item-wrap:not(:last-child)::before{font-size:16px!important}#dm .p_hfcontainer .u_1142125342,#dm .p_hfcontainer .u_1635687027{width:100%!important}#dm .p_hfcontainer div.u_1192291858 hr{border-top-width:1px!important;border-top-style:solid!important;color:rgba(255,255,255,.3)!important}#dm .p_hfcontainer div.u_1761564029{border-right-style:solid!important;border-right-color:rgba(255,255,255,.3)!important;border-right-width:1px!important;border-left-color:rgba(255,255,255,.3)!important;border-left-width:1px!important;border-left-style:solid!important}#dm .p_hfcontainer nav.u_1112353738.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item,#dm .p_hfcontainer nav.u_1112353738.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item.dmNavItemSelected{color:var(--color_4)!important;font-weight:700!important}#dm .p_hfcontainer nav.u_1112353738.main-navigation.unifiednav.effect-bottom2 .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item .nav-item-text::after{border-top-width:2px!important;border-top-style:solid!important;border-top-color:var(--color_4)!important}#dm .p_hfcontainer nav.u_1112353738.main-navigation.unifiednav .unifiednav__container[data-depth]{background-color:var(--color_4)!important}#dm .p_hfcontainer nav.u_1112353738.main-navigation.unifiednav .unifiednav__container[data-depth] .unifiednav__item{font-weight:600!important;color:var(--color_3)!important;font-size:15px!important}#dm .dmInner div.dmHeader{background-repeat:no-repeat!important;background-size:cover!important}#dm .dmInner div.dmHeader,#dm .dmInner div.dmHeader.u_hcontainer,#dm .dmInner div.u_hcontainer{background-color:transparent!important;box-shadow:none!important;-moz-box-shadow:none!important;-webkit-box-shadow:none!important;background-image:none!important}#dm .dmInner div.fHeader .dmHeader[freeheader=true]{padding-top:12px!important;padding-bottom:12px!important}.fHeader #hcontainer.dmHeader[freeheader=true]{padding-top:initial!important;padding-bottom:initial!important}#dm .p_hfcontainer nav.u_1112353738.main-navigation.unifiednav:not(.unifiednav_vertical) .unifiednav__container:not([data-depth])>.unifiednav__item-wrap:not(:last-child)::after,#dm .p_hfcontainer nav.u_1112353738.main-navigation.unifiednav:not(.unifiednav_vertical) .unifiednav__container:not([data-depth])>.unifiednav__item-wrap:not(:last-child)::before{padding-top:0!important;padding-bottom:0!important;margin-top:0!important;margin-bottom:0!important}#dm .p_hfcontainer nav.u_1112353738.main-navigation.unifiednav .unifiednav__container:not([data-depth])>.unifiednav__item-wrap>.unifiednav__item{font-size:16px!important}#dm .p_hfcontainer .u_1958617864 .socialHubIcon:after{width:38px!important;height:30px!important}#dm .p_hfcontainer .u_1958617864.dmSocialHub .socialHubInnerDiv a:not(:last-child){margin-right:2px!important}#dm .dmInner div.fHeader.dmHeaderContainer #hcontainer.dmHeader[freeheader=true]{margin:0!important;padding:0!important}#dm .p_hfcontainer div.u_1861705244{padding:8px 40px!important;margin:0!important;width:auto!important}#dm .p_hfcontainer div.u_1479750998,div.u_1958617864{padding:0!important}#dm .p_hfcontainer .u_1958617864 .socialHubIcon{width:30px!important;height:30px!important;font-size:20px!important;line-height:30px!important}div.u_1958617864{display:block!important;float:none!important;top:0!important;left:0!important;width:582px!important;position:relative!important;height:auto!important;max-width:100%!important;min-width:0!important;text-align:right!important}#dm .dmInner div.u_hcontainer,#dm .p_hfcontainer div.u_1958617864{text-align:center!important;max-width:100%!important;min-width:0!important;float:none!important;top:0!important;left:0!important;position:relative!important}#dm .p_hfcontainer div.u_1716862657{margin:0!important;padding:2px 0!important}#dm .p_hfcontainer div.u_1635687027{width:180px!important;height:38px!important}#dm .p_hfcontainer div.u_1958617864{display:block!important;width:315.14px!important;height:auto!important;margin:0!important;padding:0!important}#dm .p_hfcontainer div.u_1246161842{margin:auto!important;padding-left:10px!important}#dm .dmInner div.u_hcontainer{height:auto!important;padding:25px 0 20px!important;width:100%!important;margin:0 auto!important}#dm .dmInner div.dmHeader.u_hcontainer,#dm .dmInner div.u_hcontainer{background-repeat:repeat!important;background-size:auto!important;background-position:50% 50%!important;background-attachment:initial!important}#dm .dmInner div.dmHeader.u_hcontainer{padding-bottom:20px!important;padding-top:25px!important}#dm .p_hfcontainer nav.u_1112353738{width:890px!important;max-width:100%!important;justify-content:flex-end!important;align-items:stretch!important;padding:7px 0!important;min-width:0!important;text-align:right!important;margin:0 0 0 auto!important}#dm .p_hfcontainer div.u_1142125342,#dm .p_hfcontainer nav.u_1112353738{height:auto!important;float:none!important;top:0!important;left:0!important;position:relative!important}#dm .p_hfcontainer div.u_1142125342{width:calc(100% - 0px)!important;display:block!important;max-width:260.88px!important;margin:0 82px 0 0!important;padding:0!important;min-width:25px!important;text-align:center!important}#dm .dmBody .u_1335339333,#dm .dmBody .u_1617824526{width:100%!important}#dm .dmBody a.u_1282856538,#dm .dmBody div.u_1243667655,#dm .dmBody div.u_1486792252,#dm .dmBody div.u_1919414143{float:none!important;top:0!important;left:0!important;position:relative!important;min-width:0!important}#dm .dmBody .dmform-error,#dm .dmBody .u_1256146952 .dmform-success,#dm .dmBody .u_1256146952 .dmforminput input{text-align:CENTER!important}.stickyHeaderSpacer{height:170.23px!important}#dm .dmBody div.dmform-error,#dm .dmBody div.u_1256146952 .dmforminput input{font-style:normal!important}#dm .dmBody div.u_1243667655{background-repeat:no-repeat!important;background-image:url(https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_MKVf-1920w.jpg),url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TpUUqHSwo4pChOlkQFemoVShChVArtOpgcukXNGlIUlwcBdeCgx+LVQcXZ10dXAVB8APEzc1J0UVK/F9aaBHjwXE/3t173L0DhEaFaVbPBKDptplOJsRsblUMvEJAGEEMIi4zy5iTpBQ8x9c9fHy9i/Es73N/jn41bzHAJxLPMsO0iTeIZzZtg/M+cYSVZJX4nHjcpAsSP3JdafEb56LLAs+MmJn0PHGEWCx2sdLFrGRqxNPEUVXTKV/ItljlvMVZq9RY+578haG8vrLMdZojSGIRS5AgQkENZVRgI0arToqFNO0nPPzDrl8il0KuMhg5FlCFBtn1g//B726twtRkKymUAHpfHOdjFAjsAs2643wfO07zBPA/A1d6x19tAPFP0usdLXoEhLeBi+uOpuwBlzvA0JMhm7Ir+WkKhQLwfkbflAMGboG+tVZv7X2cPgAZ6ip1AxwcAmNFyl73eHewu7d/z7T7+wFwJnKmZ9+MiwAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAuIwAALiMBeKU/dgAAAAd0SU1FB+UCDwksLkLIPkkAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAC0lEQVQI12NgAAIAAAUAAeImBZsAAAAASUVORK5CYII=)!important;background-size:cover!important}#dm .dmBody .u_1243667655:before{opacity:.5!important;background-color:#11418b!important}#dm .dmBody div.u_1380107631{background-color:var(--color_4)!important}#dm .dmBody div.u_1243667655:before{opacity:.6!important;background-color:var(--color_1)!important}#dm .dmBody div.u_1598089237{background-color:var(--color_1)!important;border-color:var(--color_4)!important;border-width:5px!important;border-style:solid!important}#dm .dmBody div.u_1486792252 hr,#dm .dmBody div.u_1806303698 .caption-container .caption-title{color:var(--color_4)!important}#dm .dmBody .u_1875097599{display:none!important}#dm .dmBody div.u_1114400549 .color-overlay{background-color:transparent!important}#dm .dmBody div.u_1821463756{background-image:url(https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_bgdot-1920w.png),url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TpUUqHSwo4pChOlkQFemoVShChVArtOpgcukXNGlIUlwcBdeCgx+LVQcXZ10dXAVB8APEzc1J0UVK/F9aaBHjwXE/3t173L0DhEaFaVbPBKDptplOJsRsblUMvEJAGEEMIi4zy5iTpBQ8x9c9fHy9i/Es73N/jn41bzHAJxLPMsO0iTeIZzZtg/M+cYSVZJX4nHjcpAsSP3JdafEb56LLAs+MmJn0PHGEWCx2sdLFrGRqxNPEUVXTKV/ItljlvMVZq9RY+578haG8vrLMdZojSGIRS5AgQkENZVRgI0arToqFNO0nPPzDrl8il0KuMhg5FlCFBtn1g//B726twtRkKymUAHpfHOdjFAjsAs2643wfO07zBPA/A1d6x19tAPFP0usdLXoEhLeBi+uOpuwBlzvA0JMhm7Ir+WkKhQLwfkbflAMGboG+tVZv7X2cPgAZ6ip1AxwcAmNFyl73eHewu7d/z7T7+wFwJnKmZ9+MiwAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAuIwAALiMBeKU/dgAAAAd0SU1FB+UCDwksLkLIPkkAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAC0lEQVQI12NgAAIAAAUAAeImBZsAAAAASUVORK5CYII=)!important}#dm .dmBody .u_1316535939,#dm .dmBody .u_1602904729,#dm .dmBody .u_1696803561,#dm .dmBody .u_1928857611{display:block!important}#dm .dmBody div.u_1806303698 .caption-inner{background-color:rgba(0,0,0,.4)!important;border-style:solid!important;border-width:0!important}#dm .dmBody div.u_1256146952 input:not([type=submit]){border-style:solid!important;border-width:1px!important;border-color:var(--color_1)!important;background-color:var(--color_2)!important}#dm .dmBody .u_1929374494{background-image:url(https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_image1-7b78bd6f-1920w.jpg),url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TpUUqHSwo4pChOlkQFemoVShChVArtOpgcukXNGlIUlwcBdeCgx+LVQcXZ10dXAVB8APEzc1J0UVK/F9aaBHjwXE/3t173L0DhEaFaVbPBKDptplOJsRsblUMvEJAGEEMIi4zy5iTpBQ8x9c9fHy9i/Es73N/jn41bzHAJxLPMsO0iTeIZzZtg/M+cYSVZJX4nHjcpAsSP3JdafEb56LLAs+MmJn0PHGEWCx2sdLFrGRqxNPEUVXTKV/ItljlvMVZq9RY+578haG8vrLMdZojSGIRS5AgQkENZVRgI0arToqFNO0nPPzDrl8il0KuMhg5FlCFBtn1g//B726twtRkKymUAHpfHOdjFAjsAs2643wfO07zBPA/A1d6x19tAPFP0usdLXoEhLeBi+uOpuwBlzvA0JMhm7Ir+WkKhQLwfkbflAMGboG+tVZv7X2cPgAZ6ip1AxwcAmNFyl73eHewu7d/z7T7+wFwJnKmZ9+MiwAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAuIwAALiMBeKU/dgAAAAd0SU1FB+UCDwksLkLIPkkAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAC0lEQVQI12NgAAIAAAUAAeImBZsAAAAASUVORK5CYII=)!important;background-position:0 50%!important}#dm .dmBody a.u_1282856538,#dm .dmBody div.u_1919414143{max-width:100%!important;display:block!important}#dm .dmBody a.u_1282856538{text-align:center!important;width:180px!important;height:50px!important;margin:15px auto 10px!important;padding:0!important}#dm .dmBody div.u_1919414143{width:816px!important;height:auto!important;margin:8px auto!important;padding:2px 0!important}#dm .dmBody div.u_1389857619{margin:0!important;padding:0 40px!important;width:auto!important}#dm .dmBody div.u_1486792252{display:block!important;max-width:100%!important;padding:0!important;width:100px!important;height:auto!important;text-align:start!important;margin:0 auto!important}#dm .d-page-1716942098 DIV.dmInner{background-repeat:repeat!important;background-image:url(https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_woodf-1920w.png),url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAABhGlDQ1BJQ0MgcHJvZmlsZQAAKJF9kT1Iw0AcxV9TpUUqHSwo4pChOlkQFemoVShChVArtOpgcukXNGlIUlwcBdeCgx+LVQcXZ10dXAVB8APEzc1J0UVK/F9aaBHjwXE/3t173L0DhEaFaVbPBKDptplOJsRsblUMvEJAGEEMIi4zy5iTpBQ8x9c9fHy9i/Es73N/jn41bzHAJxLPMsO0iTeIZzZtg/M+cYSVZJX4nHjcpAsSP3JdafEb56LLAs+MmJn0PHGEWCx2sdLFrGRqxNPEUVXTKV/ItljlvMVZq9RY+578haG8vrLMdZojSGIRS5AgQkENZVRgI0arToqFNO0nPPzDrl8il0KuMhg5FlCFBtn1g//B726twtRkKymUAHpfHOdjFAjsAs2643wfO07zBPA/A1d6x19tAPFP0usdLXoEhLeBi+uOpuwBlzvA0JMhm7Ir+WkKhQLwfkbflAMGboG+tVZv7X2cPgAZ6ip1AxwcAmNFyl73eHewu7d/z7T7+wFwJnKmZ9+MiwAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAAuIwAALiMBeKU/dgAAAAd0SU1FB+UCDwksLkLIPkkAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAC0lEQVQI12NgAAIAAAUAAeImBZsAAAAASUVORK5CYII=)!important;background-size:auto!important;background-attachment:fixed!important;background-position:50% 50%!important}#dm .dmBody div.u_1114400549{height:100%!important}#dm .dmBody div.u_1821463756{margin:0!important;padding:30px 30px 0 18px!important;background-repeat:no-repeat!important;background-size:auto!important;background-position:100% 0!important}#dm .dmBody .u_1806303698 .caption-inner{-webkit-border-top-right-radius:0!important;-webkit-border-bottom-right-radius:0!important;-webkit-border-bottom-left-radius:0!important;-webkit-border-top-left-radius:0!important;border-radius:0!important;-moz-border-radius:0!important;-webkit-border-radius:0!important}#dm .dmBody .u_1806303698 .photoGalleryThumbs{padding:5px!important}#dm .dmBody .u_1806303698 .photoGalleryViewAll{padding:0 10px!important}#dm .dmBody div.u_1806303698 .caption-container .caption-title{font-size:32px!important}#dm .dmBody div.u_1806303698 .caption-button{height:50px!important;width:180px!important}#dm .dmBody div.u_1243667655{margin:0!important;width:auto!important;height:auto!important;text-align:center!important;background-position:50% 50%!important;background-attachment:fixed!important;max-width:none!important;padding:250px 40px!important}#dm .dmBody div.u_1598089237{margin:-100px 0 0!important;padding:0 20px!important}#dm .dmBody div.u_1335339333,#dm .dmBody div.u_1617824526{width:320px!important;padding:0!important;max-width:100%!important;min-width:0!important;text-align:start!important;float:none!important;top:0!important;left:0!important;position:relative!important;height:auto!important}#dm .dmBody div.u_1335339333{display:block!important;margin:30px auto -62px!important}#dm .dmBody div.u_1617824526{margin:-62px auto 30px!important;display:block!important}#dm .dmBody div.u_1256146952 .dmwidget-title{color:#000!important;font-family:Barlow!important;font-weight:600!important;font-size:30px!important}#dm .dmBody div.u_1380107631{float:none!important;top:0!important;left:0!important;position:relative!important;min-width:25px!important;margin:8px auto!important;padding:10px!important;width:calc(100% - 184px)!important;height:auto!important;max-width:832px!important;display:block!important}.font-size-18,.size-18{font-size:18px!important}.font-size-40,.size-40{font-size:40px!important}.dmDesktopBody:not(.editGrid) [data-anim-desktop]:not([data-anim-desktop=none]),.dmDesktopBody:not(.editGrid) [data-anim-extended]{visibility:hidden}#\31 097623523,#\31 112353738,#\31 144342410,#\31 173148036,#\31 182055830,#\31 203159181,#\31 267038259,#\31 404909502,#\31 529718112,#\31 599909709,#\31 619609494,#\31 645176502,#\31 768415146,#\31 797673121,#\31 872379817,#\31 887345997,#\31 907941471,#\31 914255413,#\31 916055408,#\31 929374494{order:0;flex-direction:row}#\31 075614904,#\31 163609452,#\31 261443238,#\31 276991955,#\31 406801972,#\31 429924804,#\31 569026865,#\31 645925581,#\31 716289430,#\31 895701760,#\31 923107748,#\31 945377220{order:0}#\31 945377220{flex-direction:row} #dm .dmPhotoGallery.newPhotoGallery .dmPhotoGalleryHolder:not(.photo-gallery-done) {display: none;} @media (max-width:767px){ [data-hidden-on-mobile] {display:none!important}}
+    .dmDesktopBody [data-anim-desktop]:not([data-anim-desktop='none']) {
+      visibility: hidden;
+    }
+
+    
+</style>
+
+
+
+<style id="fontFallbacks">
+    @font-face {
+  font-family: "Roboto Fallback";
+  src: local('Arial');
+  ascent-override: 92.6709%;
+  descent-override: 24.3871%;
+  size-adjust: 100.1106%;
+  line-gap-override: 0%;
+ }@font-face {
+  font-family: "Montserrat Fallback";
+  src: local('Arial');
+  ascent-override: 84.9466%;
+  descent-override: 22.0264%;
+  size-adjust: 113.954%;
+  line-gap-override: 0%;
+ }@font-face {
+  font-family: "Poppins Fallback";
+  src: local('Arial');
+  ascent-override: 92.326%;
+  descent-override: 30.7753%;
+  line-gap-override: 8.793%;
+  size-adjust: 113.7274%;
+}@font-face {
+  font-family: "Barlow Fallback";
+  src: local('Arial');
+  ascent-override: 103.1323%;
+  descent-override: 20.6265%;
+  size-adjust: 96.9628%;
+  line-gap-override: 0%;
+ }@font-face {
+  font-family: "DM Sans Fallback";
+  src: local('Arial');
+  ascent-override: 94.3696%;
+  descent-override: 29.4905%;
+  size-adjust: 105.1186%;
+  line-gap-override: 0%;
+ }
+</style>
+
+
+<!-- End render the required css and JS in the head section -->
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.abneycustomcarpentry.net/">
+<script type="application/ld+json">
+    {
+        "@context" : "https://schema.org",
+        "@type" : "WebSite",
+        "name" : "Abney Custom Carpentry",
+        "url" : "https://www.abneycustomcarpentry.net/"
+    }
+</script>
+  <title>
+    Abney Custom Carpentry in Daphne, AL
+  </title>
+  <meta name="keywords" content="custom carpentry in Daphne AL"/>
+  <meta name="description" content="Abney Custom Carpentry offers Custom cabinets, floors, doors and trim, kitchen remodeling, bathroom remodeling Service areas include Daphne, AL and nearby areas."/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="Abney Custom Carpentry in Daphne, AL"/>
+  <meta name="twitter:description" content="Abney Custom Carpentry offers Custom cabinets, floors, doors and trim, kitchen remodeling, bathroom remodeling Service areas include Daphne, AL and nearby areas."/>
+  <meta name="twitter:image" content="https://i.ibb.co/VnQLj65/Whats-App-Image-2025-06-23-at-22-53-29-404b66b2-removebg-white-150x150.webp"/>
+  <meta property="og:description" content="Abney Custom Carpentry offers Custom cabinets, floors, doors and trim, kitchen remodeling, bathroom remodeling Service areas include Daphne, AL and nearby areas."/>
+  <meta property="og:title" content="Abney Custom Carpentry in Daphne, AL"/>
+  <meta property="og:image" content="https://i.ibb.co/VnQLj65/Whats-App-Image-2025-06-23-at-22-53-29-404b66b2-removebg-white-150x150.webp"/>
+<script type="application/ld+json">
+{
+  "@context" : {
+    "@vocab" : "http://schema.org/"
+  },
+  "@type" : "LocalBusiness",
+  "name" : "Abney Custom Carpentry",
+  "address" : {
+    "@type" : "PostalAddress",
+    "streetAddress" : "7387 Franklin Square Ct",
+    "addressLocality" : "Daphne",
+    "addressRegion" : "AL",
+    "postalCode" : "36526-8330",
+    "addressCountry" : "US"
+  },
+  "geo" : {
+    "@type" : "GeoCoordinates",
+    "latitude" : "30.62312",
+    "longitude" : "-87.89708"
+  },
+  "url" : "https://www.abneycustomcarpentry.net",
+  "description" : "Remodeling projects are complicated and can disrupt your home for days. Make sure you hire a company you can rely on for your project. Choose Abney Custom Carpentry because we...",
+  "telephone" : "(251) 509-3415",
+  "email" : "abneycustomcarpentry@yahoo.com",
+  "logo" : "https://irp.cdn-website.com/fc071698/dms3rep/multi/AbneyCustomCarpentry_Logo.png",
+  "sameAs" : [ "https://yelp.com/biz/abney-custom-carpentry-daphne", "https://facebook.com/profile.php?id=61556723675747" ],
+  "image" : [ "https://irp.cdn-website.com/fc071698/dms3rep/multi/20240202_114157.jpg", "https://irp.cdn-website.com/fc071698/dms3rep/multi/20230308_155802.jpg", "https://irp.cdn-website.com/fc071698/dms3rep/multi/20230331_103152.jpg", "https://irp.cdn-website.com/fc071698/dms3rep/multi/20230911_160905.jpg", "https://irp.cdn-website.com/fc071698/dms3rep/multi/IMG_20240209_185110.jpg" ],
+  "openingHoursSpecification" : [ {
+    "@type" : "OpeningHoursSpecification",
+    "dayOfWeek" : [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" ],
+    "opens" : "09:00",
+    "closes" : "17:00"
+  } ],
+  "@id" : "https://www.abneycustomcarpentry.net",
+  "priceRange" : "$"
+}
+</script>
+
+
+
+<!-- SYS- VVNfRElSRUNUX1BST0RVQ1RJT04= -->
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body id="dmRoot" data-page-alias="home"  class="dmRoot dmDesktopBody fix-mobile-scrolling addCanvasBorder dmResellerSite dmLargeBody "
+      style="padding:0;margin:0;"
+      
+    >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ========= Site Content ========= -->
+<div id="dm" class='dmwr'>
+    
+    <div class="dm_wrapper standard-var5 widgetStyle-3 standard">
+         <div dmwrapped="true" id="1901957768" class="dm-home-page" themewaschanged="true" desktop-global-classes="header-over-content" tablet-global-classes="header-over-content" mobile-global-classes=""> <div dmtemplateid="StandardLayoutMultiD" class="standardHeaderLayout dm-bfs dm-layout-home hasAnimations rows-1200 inMiniHeaderMode hasStickyHeader header-over-content dmPageBody d-page-1716942098 inputs-css-clean dmFreeHeader" id="dm-outer-wrapper" data-page-class="1716942098" data-soch="true" data-background-parallax-selector=".dmHomeSection1, .dmSectionParallex"> <div id="dmStyle_outerContainer" class="dmOuter"> <div id="dmStyle_innerContainer" class="dmInner"> <div class="dmLayoutWrapper standard-var dmStandardDesktop"> <div> <div id="iscrollBody"> <div id="site_content"> <div class="dmHeaderContainer fHeader d-header-wrapper"> <div id="hcontainer" class="u_hcontainer dmHeader p_hfcontainer" freeheader="true" headerlayout="b58ba5b5703b4cd7b5f5f7951565dc87===horizontal-layout-5" layout="78f5c343822e4eb3aac27f4ad5d13812===header" data-scrollable-target="body" data-scrollable-target-threshold="1" data-scroll-responder-id="1" logo-size-target="60%" secondary-image="https://i.ibb.co/jPgq6ZZN/Gemini-Generated-Image-j0m6x7j0m6x7j0m6.png" has-secondary-image="true" mini-header-show-only-navigation-row="true"> <div dm:templateorder="85" class="dmHeaderResp dmHeaderStack noSwitch" id="1709005236"> <div class="dmRespRow dmDefaultListContentRow u_1861705244" style="text-align:center" id="1861705244"> <div class="dmRespColsWrapper" id="1914255413"> <div class="u_1677919435 small-12 dmRespCol large-3 medium-3" id="1677919435"> <div class="u_1142125342 imageWidget align-center" data-element-type="image" data-widget-type="image" id="1142125342"> <a href="/" id="1121423955"><img src="https://i.ibb.co/VnQLj65/Whats-App-Image-2025-06-23-at-22-53-29-404b66b2-removebg-white-150x150.webp" alt="Abney Custom Carpentry" id="1684309995" class="" data-dm-image-path="https://i.ibb.co/VnQLj65/Whats-App-Image-2025-06-23-at-22-53-29-404b66b2-removebg-white-150x150.webp" width="477" height="282" title="Abney Custom Carpentry" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+</div> 
+ <div class="u_1246161842 dmRespCol small-12 large-9 medium-9" id="1246161842"> <span id="1630001966"></span> 
+ <div class="dmRespRow u_1479750998" id="1479750998"> <div class="dmRespColsWrapper" id="1768415146" style="align-items:center"> <div class="dmRespCol small-12 large-4 medium-4" id="1116113858"> <div class="u_1958617864 align-center text-align-center dmSocialHub gapSpacing" id="1958617864" dmle_extension="social_hub" data-element-type="social_hub" wr="true" networks="" icon="true" surround="true" adwords=""> <div class="socialHubWrapper"> <div class="socialHubInnerDiv "> <a href="https://facebook.com/profile.php?id=61556723675747" target="_blank" dm_dont_rewrite_url="true" aria-label="facebook" onclick="dm_gaq_push_event &amp;&amp; dm_gaq_push_event(&apos;socialLink&apos;, &apos;click&apos;, &apos;Facebook&apos;)"> <span class="dmSocialFacebook dm-social-icons-facebook oneIcon socialHubIcon style5" aria-hidden="true" data-hover-effect=""></span> 
+</a> 
+ <a href="https://yelp.com/biz/abney-custom-carpentry-daphne" target="_blank" dm_dont_rewrite_url="true" aria-label="yelp" onclick="dm_gaq_push_event &amp;&amp; dm_gaq_push_event(&apos;socialLink&apos;, &apos;click&apos;, &apos;Yelp&apos;)"> <span class="dmSocialYelp dm-social-icons-yelp oneIcon socialHubIcon style5" aria-hidden="true" data-hover-effect=""></span> 
+</a> 
+ <a href="mailto:abneycustomcarpentry@yahoo.com" dm_dont_rewrite_url="true" aria-label="email" onclick="dm_gaq_push_event &amp;&amp; dm_gaq_push_event(&apos;socialLink&apos;, &apos;click&apos;, &apos;Email&apos;)"> <span class="dmSocialEmail dm-social-icons-email oneIcon socialHubIcon style5" aria-hidden="true" data-hover-effect=""></span> 
+</a> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="u_1761564029 dmRespCol small-12 large-4 medium-4" id="1761564029"> <div class="u_1635687027 imageWidget align-center" data-element-type="image" data-widget-type="image" id="1635687027"> <a href="https://search.google.com/local/writereview?placeid=ChIJ3847croP6IkR--EY5GQf6oY" id="1147300273" class="" target="_blank" file="false"><img src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_google-review-1920w.webp" alt="Google Reviews" id="1886481308" class="" data-dm-image-path="https://irp.cdn-website.com/fc071698/dms3rep/multi/AbneyCustomCarpentry_google-review.webp" width="826" height="178" title="Google Review" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+</div> 
+ <div class="dmRespCol large-4 medium-4 small-12" id="1445029016"> <div class="dmNewParagraph u_1716862657" data-element-type="paragraph" data-version="5" id="1716862657" new-inline-bind-applied="true" data-diy-text=""><p class="text-align-right"><span class="" style="display: unset; color: var(--color_4);"><span style="display: unset; color: var(--color_4);">Call Us Now!</span> 
+</span> 
+<a href="tel:(251) 509-3415" runtime_url="tel:(251) 509-3415" type="call" style="font-weight: bold; color: var(--color_4); display: initial;"><span class="inline-data-binding" data-encoded-value="KDI1MSkgNTA5LTM0MTU=" data-inline-binding="content_library.global.phone.phone">(251) 509-3415</span></a></p></div> 
+</div> 
+</div> 
+</div> 
+ <div class="u_1192291858 dmDividerWrapper clearfix" data-element-type="dDividerId" data-layout="divider-style-1" data-widget-version="2" id="1192291858"><hr class="dmDivider" style="border-width:2px; border-top-style:solid; color:grey;" id="1462575086"/></div> 
+ <nav class="u_1112353738 effect-bottom2 main-navigation unifiednav dmLinksMenu" role="navigation" layout-main="horizontal_nav_layout_1" layout-sub="submenu_horizontal_2" data-show-vertical-sub-items="HOVER" id="1112353738" dmle_extension="onelinksmenu" data-element-type="onelinksmenu" wr="true" icon="true" surround="true" adwords="" navigation-id="unifiedNav"> <ul role="menubar" class="unifiednav__container  " data-auto="navigation-pages"> <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="/" class="unifiednav__item  dmNavItemSelected  dmUDNavigationItem_00  " target="" data-target-page-alias="" aria-current="page" data-auto="selected-page"> <span class="nav-item-text " data-link-text="
+         Home
+        " data-auto="page-text-style">Home<span class="icon icon-angle-down"></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" aria-haspopup="true" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="#" class="unifiednav__item  dmUDNavigationItem_010101982426  unifiednav__item_has-sub-nav" target="" data-target-page-alias=""> <span class="nav-item-text " data-link-text="Services" data-auto="page-text-style">Services<span class="icon icon-angle-down"></span> 
+</span> 
+</a> 
+ <ul role="menu" aria-expanded="false" class="unifiednav__container unifiednav__container_sub-nav" data-depth="0" data-auto="sub-pages"> <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="1"> <a href="/custom-cabinets" class="unifiednav__item  dmUDNavigationItem_010101414204  " target="" data-target-page-alias=""> <span class="nav-item-text " data-link-text="Custom Cabinets" data-auto="page-text-style">Custom Cabinets<span class="icon icon-angle-right"></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="1"> <a href="/floors" class="unifiednav__item  dmUDNavigationItem_01010192673  " target="" data-target-page-alias=""> <span class="nav-item-text " data-link-text="Floors" data-auto="page-text-style">Floors<span class="icon icon-angle-right"></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="1"> <a href="/doors-trim" class="unifiednav__item  dmUDNavigationItem_01010113417  " target="" data-target-page-alias=""> <span class="nav-item-text " data-link-text="Doors & Trim" data-auto="page-text-style">Doors &amp; Trim<span class="icon icon-angle-right"></span> 
+</span> 
+</a> 
+</li> 
+</ul> 
+</li> 
+ <li role="menuitem" aria-haspopup="true" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="/remodeling" class="unifiednav__item  dmUDNavigationItem_010101918131  unifiednav__item_has-sub-nav" target="" data-target-page-alias=""> <span class="nav-item-text " data-link-text="Remodeling" data-auto="page-text-style">Remodeling<span class="icon icon-angle-down"></span> 
+</span> 
+</a> 
+ <ul role="menu" aria-expanded="false" class="unifiednav__container unifiednav__container_sub-nav" data-depth="0" data-auto="sub-pages"> <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="1"> <a href="/bathroom-remodeling" class="unifiednav__item  dmUDNavigationItem_010101433151  " target="" data-target-page-alias=""> <span class="nav-item-text " data-link-text="Bathroom Remodeling" data-auto="page-text-style">Bathroom Remodeling<span class="icon icon-angle-right"></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="1"> <a href="/kitchen-remodeling" class="unifiednav__item  dmUDNavigationItem_010101759839  " target="" data-target-page-alias=""> <span class="nav-item-text " data-link-text="Kitchen Remodeling" data-auto="page-text-style">Kitchen Remodeling<span class="icon icon-angle-right"></span> 
+</span> 
+</a> 
+</li> 
+</ul> 
+</li> 
+ <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="/gallery" class="unifiednav__item  dmUDNavigationItem_010101891030  " target="" data-target-page-alias=""> <span class="nav-item-text " data-link-text="Gallery" data-auto="page-text-style">Gallery<span class="icon icon-angle-down"></span> 
+</span> 
+</a> 
+</li> 
+ <li role="menuitem" class=" unifiednav__item-wrap " data-auto="more-pages" data-depth="0"> <a href="/contact-us" class="unifiednav__item  dmUDNavigationItem_010101623395  " target="" data-target-page-alias=""> <span class="nav-item-text " data-link-text="Contact Us" data-auto="page-text-style">Contact Us<span class="icon icon-angle-down"></span> 
+</span> 
+</a> 
+</li> 
+</ul> 
+</nav> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="stickyHeaderSpacer" id="stickyHeaderSpacer" data-new="true"></div> 
+ <div class="dmRespRow dmRespRowStable dmRespRowNoPadding dmPageTitleRow "> <div class="dmRespColsWrapper"> <div class="large-12 dmRespCol"> <div id="innerBar" class="innerBar lineInnerBar dmDisplay_None"> <div class="titleLine display_None"><hr/></div> 
+<!-- Page title is hidden in css for new responsive sites. It is left here only so we don't break old sites. Don't copy it to new layouts --> <div id="pageTitleText"></div> 
+ <div class="titleLine display_None"><hr/></div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div dmwrapped="true" id="dmFirstContainer" class="dmBody u_dmStyle_template_home dm-home-page" themewaschanged="true" desktop-global-classes="header-over-content" tablet-global-classes="header-over-content" mobile-global-classes=""> <div id="allWrapper" class="allWrapper"><!-- navigation placeholders --> <div id="dm_content" class="dmContent" role="main"> <div dm:templateorder="170" class="dmHomeRespTmpl mainBorder dmRespRowsWrapper dmFullRowRespTmpl" id="1716942098"> <div class="u_1243667655 dmRespRow hasBackgroundOverlay" style="text-align: center;" id="1243667655"> <div class="dmRespColsWrapper" id="1173148036"> <div class="dmRespCol small-12 u_1620106714 medium-12 large-12" id="1620106714"> <div class="u_1380107631 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1380107631" data-anim-desktop="none" style="transition: none 0s ease 0s; text-align: left; display: block;"> <h1 class="m-text-align-center text-align-center m-size-16 size-18" style="line-height: 1.2;"><span class="font-size-18 m-font-size-16" m-font-size-set="true" style="color:var(--color_1);font-weight:bold;display:unset;font-family:'DM Sans', 'DM Sans Fallback';">&nbsp;For Over 30 Years, We've Been Turning Dreams Into Reality With Expert Carpentry!</span></h1> 
+</div> 
+ <div class="u_1919414143 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1919414143" style="transition: none 0s ease 0s; text-align: left;"><p class="text-align-center size-40 m-size-32" style="line-height: initial;"><span class="font-size-40 m-font-size-32" m-font-size-set="true" style="color:var(--color_4);font-weight:bold;display:unset;font-family:'Britannic T Regular';">GIVE YOUR HOME BEAUTIFUL WOOD DECOR</span></p></div> 
+ <div class="dmNewParagraph" data-element-type="paragraph" data-version="5" id="1785923275"><p class="m-size-16 text-align-center size-18"><span class="m-font-size-16 font-size-18" m-font-size-set="true" style="display: unset; color: var(--color_4); font-weight: bold;">Install Custom Cabinets, Trim and Baseboards in Daphne, AL &amp; The Surrounding Area</span></p></div> 
+ <a data-display-type="block" class="u_1282856538 align-center dmButtonLink dmWidget dmWwr default dmOnlyButton dmDefaultGradient button_2" file="false" href="/contact-us" data-element-type="dButtonLinkId" id="1282856538"> <span class="iconBg" aria-hidden="true" id="1410061903"> <span class="icon hasFontIcon icon-star" id="1663592218"></span> 
+</span> 
+ <span class="text" id="1190563368">Contact Us</span> 
+</a> 
+</div> 
+</div> 
+</div> 
+ <div class="dmRespRow u_1389857619" id="1389857619"> <div class="dmRespColsWrapper" id="1144342410"> <div class="dmRespCol large-12 medium-12 small-12 u_1598089237" id="1598089237"> <div class="u_1617824526 imageWidget align-center" data-element-type="image" data-widget-type="image" id="1617824526" data-anim-extended="eyJkZXNrdG9wIjp7InRyaWdnZXIiOiJ2aWV3cG9ydCIsImFuaW1hdGlvbiI6InNsaWRlSW5Db21ibyIsInJldmVyc2UiOmZhbHNlLCJpbnRlbnNpdHkiOjEuNCwidmlld3BvcnRUaHJlc2hvbGRzIjp7InRvcCI6IjAlIiwiYm90dG9tIjoiMCUifSwiZGVsYXkiOjAsImR1cmF0aW9uIjoxLCJkaXIiOiJsZWZ0In19"><img src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_LogoDivWhite-384w.png" alt="White Saw Blade" id="1736323834" class="" data-dm-image-path="https://irp.cdn-website.com/fc071698/dms3rep/multi/AbneyCustomCarpentry_LogoDivWhite.png" width="477" height="86" title="Saw Blade" onerror="handleImageLoadError(this)"/></div> 
+ <div class="dmNewParagraph" data-element-type="paragraph" data-version="5" id="1646451005" new-inline-bind-applied="true" data-diy-text=""> <h2 class="text-align-center" style="line-height: 1;"><span style="color: var(--color_4); display: initial;">Welcome to <span class="inline-data-binding" data-encoded-value="QWJuZXkgQ3VzdG9tIENhcnBlbnRyeQ==" data-inline-binding="content_library.global.company_name">Abney Custom Carpentry</span><span class="ql-cursor"></span></span></h2> 
+</div> 
+ <div class="u_1486792252 dmDividerWrapper clearfix" data-element-type="dDividerId" data-layout="divider-style-1" data-widget-version="2" id="1486792252"><hr class="dmDivider" style="border-width:2px; border-top-style:solid; color:grey;" id="1854981459"/></div> 
+ <div class="dmNewParagraph" data-element-type="paragraph" data-version="5" id="1159627843"><p class="text-align-center"><span style="display: initial; color: var(--color_4);">I specialize in all aspects of custom woodworking and have been doing this for over 30 years</span></p><p class="text-align-center"><span style="display: initial; color: var(--color_4);">Licensed and insured.</span></p><p class="text-align-center"><span style="display: initial; color: var(--color_4);"><br/></span></p><p class="text-align-center"><span style="display: initial; color: var(--color_4);">Allow us to make your dreams a reality!!</span></p></div> 
+ <div class="u_1335339333 imageWidget align-center" data-element-type="image" data-widget-type="image" id="1335339333" data-anim-extended="eyJkZXNrdG9wIjp7InRyaWdnZXIiOiJ2aWV3cG9ydCIsImFuaW1hdGlvbiI6InNsaWRlSW5Db21ibyIsInJldmVyc2UiOmZhbHNlLCJpbnRlbnNpdHkiOjEsInZpZXdwb3J0VGhyZXNob2xkcyI6eyJ0b3AiOiIwJSIsImJvdHRvbSI6IjAlIn0sImRlbGF5IjowLCJkdXJhdGlvbiI6MSwiZGlyIjoicmlnaHQifX0="><img src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_LogoDiv-207602f4-de6239e4-384w.png" alt="Blue Saw Blade" id="1290514567" class="" data-dm-image-path="https://irp.cdn-website.com/fc071698/dms3rep/multi/AbneyCustomCarpentry_LogoDiv-207602f4-de6239e4.png" width="477" height="85" title="Saw Blade" onerror="handleImageLoadError(this)"/></div> 
+</div> 
+</div> 
+</div> 
+ <div class="dmRespRow u_1708925704 mobile-columns-reversed" id="1708925704"> <div class="dmRespColsWrapper" id="1907941471"> <div class="dmRespCol small-12 large-6 medium-6 u_1822054452" id="1822054452"> <div class="dmNewParagraph" data-element-type="paragraph" data-version="5" id="1951089637" new-inline-bind-applied="true" data-diy-text=""> <h2 class="m-text-align-center"><span style="display: unset;">Why Choose <span class="inline-data-binding" data-encoded-value="QWJuZXkgQ3VzdG9tIENhcnBlbnRyeQ==" data-inline-binding="content_library.global.company_name">Abney Custom Carpentry</span>?</span><span style="display: initial;"><br/></span></h2> 
+</div> 
+ <div class="dmNewParagraph" data-element-type="paragraph" data-version="5" id="1354773844" new-inline-bind-applied="true" data-diy-text=""><p class="m-text-align-center"><span style="display: initial;">Remodeling projects are complicated and can disrupt your home for days. Make sure you hire a company you can rely on for your project. Choose&nbsp;<span class="inline-data-binding" data-encoded-value="QWJuZXkgQ3VzdG9tIENhcnBlbnRyeQ==" data-inline-binding="content_library.global.company_name">Abney Custom Carpentry</span> 
+because we...</span></p><p class="m-text-align-center"><span style="display: initial;"><br/></span></p> 
+ <ul class="defaultList custom-list-6"><li class="m-text-align-center"><span style="display: initial;">Have been designing custom carpentry for over 30 years. We have the skills to create the look you want.</span></li><li class="m-text-align-center"><span style="display: initial;">Are licensed and insured. You'll have peace of mind knowing we can get the job done properly and that your house is covered in the event of an accident.</span></li><li class="m-text-align-center"><span style="display: initial;">Use a small team. You'll work with the same crew throughout the process so you'll always know who is working on your home.<br/></span></li></ul> 
+</div> 
+ <a data-display-type="block" class="u_1658712360 align-center dmButtonLink dmWidget dmWwr default dmOnlyButton dmDefaultGradient" file="false" href="/contact-us" data-element-type="dButtonLinkId" id="1658712360"> <span class="iconBg" aria-hidden="true" id="1699846484"> <span class="icon hasFontIcon icon-star" id="1370940696"></span> 
+</span> 
+ <span class="text" id="1247028511">Contact Us</span> 
+</a> 
+</div> 
+ <div class="dmRespCol large-6 medium-6 small-12 u_1821463756" id="1821463756"> <div class="u_1114400549 flex-container dmImageSlider dmNoMargin dmNoMark" data-widget-type="imageSlider" dmle_volatile_widget="true" data-element-type="dSliderId" id="1114400549" data-anim-extended="eyJkZXNrdG9wIjp7InRyaWdnZXIiOiJlbnRyYW5jZSIsImFuaW1hdGlvbiI6ImZsaXBJbkNvbWJvIiwiZGlyIjoiWCJ9fQ==" data-anim-desktop="flipInCombo"> <div class="flexslider ed-version" sliderscriptparams="{'stretch':true,'animation':true,'randomize':false,'directionNav':false,'isAutoPlay':false,'isFade':true,'controlNav':false,'slideshowSpeed':7000,'animationDuration':600,'pausePlay':true}" id="1074403534"> <ul class="slides" id="1940680460"> <li layout="center" position="center" animation="fadeInUp" show-content="true" color-overlay="true" text-background="true" id="1929374494" class="u_1929374494" show-caption="false"><img dm="true" src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_image1-7b78bd6f-662w.jpg" id="1861560099" class="" alt="A truck is pulling a trailer that says abney on it." onerror="handleImageLoadError(this)" height="423.765625" width="552.0"/> <div class="color-overlay" id="1882374043"></div> 
+ <div class="slide-inner" id="1716529459"> <div class="text-wrapper" id="1742158861"> <div class="slide-text richText u_1875097599" id="1875097599"><br/></div> 
+</div> 
+ <div class="slide-button dmWidget clearfix slide-button-invisible" id="1556922803"> <span class="iconBg" id="1551043040"> <span class="icon hasFontIcon icon-star" id="1547821662"></span> 
+</span> 
+ <span class="text" id="1447186060"></span> 
+</div> 
+</div> 
+</li> 
+</ul> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="dmRespRow u_1556598702 hasBackgroundOverlay" id="1556598702"> <div class="dmRespColsWrapper" id="1872379817"> <div class="u_1551386816 dmRespCol large-12 medium-12 small-12" id="1551386816"> <div class="u_1055573556 imageWidget align-center" data-element-type="image" data-widget-type="image" id="1055573556" data-anim-extended="eyJkZXNrdG9wIjp7InRyaWdnZXIiOiJ2aWV3cG9ydCIsImFuaW1hdGlvbiI6InNsaWRlSW5Db21ibyIsInJldmVyc2UiOmZhbHNlLCJpbnRlbnNpdHkiOjEsInZpZXdwb3J0VGhyZXNob2xkcyI6eyJ0b3AiOiIwJSIsImJvdHRvbSI6IjAlIn0sImRlbGF5IjowLCJkdXJhdGlvbiI6MSwiZGlyIjoibGVmdCJ9fQ=="><img src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_LogoDivWhite-384w.png" alt="White Saw Blade" id="1018923104" class="" data-dm-image-path="https://irp.cdn-website.com/fc071698/dms3rep/multi/AbneyCustomCarpentry_LogoDivWhite.png" width="477" height="86" title="Saw Blade" onerror="handleImageLoadError(this)"/></div> 
+ <div class="dmNewParagraph" data-element-type="paragraph" data-version="5" id="1875342159"> <h2 class="text-align-center"><span style="color: var(--color_4); display: unset;">Make Sure Your Floors Match Your Home</span></h2> 
+</div> 
+ <div class="dmNewParagraph" data-element-type="paragraph" data-version="5" id="1144526141" new-inline-bind-applied="true" data-diy-text=""><p class="text-align-center"><span style="color: var(--color_4); display: initial;">When you make big updates to your home's d&eacute;cor, your floors can start to look old and outdated quickly. Rely on&nbsp;<span class="inline-data-binding" data-encoded-value="QWJuZXkgQ3VzdG9tIENhcnBlbnRyeQ==" data-inline-binding="content_library.global.company_name">Abney Custom Carpentry</span> 
+to replace your floors with a different material or color to match your house. We work with hardwood, tile and vinyl plank flooring so you can choose a material that will give you a beautiful appearance and last for decades.</span></p><p class="text-align-center"><span style="color: var(--color_4); display: initial;"><br/></span></p><p class="text-align-center"><span class="" style="color: var(--color_4); display: initial;"><span style="color: var(--color_4); display: initial;">Arrange for flooring installation services when you</span> 
+</span> 
+ <span single-space="true" class="" style="display: initial;"> <span style="display: initial;"></span> 
+</span> 
+<a href="/contact-us" runtime_url="/contact-us" type="page" style="display: initial; color: var(--color_4); font-weight: bold;">call us today</a><span style="display: initial; color: var(--color_4);">.</span></p></div> 
+ <div class="u_1620226769 imageWidget align-center" data-element-type="image" data-widget-type="image" id="1620226769" data-anim-extended="eyJkZXNrdG9wIjp7InRyaWdnZXIiOiJ2aWV3cG9ydCIsImFuaW1hdGlvbiI6InNsaWRlSW5Db21ibyIsInJldmVyc2UiOmZhbHNlLCJpbnRlbnNpdHkiOjEsInZpZXdwb3J0VGhyZXNob2xkcyI6eyJ0b3AiOiIwJSIsImJvdHRvbSI6IjAlIn0sImRlbGF5IjowLCJkdXJhdGlvbiI6MSwiZGlyIjoicmlnaHQifX0="><img src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_LogoDivWhite-bc48f65a-384w.png" alt="White Saw Blade" id="1907329450" class="" data-dm-image-path="https://irp.cdn-website.com/fc071698/dms3rep/multi/AbneyCustomCarpentry_LogoDivWhite-bc48f65a.png" width="477" height="86" title="Saw Blade" onerror="handleImageLoadError(this)"/></div> 
+</div> 
+</div> 
+</div> 
+ <div class="dmRespRow fullBleedChanged fullBleedMode u_1511756380" id="1511756380"> <div class="dmRespColsWrapper" id="1887345997"> <div class="dmRespCol large-12 medium-12 small-12 u_1226875585" id="1226875585"> <div class="dmPhotoGallery newPhotoGallery dmPhotoGalleryResp u_1806303698 hasShadow button_2" galleryoptionsparams="{thumbnailsPerRow: 3, rowsToShow: 3, imageScaleMethod: true}" data-desktop-layout="asymetric3" data-desktop-columns="2" data-element-type="dPhotoGalleryId" data-desktop-text-layout="fixed" id="1806303698" data-rows-to-show="100" data-placeholder="false" data-desktop-caption-alignment="center_center" data-image-hover-effect="zoomout" data-anim-desktop="none" data-image-animation="bounceInLeft" data-link-gallery="true" data-tablet-text-layout="fixed" data-tablet-caption-alignment="center_center" data-mobile-text-layout="fixed" data-mobile-caption-alignment="center_center" data-mobile-layout="square" data-mobile-columns="1"> <ul class="dmPhotoGalleryHolder clearfix gallery shadowEffectToChildren gallery4inArow" id="1242966711"> <li class="photoGalleryThumbs" id="1611075135"> <div class="image-container" id="1912715146"> <a data-dm-multisize-attr="href" data-image-url="https://irp.cdn-website.com/fc071698/dms3rep/multi/20230515_122202.jpg" id="1075614904" class="u_1075614904 has-link" href="/custom-cabinets" file="false" data-link-url="/site/fc071698/custom-cabinets?preview=true&nee=true&showOriginal=true&dm_checkSync=1&dm_try_mode=true"><img irh="" irw="" alt="A kitchen cabinet with a corner shelf that is open" data-src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/20230515_122202-1920w.jpg" id="1688723364" class="" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div class="caption-container u_1696803561" style="display:none" id="1696803561"> <span class="caption-inner" id="1716289430"> <h3 class="caption-title u_1954123521" id="1954123521">Custom Cabinets</h3> 
+ <a class="caption-button dmWidget clearfix u_1528913620" id="1528913620" href="/custom-cabinets" file="false"> <span class="iconBg" id="1302668763"> <span class="icon hasFontIcon icon-star" id="1048255254"></span> 
+</span> 
+ <span class="text" id="1401972243">Learn More</span> 
+</a> 
+</span> 
+</div> 
+</li> 
+ <li class="photoGalleryThumbs" id="1645925581"> <div class="image-container" id="1889131362"> <a data-dm-multisize-attr="href" data-image-url="https://irp.cdn-website.com/fc071698/dms3rep/multi/AbneyCustomCarpentry_galfloor6.jpg" id="1923107748" class="u_1923107748 has-link" href="/floors" file="false" data-link-url="/site/fc071698/floors?preview=true&nee=true&showOriginal=true&dm_checkSync=1&dm_try_mode=true"><img irh="" irw="" alt="A room with a wooden floor and insulation on the walls." data-src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_galfloor6-1920w.jpg" id="1430206755" class="" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div class="caption-container u_1928857611" style="display:none" id="1928857611"> <span class="caption-inner" id="1261443238"> <h3 class="caption-title u_1842946070" id="1842946070">Floors</h3> 
+ <a class="caption-button dmWidget clearfix u_1970967943" id="1970967943" href="/floors" file="false"> <span class="iconBg" id="1524976902"> <span class="icon hasFontIcon icon-star" id="1030785658"></span> 
+</span> 
+ <span class="text" id="1612783567">Learn More</span> 
+</a> 
+</span> 
+</div> 
+</li> 
+ <li class="photoGalleryThumbs" id="1569026865"> <div class="image-container" id="1706655613"> <a data-dm-multisize-attr="href" data-image-url="https://irp.cdn-website.com/fc071698/dms3rep/multi/20230331_103152.jpg" id="1406801972" class="u_1406801972 has-link" href="/doors-trim" file="false" data-link-url="/site/fc071698/doors-trim?preview=true&nee=true&showOriginal=true&dm_checkSync=1&dm_try_mode=true"><img irh="" irw="" alt="A wooden fence with a gate in the backyard of a house." data-src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/20230331_103152-1920w.jpg" id="1135468009" class="" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div class="caption-container u_1316535939" style="display:none" id="1316535939"> <span class="caption-inner" id="1429924804"> <h3 class="caption-title u_1321114798" id="1321114798">Doors &amp; Trim</h3> 
+ <a class="caption-button dmWidget clearfix u_1061116589" id="1061116589" href="/doors-trim" file="false"> <span class="iconBg" id="1424483675"> <span class="icon hasFontIcon icon-star" id="1940354906"></span> 
+</span> 
+ <span class="text" id="1637923952">Learn More</span> 
+</a> 
+</span> 
+</div> 
+</li> 
+ <li class="photoGalleryThumbs" id="1163609452"> <div class="image-container" id="1235274318"> <a data-dm-multisize-attr="href" data-image-url="https://irp.cdn-website.com/fc071698/dms3rep/multi/AbneyCustomCarpentry_gal18.jpg" id="1895701760" class="u_1895701760 has-link" href="/remodeling" file="false" data-link-url="/site/fc071698/remodeling?preview=true&nee=true&showOriginal=true&dm_checkSync=1&dm_try_mode=true"><img irh="" irw="" alt="A kitchen with wooden cabinets , granite counter tops , a sink and a stove." data-src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_gal18-1920w.jpg" id="1286659378" class="" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div class="caption-container u_1602904729" style="display:none" id="1602904729"> <span class="caption-inner" id="1276991955"> <h3 class="caption-title u_1545098155" id="1545098155">Kitchen &amp; Bathroom Remodeling</h3> 
+ <a class="caption-button dmWidget clearfix u_1726995994" id="1726995994" href="/remodeling" file="false"> <span class="iconBg" id="1090807292"> <span class="icon hasFontIcon icon-star" id="1240506463"></span> 
+</span> 
+ <span class="text" id="1973991362">Learn More</span> 
+</a> 
+</span> 
+</div> 
+</li> 
+</ul> 
+ <div class="photoGalleryViewAll link" isall="true" data-viewall="View more" data-viewless="View less" style="display:none;" id="1302550606"></div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="dmRespRow u_1623582272" id="1623582272"> <div class="dmRespColsWrapper" id="1945377220"> <div class="dmRespCol large-12 medium-12 small-12" id="1028847028"> <div class="dmNewParagraph" data-element-type="paragraph" data-version="5" id="1142251249"> <h2 class="text-align-center"><span style="display: unset;">Gallery</span></h2> 
+</div> 
+ <div class="dmPhotoGallery newPhotoGallery dmPhotoGalleryResp u_1085976797 hasShadow photo-gallery-done text-layout-over captionAlignment-center_center photoGallery" galleryoptionsparams="{thumbnailsPerRow: 3, rowsToShow: 3, imageScaleMethod: true}" data-desktop-layout="square" data-desktop-columns="4" data-element-type="dPhotoGalleryId" data-desktop-text-layout="over" id="1085976797" data-placeholder="false" data-image-hover-effect="zoomout" data-image-animation="bounceInRight"> <div class="dmPhotoGalleryHolder clearfix gallery shadowEffectToChildren gallery4inArow" id="1362986591"></div> 
+ <div class="layout-container square"> <div class="photogallery-row " data-index=""> <div class="photogallery-column column-4" data-index="0"> <div index="0" class="photoGalleryThumbs animated  " data-index="0"> <div class="thumbnailInnerWrapper" style="opacity: 1;"> <div class="image-container revealed"> <a data-dm-multisize-attr="temp" aria-label="" data-dm-force-device="mobile" class="u_1073961299" data-image-url="https://irp.cdn-website.com/fc071698/dms3rep/multi/IMG_20240209_185110.jpg" style="background-image: url('https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/IMG_20240209_185110-640w.jpg');"><img id="1409557522" data-src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/IMG_20240209_185110-1920w.jpg" alt="" aria-label="" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div id="1069582971" class="caption-container u_1069582971" style="display:none"> <span class="caption-inner"> <a id="1202491921" class="caption-button dmWidget  clearfix u_1202491921" href="" style=""> <span class="iconBg"> <span class="icon hasFontIcon "></span> 
+</span> 
+ <span class="text">Button</span> 
+</a> 
+</span> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="photogallery-column column-4" data-index="1"> <div index="1" class="photoGalleryThumbs animated  " data-index="1"> <div class="thumbnailInnerWrapper" style="opacity: 1;"> <div class="image-container revealed"> <a data-dm-multisize-attr="temp" aria-label="" data-dm-force-device="mobile" class="u_1958977729" data-image-url="https://irp.cdn-website.com/fc071698/dms3rep/multi/20230915_144037.jpg" style="background-image: url('https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/20230915_144037-640w.jpg');"><img id="1658788841" data-src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/20230915_144037-1920w.jpg" alt="" aria-label="" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div id="1124992960" class="caption-container u_1124992960" style="display:none"> <span class="caption-inner"> <a id="1703708818" class="caption-button dmWidget  clearfix u_1703708818" href="" style=""> <span class="iconBg"> <span class="icon hasFontIcon "></span> 
+</span> 
+ <span class="text">Button</span> 
+</a> 
+</span> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="photogallery-column column-4" data-index="2"> <div index="2" class="photoGalleryThumbs animated  " data-index="2"> <div class="thumbnailInnerWrapper" style="opacity: 1;"> <div class="image-container revealed"> <a data-dm-multisize-attr="temp" aria-label="" data-dm-force-device="mobile" class="u_1712749774" data-image-url="https://irp.cdn-website.com/fc071698/dms3rep/multi/20230308_155802.jpg" style="background-image: url('https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/20230308_155802-640w.jpg');"><img id="1537794916" data-src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/20230308_155802-1920w.jpg" alt="" aria-label="" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div id="1111090877" class="caption-container u_1111090877" style="display:none"> <span class="caption-inner"> <a id="1246014959" class="caption-button dmWidget  clearfix u_1246014959" href="" style=""> <span class="iconBg"> <span class="icon hasFontIcon "></span> 
+</span> 
+ <span class="text">Button</span> 
+</a> 
+</span> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="photogallery-column column-4" data-index="3"> <div index="3" class="photoGalleryThumbs animated  " data-index="3"> <div class="thumbnailInnerWrapper" style="opacity: 1;"> <div class="image-container revealed"> <a data-dm-multisize-attr="temp" aria-label="" data-dm-force-device="mobile" class="u_1793196529" data-image-url="https://irp.cdn-website.com/fc071698/dms3rep/multi/20230515_122202.jpg" style="background-image: url('https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/20230515_122202-640w.jpg');"><img id="1279031131" data-src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/20230515_122202-1920w.jpg" alt="" aria-label="" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div id="1203207943" class="caption-container u_1203207943" style="display:none"> <span class="caption-inner"> <a id="1922935014" class="caption-button dmWidget  clearfix u_1922935014" href="" style=""> <span class="iconBg"> <span class="icon hasFontIcon "></span> 
+</span> 
+ <span class="text">Button</span> 
+</a> 
+</span> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <a data-display-type="block" class="u_1745337398 align-center dmButtonLink dmWidget dmWwr default dmOnlyButton dmDefaultGradient" file="false" href="/gallery" data-element-type="dButtonLinkId" id="1745337398"> <span class="iconBg" aria-hidden="true" id="1030399337"> <span class="icon hasFontIcon icon-star" id="1548768939"></span> 
+</span> 
+ <span class="text" id="1638982681">View More</span> 
+</a> 
+</div> 
+</div> 
+</div> 
+ <div class="dmRespRow u_1760672353 hasBackgroundOverlay" id="1760672353"> <div class="dmRespColsWrapper" id="1619609494"> <div class="u_1358145249 dmRespCol small-12 medium-12 large-12" id="1358145249"> <div class="u_1994324415 imageWidget align-center" data-element-type="image" data-widget-type="image" id="1994324415" data-anim-extended="eyJkZXNrdG9wIjp7InRyaWdnZXIiOiJ2aWV3cG9ydCIsImFuaW1hdGlvbiI6InNsaWRlSW5Db21ibyIsInJldmVyc2UiOmZhbHNlLCJpbnRlbnNpdHkiOjEsInZpZXdwb3J0VGhyZXNob2xkcyI6eyJ0b3AiOiIwJSIsImJvdHRvbSI6IjAlIn0sImRlbGF5IjowLCJkdXJhdGlvbiI6MSwiZGlyIjoibGVmdCJ9fQ=="><img src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_LogoDivWhite-384w.png" alt="White Saw Blade" id="1716949589" class="" data-dm-image-path="https://irp.cdn-website.com/fc071698/dms3rep/multi/AbneyCustomCarpentry_LogoDivWhite.png" width="477" height="86" title="Saw Blade" onerror="handleImageLoadError(this)"/></div> 
+ <div class="u_1191114090 flex-container dmImageSlider dmNoMargin dmNoMark review-section" data-widget-type="imageSlider" dmle_volatile_widget="true" data-element-type="dSliderId" id="1191114090"> <div class="flexslider ed-version nav-layout-3" sliderscriptparams="{'stretch':true,'animation':true,'randomize':false,'directionNav':true,'isAutoPlay':true,'isFade':true,'controlNav':false,'slideshowSpeed':7000,'animationDuration':600,'pausePlay':true}" id="1477567464"> <ul class="slides" id="1791200562"> <li layout="center" position="center" animation="fadeInUp" show-content="true" color-overlay="true" text-background="true" id="1404909502" class="" show-caption="true"> <a id="1611981953" class=""><img dm="true" src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_Transparent-1380w.png" id="1043864456" onerror="handleImageLoadError(this)" height="257.0" width="1150.0"/></a> 
+ <div class="color-overlay" id="1925615633"></div> 
+ <div class="slide-inner" id="1139585796"> <div class="text-wrapper" id="1640654407"> <p class="slide-title" id="1632863697">★ ★ ★ ★ ★</p> 
+ <div class="slide-text richText u_1462476609" id="1462476609"><p class="rteBlock">Mr Abney is wonderful to work with. He is very dedicated to giving the homeowner what they desire in their home. He has an eye for artistic ability on matching colors and contours in your home. He is very good at communicating with the homeowner in terms they can understand and very detail oriented....</p><br/><p class="rteBlock"><strong>- Kaazz</strong></p></div> 
+</div> 
+ <div class="slide-button dmWidget clearfix slide-button-invisible" id="1332239089"> <span class="iconBg" id="1175432336"> <span class="icon hasFontIcon icon-star" id="1648132716"></span> 
+</span> 
+ <span class="text" id="1351310484"></span> 
+</div> 
+</div> 
+</li> 
+ <li layout="center" position="center" animation="fadeInUp" show-content="true" color-overlay="true" text-background="true" id="1203159181" class="" show-caption="true"><img dm="true" src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_Transparent-1380w.png" id="1179944605" onerror="handleImageLoadError(this)" height="257.0" width="1150.0"/> <div class="color-overlay" id="1408875551"></div> 
+ <div class="slide-inner" id="1448075164"> <div class="text-wrapper" id="1980220684"> <p class="slide-title" id="1872659799">★ ★ ★ ★ ★</p> 
+ <div class="slide-text richText u_1962110844" id="1962110844"><p class="rteBlock">Ralph did a great job on a whole set of custom cabinets for my house. He finished under the time that was agreed upon and the price was the best in town. I used him again for a tile job in my master bedroom. I was worried about not being able to use that bathroom for a while, but he finished it quick and it turned out gorgeous. He is a great guy and his prices are the best.</p><br/><p class="rteBlock"><strong>- Mikey T.</strong></p></div> 
+</div> 
+ <div class="slide-button dmWidget clearfix slide-button-invisible" id="1628040955"> <span class="iconBg" id="1705660148"> <span class="icon hasFontIcon icon-star" id="1815197519"></span> 
+</span> 
+ <span class="text" id="1529351643"></span> 
+</div> 
+</div> 
+</li> 
+ <li layout="center" position="center" animation="fadeInUp" show-content="true" color-overlay="true" text-background="true" id="1645176502" class="" show-caption="true"><img dm="true" src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_Transparent-1380w.png" id="1143407333" onerror="handleImageLoadError(this)" height="257.0" width="1150.0"/> <div class="color-overlay" id="1825835331"></div> 
+ <div class="slide-inner" id="1636716090"> <div class="text-wrapper" id="1686331274"> <p class="slide-title" id="1764798430">★ ★ ★ ★ ★</p> 
+ <div class="slide-text richText u_1072483929" id="1072483929" style=""><p class="rteBlock">I was ib need of a custom piece of woodwork that was going to be a life long inspirational piece. Abney Custom Carpentry accomplished this piece of &quot;art&quot; in a few days and it is prominently displayed and serves a great purpose for me and my family. Thank you for the time invested to make this exactly what I needed.</p><br/><p class="rteBlock"><strong>- Ralph A.</strong></p></div> 
+</div> 
+ <div class="slide-button dmWidget clearfix slide-button-invisible" id="1739961121"> <span class="iconBg" id="1336142833"> <span class="icon hasFontIcon icon-star" id="1510111679"></span> 
+</span> 
+ <span class="text" id="1951654374"></span> 
+</div> 
+</div> 
+</li> 
+ <li layout="center" position="center" animation="fadeInUp" show-content="true" color-overlay="true" text-background="true" id="1267038259" class="" show-caption="true"><img dm="true" src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_Transparent-1380w.png" id="1641526871" onerror="handleImageLoadError(this)" height="257.0" width="1150.0"/> <div class="color-overlay" id="1659426359"></div> 
+ <div class="slide-inner" id="1136363136"> <div class="text-wrapper" id="1586641397"> <p class="slide-title" id="1556544525">★ ★ ★ ★ ★</p> 
+ <div class="slide-text richText u_1226068518" id="1226068518"><p class="rteBlock">Very professional. I remember reading a highly explanatory bid that Mr Abney himself designed and printed. It explained the exact cost of everything included in the job, including labor. Not to mention, the man knows his stuff when it comes to design and carpentry. I would recommend this guy to anyone.</p><br/><p class="rteBlock"><strong>- Chris J.</strong></p></div> 
+</div> 
+ <div class="slide-button dmWidget clearfix slide-button-invisible" id="1933614303"> <span class="iconBg" id="1904591086"> <span class="icon hasFontIcon icon-star" id="1609299608"></span> 
+</span> 
+ <span class="text" id="1941656965"></span> 
+</div> 
+</div> 
+</li> 
+</ul> 
+</div> 
+</div> 
+ <div class="u_1584578690 imageWidget align-center" data-element-type="image" data-widget-type="image" id="1584578690"> <a href="https://search.google.com/local/reviews?placeid=ChIJ3847croP6IkR--EY5GQf6oY" id="1093843106" class="" target="_blank" file="false"><img src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_GoggleReview-240w.webp" alt="A google review button that says click here to leave us a review on google." id="1624636339" class="" data-dm-image-path="https://irp.cdn-website.com/fc071698/dms3rep/multi/AbneyCustomCarpentry_GoggleReview.webp" width="640" height="199" title="Google Review" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div class="u_1710730303 imageWidget align-center" data-element-type="image" data-widget-type="image" id="1710730303" data-anim-extended="eyJkZXNrdG9wIjp7InRyaWdnZXIiOiJ2aWV3cG9ydCIsImFuaW1hdGlvbiI6InNsaWRlSW5Db21ibyIsInJldmVyc2UiOmZhbHNlLCJpbnRlbnNpdHkiOjEsInZpZXdwb3J0VGhyZXNob2xkcyI6eyJ0b3AiOiIwJSIsImJvdHRvbSI6IjAlIn0sImRlbGF5IjowLCJkdXJhdGlvbiI6MSwiZGlyIjoicmlnaHQifX0="><img src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_LogoDivWhite-bc48f65a-384w.png" alt="White Saw Blade" id="1707642140" class="" data-dm-image-path="https://irp.cdn-website.com/fc071698/dms3rep/multi/AbneyCustomCarpentry_LogoDivWhite-bc48f65a.png" width="477" height="86" title="Saw Blade" onerror="handleImageLoadError(this)"/></div> 
+</div> 
+</div> 
+</div> 
+ <div class="dmRespRow u_1556451111" id="1556451111"> <div class="dmRespColsWrapper" id="1599909709"> <div class="dmRespCol large-12 medium-12 small-12" id="1280774988"> <div class="dmNewParagraph" data-element-type="paragraph" data-version="5" id="1106584694"> <h2 class="text-align-center size-60 m-size-36"><span class="font-size-60 m-font-size-36" m-font-size-set="true" style="color: var(--color_4); display: unset;">We Are Always Ready to Help!</span></h2> 
+</div> 
+ <a data-display-type="block" class="u_1685360616 align-center dmButtonLink dmWidget dmWwr default dmOnlyButton dmDefaultGradient button_2 u_1685360616 align-center dmButtonLink dmWidget dmWwr default dmOnlyButton dmDefaultGradient button_2" file="false" href="tel:(251) 509-3415" data-element-type="dButtonLinkId" id="1685360616" data-binding="W3siYmluZGluZ05hbWUiOiJsaW5rIiwidmFsdWUiOiJjb250ZW50X2xpYnJhcnkuZ2xvYmFsLnBob25lLnBob25lIn1d" data-diy-link=""> <span class="iconBg" aria-hidden="true" id="1861878859"> <span class="icon hasFontIcon icon-star" id="1389423958"></span> 
+</span> 
+ <span class="text" id="1898197271" data-diy-text="">Call Now</span> 
+</a> 
+</div> 
+</div> 
+</div> 
+ <div class="u_1661695592 dmRespRow" id="1661695592"> <div class="dmRespColsWrapper" id="1097623523"> <div class="u_1388325386 dmRespCol small-12 medium-12 large-12" id="1388325386"> <div class="dmNewParagraph" data-element-type="paragraph" data-version="5" id="1264627460"> <h2 class="text-align-center"><span style="display: unset;">Get In Touch</span></h2> 
+</div> 
+ <div class="dmNewParagraph" data-element-type="paragraph" data-version="5" id="1904495586"><p class="text-align-center"><span style="display: unset;">Send us an email. We are always happy to help you.</span></p></div> 
+ <div class="u_1256146952 dmform default native-inputs contact--form" data-element-type="dContactUsRespId" captcha="true" data-require-captcha="true" data-captcha-position="bottomright" id="1256146952" data-layout="layout-1"> <h3 class="dmform-title dmwidget-title" id="1773804726" hide="true">Contact Us</h3> 
+ <div class="dmform-wrapper" id="1920715044" captcha-lang="en"> <form method="post" class="dmRespDesignRow" locale="ENGLISH" id="1863057914"> <div class="dmforminput required  small-12 dmRespDesignCol medium-12 large-12" id="1913403801"> <label for="1592851780" id="1629138916" data-dm-for="dmform-0">Full Name*</label> 
+<input type="text" class="" name="dmform-0" id="1592851780"/><input type="hidden" name="label-dmform-0" value="Full Name*" id="1941588395" class=""/></div> 
+ <div class="dmforminput required  small-12 dmRespDesignCol medium-6 large-6" id="1459946285"> <label for="1631235670" id="1469310621" data-dm-for="dmform-1">Email Address*</label> 
+<input type="email" class="" name="dmform-1" id="1631235670"/><input type="hidden" name="label-dmform-1" value="Email Address*" id="1746375438" class=""/></div> 
+ <div class="dmforminput required  small-12 dmRespDesignCol medium-6 large-6" id="1598521857"> <label for="1326598523" id="1924082630" data-dm-for="dmform-2">Phone Number*</label> 
+<input type="tel" class="" name="dmform-2" id="1326598523"/><input type="hidden" name="label-dmform-2" value="Phone Number*" id="1489637301" class=""/></div> 
+ <div class="dmforminput large-12 medium-12 dmRespDesignCol small-12" id="1122185108"> <label for="1340730830" id="1316192851" data-dm-for="dmform-3">Message</label> 
+ <textarea name="dmform-3" id="1340730830"></textarea> 
+<input type="hidden" name="label-dmform-3" value="Message" id="1073710282" class=""/></div> 
+ <span id="1450986350" class="dmWidgetClear"></span> 
+ <span id="1092014413" class="dmWidgetClear"></span> 
+ <div class="dmformsubmit dmWidget R" id="1212685669"><input class="" name="submit" type="submit" value="Submit" id="1978919042"/></div> 
+<input name="dmformsendto" type="hidden" id="1056216802" class="" value="O0wrseIfFLvcnIy3jLx/1fIzh/OpSPO0VH97j2B4cDUzLFY/dQfoLCUSgOcssFgcD25zy4Qo+Maw7KEI8WvR3w==" data-dec="true"/><input class="dmActionInput" type="hidden" name="action" value="/_dm/s/rt/widgets/dmform.submit.jsp" id="1284830060"/><input name="dmformsubject" type="hidden" value="Home Form" id="1952317896" class="" data-email-subject="Home Form"/><input name="dmformfrom" type="hidden" value="Engage" id="1497533694" class=""/><input name="dmformautoreplyenabled" type="hidden" value="true" id="1321946276"/><input name="dmformautoreplyfrom" type="hidden" id="1092517254" class="" value="Abney Custom Carpentry"/><input name="dmformautoreplysubject" type="hidden" value="Thank you for your submission" id="1516190109"/><input name="dmformautoreplymsg" type="hidden" value="V2UndmUgcmVjZWl2ZWQgeW91ciBtZXNzYWdlIC0gdGhhbmsgeW91LiBPbmUgb2Ygb3VyIHRlYW0gbWVtYmVycyB3aWxsIGdldCBiYWNrIHRvIHlvdSBzb29uLg==" id="1030359711"/><input name="dmformautoreplyincludeformcopy" type="hidden" value="true" id="1860467156"/><input name="dmformsubmitparams" type="hidden" value="8mpKnCSiNQXK/d9M7IDrS21iaGO90EYxmq3hYo2aqzk5tnnp3aFI17/U7Z5EwKkKGcxO0F87cTUdS8QYzueM/mVCYLLqbwqFHabqjiQ6T0+vP3T8CJZvfkA0bQ6v/gTd0MY/Qe5vya4N2dzQ9ozO8CeB04loEayow59CXJt7OSuvczqExC0Anm+0HPrNlAtaN/VSzLBGhR50o8uX5hcc7wbpelKsSriyNO5DdbQuCFm5PXuIHUyZIihQAzgZowrMtEVvC8hyqc1JgVOyfbAmG9yHne9rcsAcZEgHtyMPkaKyeNW7tFmFuD5RGHqA1odxXF88Cc0BWhPlONDFfFQen+ufRWgRmY7cXONiicyNZHD8Yam/Q1Tpbt26jSt+Y657pw2K6AlO+yA+MS3YYKwf/hmh7WSQZCv2+8NBatnUEgNpl+VmUEDof72wpbAkigYomJM4Uu2ykLOpm2YnRixN0BQa8NB2jlvnRF+DRjCcWDLPAleYLzEGkGNsBXtRt+SVYf3VJ/5I4kcDDmtYVcuIm1WGD9t5FGNVuWdYDme3gn1C1LBykYyjlQ==" data-dec="true"/><input type="hidden" name="page_uuid" value="09dfe9c0e8374d058fb5bf5710a60e29"/></form> 
+</div> 
+ <div class="dmform-success" style="display:none" id="1635898398">Thank you for contacting us.<br id="1870060297"/>We will get back to you as soon as possible.</div> 
+ <div class="dmform-error" style="display:none" id="1024623633">Oops, there was an error sending your message.<br id="1539297349"/>Please try again later.</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div class="dmFooterContainer"> <div id="fcontainer" class="u_fcontainer f_hcontainer dmFooter p_hfcontainer"> <div dm:templateorder="250" class="dmFooterResp generalFooter" id="1943048428"> <div class="dmRespRow u_1896890841" id="1896890841"> <div class="dmRespColsWrapper" id="1916055408"> <div class="dmRespCol large-12 medium-12 small-12" id="1048833133"> <div class="u_1027510486 imageWidget align-center" data-widget-type="image" id="1027510486" data-element-type="image"> <a href="/" id="1976115167"><img src="https://i.ibb.co/VnQLj65/Whats-App-Image-2025-06-23-at-22-53-29-404b66b2-removebg-white-150x150.webp" id="1293995832" class="" data-dm-image-path="https://i.ibb.co/VnQLj65/Whats-App-Image-2025-06-23-at-22-53-29-404b66b2-removebg-white-150x150.webp" width="477" height="282" alt="Abney Custom Carpentry" title="Abney Custom Carpentry" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div class="u_1603479590 imageWidget align-center" data-element-type="image" data-widget-type="image" id="1603479590"> <a href="https://search.google.com/local/reviews?placeid=ChIJ3847croP6IkR--EY5GQf6oY" id="1592498535" class="" target="_blank" file="false"><img src="https://lirp.cdn-website.com/fc071698/dms3rep/multi/opt/AbneyCustomCarpentry_GoggleReview-216w.webp" alt="A google review button that says click here to leave us a review on google." id="1115411858" class="" data-dm-image-path="https://irp.cdn-website.com/fc071698/dms3rep/multi/AbneyCustomCarpentry_GoggleReview.webp" width="640" height="199" title="Google Review" onerror="handleImageLoadError(this)"/></a> 
+</div> 
+ <div class="u_1477893889 dmRespRow" id="1477893889"> <div class="dmRespColsWrapper" id="1797673121"> <div class="dmRespCol small-12 large-4 medium-4" id="1730771547"> <div class="graphicWidget graphicWidgetV2 graphicWidgetV3 u_1780066693" data-element-type="graphic" data-widget-type="graphic" id="1780066693" title="Phone" data-binding="W3siYmluZGluZ05hbWUiOiJsaW5rIiwidmFsdWUiOiJjb250ZW50X2xpYnJhcnkuZ2xvYmFsLnBob25lLnBob25lIn1d"> <a href="tel:(251) 509-3415"> <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1408 1792" id="1951978041" class="svg u_1951978041" alt="Phone" data-icon-name="fa-phone" data-hover-effect="float"> <path fill="inherit" d="M1408 1240q0 27-10 70.5t-21 68.5q-21 50-122 106-94 51-186 51-27 0-52.5-3.5t-57.5-12.5-47.5-14.5-55.5-20.5-49-18q-98-35-175-83-128-79-264.5-215.5t-215.5-264.5q-48-77-83-175-3-9-18-49t-20.5-55.5-14.5-47.5-12.5-57.5-3.5-52.5q0-92 51-186 56-101 106-122 25-11 68.5-21t70.5-10q14 0 21 3 18 6 53 76 11 19 30 54t35 63.5 31 53.5q3 4 17.5 25t21.5 35.5 7 28.5q0 20-28.5 50t-62 55-62 53-28.5 46q0 9 5 22.5t8.5 20.5 14 24 11.5 19q76 137 174 235t235 174q2 1 19 11.5t24 14 20.5 8.5 22.5 5q18 0 46-28.5t53-62 55-62 50-28.5q14 0 28.5 7t35.5 21.5 25 17.5q25 15 53.5 31t63.5 35 54 30q70 35 76 53 3 7 3 21z"></path> 
+</svg> 
+</a> 
+</div> 
+ <div class="dmNewParagraph" data-element-type="paragraph" data-version="5" id="1886077842" style="transition: opacity 1s ease-in-out 0s;" new-inline-bind-applied="true" data-diy-text=""><p class="m-text-align-center text-align-center"><span style="color: var(--color_4); display: initial; font-weight: normal;">Phone</span><span style="color: var(--color_4); display: initial; font-weight: bold;"><br/></span><a href="tel:(251) 509-3415" runtime_url="tel:(251) 509-3415" type="call" class="m-font-size-15 font-size-15" m-font-size-set="true" style="font-weight: bold; display: initial; color: var(--color_4);"><span class="inline-data-binding" data-encoded-value="KDI1MSkgNTA5LTM0MTU=" data-inline-binding="content_library.global.phone.phone">(251) 509-3415</span></a><span style="display: initial;"><br/></span></p></div> 
+</div> 
+ <div class="u_1392148026 dmRespCol small-12 large-4 medium-4" id="1392148026"> <div class="graphicWidget graphicWidgetV2 graphicWidgetV3 u_1789655672" data-element-type="graphic" data-widget-type="graphic" id="1789655672" title="Pin"> <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 70 70" id="1417127108" class="svg u_1417127108" alt="Pin" data-icon-name="wp-location_pin" data-hover-effect="float"> <path d="M35,10c-9.4,0-17,7.6-17,17c0,4.1,1.5,8,4.1,11.1l0.1,0.1c4.6,5.3,7.9,10.8,9.9,16.4l1,3.7l0,0.1c0.3,1.1,1,1.6,1.9,1.6
+	c0.9,0,1.6-0.5,1.9-1.6l1-3.8c1.9-5.6,5.3-11.2,9.9-16.4l0.1-0.1C50.5,35,52,31.1,52,27C52,17.6,44.4,10,35,10z M35,33
+	c-3.3,0-6-2.7-6-6s2.7-6,6-6c3.3,0,6,2.7,6,6S38.3,33,35,33z"></path> 
+</svg> 
+</div> 
+ <div class="u_1765641958 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1765641958" style="transition: opacity 1s ease-in-out 0s;"><p class="m-text-align-center text-align-center"><span style="color: var(--color_4); display: initial;">Address</span></p><p class="m-size-15 m-text-align-center text-align-center size-15"><span class="m-font-size-15 font-size-15" m-font-size-set="true" style="color: var(--color_4); display: unset;">7387 Franklin Square Ct, Daphne Al 36526</span></p></div> 
+ <div class="u_1826026908 dmNewParagraph" data-element-type="paragraph" data-version="5" id="1826026908"><p class="text-align-center size-15 m-size-15"><span class="font-size-15 m-font-size-15" style="display: unset; color: var(--color_4);" m-font-size-set="true">Mon to Fri: 9am - 5pm | Sat - Sun: Closed</span></p></div> 
+</div> 
+ <div class="dmRespCol large-4 medium-4 small-12" id="1348746222"> <div class="graphicWidget graphicWidgetV2 graphicWidgetV3 u_1753918140" data-element-type="graphic" data-widget-type="graphic" id="1753918140" title="Email" data-binding="W3siYmluZGluZ05hbWUiOiJsaW5rIiwidmFsdWUiOiJjb250ZW50X2xpYnJhcnkuZ2xvYmFsLmVtYWlsLmVtYWlsIn1d"> <a href="mailto:abneycustomcarpentry@yahoo.com"> <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1792 1792" id="1559183463" class="svg u_1559183463" alt="Email" data-icon-name="fa-envelope" data-hover-effect="float"> <path fill="inherit" d="M1792 710v794q0 66-47 113t-113 47h-1472q-66 0-113-47t-47-113v-794q44 49 101 87 362 246 497 345 57 42 92.5 65.5t94.5 48 110 24.5h1 1q51 0 110-24.5t94.5-48 92.5-65.5q170-123 498-345 57-39 100-87zM1792 416q0 79-49 151t-122 123q-376 261-468 325-10 7-42.5 30.5t-54 38-52 32.5-57.5 27-50 9h-1-1q-23 0-50-9t-57.5-27-52-32.5-54-38-42.5-30.5q-91-64-262-182.5t-205-142.5q-62-42-117-115.5t-55-136.5q0-78 41.5-130t118.5-52h1472q65 0 112.5 47t47.5 113z"></path> 
+</svg> 
+</a> 
+</div> 
+ <div class="dmNewParagraph" data-element-type="paragraph" data-version="5" id="1737850427" style="transition: opacity 1s ease-in-out 0s;" new-inline-bind-applied="true" data-diy-text=""><p class="m-text-align-center text-align-center"><span style="color: var(--color_4); display: initial; font-weight: normal;">Email</span><span style="color: var(--color_4); display: initial; font-weight: bold;"><br/></span><a href="mailto:abneycustomcarpentry@yahoo.com" runtime_url="mailto:abneycustomcarpentry@yahoo.com" type="email" class="m-font-size-15 font-size-15" m-font-size-set="true" style="font-weight: bold; display: initial; color: var(--color_4);"><span class="inline-data-binding" data-encoded-value="YWJuZXljdXN0b21jYXJwZW50cnlAeWFob28uY29t" data-inline-binding="content_library.global.email.email">abneycustomcarpentry@yahoo.com</span></a><span style="display: initial;"><br/></span></p></div> 
+</div> 
+</div> 
+</div> 
+ <a data-display-type="block" class="u_1802151062 align-center dmButtonLink dmWidget dmWwr default dmOnlyButton dmDefaultGradient button_2" file="false" href="/contact-form" data-element-type="dButtonLinkId" id="1802151062" link_type="popup" popup_target="contact-form"> <span class="iconBg" aria-hidden="true" id="1323352365"> <span class="icon hasFontIcon icon-star" id="1138098441"></span> 
+</span> 
+ <span class="text" id="1364228212">Book Now</span> 
+</a> 
+</div> 
+</div> 
+</div> 
+ <div class="dmRespRow u_1190080118 mobile-columns-reversed" id="1190080118"> <div class="dmRespColsWrapper" id="1182055830"> <div class="u_1529718112 dmRespCol large-6 medium-6 small-12" id="1529718112"> <div class="u_1988179912 widget-1f5975 dmCustomWidget" data-lazy-load="" data-title="" id="1988179912" dmle_extension="custom_extension" data-element-type="custom_extension" icon="false" surround="false" data-widget-id="1f5975986930429f819d4cd2154b5c4a" data-widget-version="24" data-widget-config="eyJyZXZlcnNlRmxhZyI6dHJ1ZSwiY29weXJpZ2h0VGV4dCI6IjxwIGNsYXNzPVwicnRlQmxvY2tcIj5BYm5leSBDdXN0b20gQ2FycGVudHJ5PC9wPiJ9"> <div class="copyright"> <span><p class="rteBlock">Abney Custom Carpentry</p></span> 
+ <div>&nbsp;&copy; 2025</div> 
+</div> 
+</div> 
+</div> 
+ <div class="dmRespCol large-6 medium-6 small-12" id="1039271430"> <div class="u_1052371214 align-center text-align-center dmSocialHub gapSpacing" id="1052371214" dmle_extension="social_hub" data-element-type="social_hub" extractelementdata="true" wr="true" networks="" icon="true" surround="true" adwords=""> <div class="socialHubWrapper"> <div class="socialHubInnerDiv "> <a href="https://search.google.com/local/reviews?placeid=ChIJ3847croP6IkR--EY5GQf6oY" target="_blank" dm_dont_rewrite_url="true" aria-label="Google" onclick="dm_gaq_push_event &amp;&amp; dm_gaq_push_event(&apos;socialLink&apos;, &apos;click&apos;, &apos;Custom1&apos;)"> <span class="dmSocialCustom1 oneIcon socialHubIcon style5" aria-hidden="true" data-hover-effect=""> <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 1536 1792"> <path fill="inherit" d="M768 786h725q12 67 12 128 0 217-91 387.5t-259.5 266.5-386.5 96q-157 0-299-60.5t-245-163.5-163.5-245-60.5-299 60.5-299 163.5-245 245-163.5 299-60.5q300 0 515 201l-209 201q-123-119-306-119-129 0-238.5 65t-173.5 176.5-64 243.5 64 243.5 173.5 176.5 238.5 65q87 0 160-24t120-60 82-82 51.5-87 22.5-78h-436v-264z"></path> 
+</svg> 
+</span> 
+</a> 
+ <a href="https://facebook.com/profile.php?id=61556723675747" target="_blank" dm_dont_rewrite_url="true" aria-label="facebook" onclick="dm_gaq_push_event &amp;&amp; dm_gaq_push_event(&apos;socialLink&apos;, &apos;click&apos;, &apos;Facebook&apos;)"> <span class="dmSocialFacebook dm-social-icons-facebook oneIcon socialHubIcon style5" aria-hidden="true" data-hover-effect=""></span> 
+</a> 
+ <a href="https://yelp.com/biz/abney-custom-carpentry-daphne" target="_blank" dm_dont_rewrite_url="true" aria-label="yelp" onclick="dm_gaq_push_event &amp;&amp; dm_gaq_push_event(&apos;socialLink&apos;, &apos;click&apos;, &apos;Yelp&apos;)"> <span class="dmSocialYelp dm-social-icons-yelp oneIcon socialHubIcon style5" aria-hidden="true" data-hover-effect=""></span> 
+</a> 
+ <a href="mailto:abneycustomcarpentry@yahoo.com" dm_dont_rewrite_url="true" aria-label="email" onclick="dm_gaq_push_event &amp;&amp; dm_gaq_push_event(&apos;socialLink&apos;, &apos;click&apos;, &apos;Email&apos;)"> <span class="dmSocialEmail dm-social-icons-email oneIcon socialHubIcon style5" aria-hidden="true" data-hover-effect=""></span> 
+</a> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+ <div id="1236746004" dmle_extension="powered_by" data-element-type="powered_by" icon="true" surround="false"></div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+</div> 
+
+    </div>
+</div>
+<!--  Add full CSS and Javascript before the close tag of the body if needed -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Google Fonts Include -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- loadCSS function fonts.jsp-->
+
+
+
+<link rel="preload" href="https://irp.cdn-website.com/fonts/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=DM+Sans:ital,wght@0,100..1000;1,100..1000&amp;subset=latin-ext&amp;display=swap"  as="style" fetchpriority="low" onload="loadCSS(this)" />
+
+<style>
+@font-face {
+  font-family: "ayar_juno";
+  src: url("https://irp.cdn-website.com/fc071698/fonts/ayar_juno-1eeb_400.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+</style>
+
+
+<style>
+@font-face {
+  font-family: "Britannic T Regular";
+  src: url("https://irp.cdn-website.com/fc071698/fonts/Britannic+T+Regular-f38a_400.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+</style>
+
+
+
+
+
+
+<!-- RT CSS Include d-css-runtime-desktop-one-package-structured-global-->
+<link rel="preload" as="style" fetchpriority="low" onload="loadCSS(this)" href="https://static.cdn-website.com/mnlt/production/5939/_dm/s/rt/dist/css/d-css-runtime-desktop-one-package-structured-global.min.css" />
+
+<!-- End of RT CSS Include -->
+
+<link rel="preload" href="https://irp.cdn-website.com/WIDGET_CSS/8bbb57531c54c6e179409f83e03f9662.css" id="widgetCSS" as="style" fetchpriority="low" onload="loadCSS(this)" />
+
+<!-- Support `img` size attributes -->
+<style>img[width][height] {
+  height: auto;
+}</style>
+
+<!-- Support showing sticky element on page only -->
+<style>
+  body[data-page-alias="home"] #dm [data-show-on-page-only="home"] {
+    display: block !important;
+  }
+</style>
+
+<!-- This is populated in Ajax navigation -->
+<style id="pageAdditionalWidgetsCss" type="text/css">
+</style>
+
+
+
+
+<!-- Site CSS -->
+<link rel="preload" href="https://irp.cdn-website.com/fc071698/files/fc071698_withFlex_1.min.css?v=30" id="siteGlobalCss" as="style" fetchpriority="low" onload="loadCSS(this)" />
+
+
+
+<style id="customWidgetStyle" type="text/css">
+    
+</style>
+<style id="innerPagesStyle" type="text/css">
+    
+</style>
+
+
+<style
+        id="additionalGlobalCss" type="text/css"
+>
+</style>
+
+<!-- Page CSS -->
+<link rel="preload" href="https://irp.cdn-website.com/fc071698/files/fc071698_home_withFlex_1.min.css?v=30" id="homeCssLink" as="style" fetchpriority="low" onload="loadCSS(this)" />
+
+<style id="pagestyle" type="text/css">
+    
+</style>
+
+<style id="pagestyleDevice" type="text/css">
+    
+</style>
+
+<!-- Flex Sections CSS -->
+
+
+
+
+
+<style id="globalFontSizeStyle" type="text/css">
+    .font-size-18, .size-18, .size-18 > font { font-size: 18px !important; }.font-size-40, .size-40, .size-40 > font { font-size: 40px !important; }.font-size-60, .size-60, .size-60 > font { font-size: 60px !important; }.font-size-15, .size-15, .size-15 > font { font-size: 15px !important; }
+</style>
+<style id="pageFontSizeStyle" type="text/css">
+</style>
+
+<!-- ========= JS Section ========= -->
+<script>
+    var isWLR = true;
+
+    window.customWidgetsFunctions = {};
+    window.customWidgetsStrings = {};
+    window.collections = {};
+    window.currentLanguage = "ENGLISH"
+    window.isSitePreview = false;
+</script>
+<script>
+    window.customWidgetsFunctions["1f5975986930429f819d4cd2154b5c4a~24"] = function (element, data, api) {
+        null
+    };
+</script>
+<script type="text/javascript">
+
+    var d_version = "production_5939";
+    var build = "2025-11-17T13_48_15";
+    window['v' + 'ersion'] = d_version;
+
+    function buildEditorParent() {
+        window.isMultiScreen = true;
+        window.editorParent = {};
+        window.previewParent = {};
+        window.assetsCacheQueryParam = "?version=2025-11-17T13_48_15";
+        try {
+            var _p = window.parent;
+            if (_p && _p.document && _p.$ && _p.$.dmfw) {
+                window.editorParent = _p;
+            } else if (_p.isSitePreview) {
+                window.previewParent = _p;
+            }
+        } catch (e) {
+
+        }
+    }
+
+    buildEditorParent();
+</script>
+
+<!-- Load jQuery -->
+<script type="text/javascript" id='d-js-jquery'
+        src="https://static.cdn-website.com/libs/jquery/jquery-3.7.0.min.js"></script>
+<!-- End Load jQuery -->
+<!-- Injecting site-wide before scripts -->
+<!-- End Injecting site-wide to the head -->
+
+
+<script>
+    var _jquery = window.$;
+
+    var jqueryAliases = ['$', 'jquery', 'jQuery'];
+
+    jqueryAliases.forEach((alias) => {
+        Object.defineProperty(window, alias, {
+            get() {
+                return _jquery;
+            },
+            set() {
+                console.warn("Trying to over-write the global jquery object!");
+            }
+        });
+    });
+    window.jQuery.migrateMute = true;
+</script>
+<script type="text/javascript">
+    window.popups =
+    [{"title":"Contact Form","url":"/contact-form","options":{"backgroundColor":"#FFFFFF","borderRadius":"5","width":"622","overlayColor":"rgba(0, 0, 0, 0.5)","height":"508.75","animation":"fadeIn"},"name":"contact-form"}]</script>
+<script>
+    window.cookiesNotificationMarkupPreview = 'null';
+</script>
+
+<!-- HEAD RT JS Include -->
+<script id='d-js-params'>
+    window.INSITE = window.INSITE || {};
+    window.INSITE.device = "desktop";
+
+    window.rtCommonProps = {};
+    rtCommonProps["rt.ajax.ajaxScriptsFix"] =true;
+    rtCommonProps["rt.pushnotifs.sslframe.encoded"] = 'aHR0cHM6Ly97c3ViZG9tYWlufS5wdXNoLW5vdGlmcy5jb20=';
+    rtCommonProps["runtimecollector.url"] = 'https://rtc.multiscreensite.com';
+    rtCommonProps["performance.tabletPreview.removeScroll"] = 'false';
+    rtCommonProps["inlineEditGrid.snap"] =true;
+    rtCommonProps["popup.insite.cookie.ttl"] = '0.5';
+    rtCommonProps["rt.pushnotifs.force.button"] =true;
+    rtCommonProps["common.mapbox.token"] = 'pk.eyJ1IjoiZGFubnliMTIzIiwiYSI6ImNqMGljZ256dzAwMDAycXBkdWxwbDgzeXYifQ.Ck5P-0NKPVKAZ6SH98gxxw';
+    rtCommonProps["common.mapbox.js.override"] =false;
+    rtCommonProps["common.here.appId"] = 'iYvDjIQ2quyEu0rg0hLo';
+    rtCommonProps["common.here.appCode"] = '1hcIxLJcbybmtBYTD9Z1UA';
+    rtCommonProps["isCoverage.test"] =false;
+    rtCommonProps["ecommerce.ecwid.script"] = 'https://app.multiscreenstore.com/script.js';
+    rtCommonProps["feature.flag.mappy.kml"] =false;
+    rtCommonProps["common.resources.dist.cdn"] =true;
+    rtCommonProps["common.build.dist.folder"] = 'production/5939';
+    rtCommonProps["common.resources.cdn.host"] = 'https://static.cdn-website.com';
+    rtCommonProps["common.resources.folder"] = 'https://static.cdn-website.com/mnlt/production/5939';
+    rtCommonProps["feature.flag.runtime.backgroundSlider.preload.slowly"] =true;
+    rtCommonProps["feature.flag.runtime.newAnimation.enabled"] =true;
+    rtCommonProps["feature.flag.runtime.newAnimation.jitAnimation.enabled"] =true;
+    rtCommonProps["feature.flag.sites.google.analytics.gtag"] =true;
+    rtCommonProps["feature.flag.runOnReadyNewTask"] =true;
+    rtCommonProps["isAutomation.test"] =false;
+    rtCommonProps["booking.cal.api.domain"] = 'api.cal.com';
+
+    
+    rtCommonProps['common.mapsProvider'] = 'mapbox';
+    
+    rtCommonProps['common.mapsProvider.version'] = '0.52.0';
+    rtCommonProps['common.geocodeProvider'] = 'mapbox';
+    rtCommonProps['common.map.defaults.radiusSize'] = '1500';
+    rtCommonProps['common.map.defaults.radiusBg'] = 'rgba(255, 255, 255, 0.4)';
+    rtCommonProps['common.map.defaults.strokeColor'] = 'rgba(255, 255, 255, 1)';
+    rtCommonProps['common.map.defaults.strokeSize'] = '2';
+    rtCommonProps['server.for.resources'] = '';
+    rtCommonProps['feature.flag.lazy.widgets'] = true;
+    rtCommonProps['feature.flag.single.wow'] = false;
+    rtCommonProps['feature.flag.disallowPopupsInEditor'] = true;
+    rtCommonProps['feature.flag.mark.anchors'] = true;
+    rtCommonProps['captcha.public.key'] = '6LffcBsUAAAAAMU-MYacU-6QHY4iDtUEYv_Ppwlz';
+    rtCommonProps['captcha.invisible.public.key'] = '6LeiWB8UAAAAAHYnVJM7_-7ap6bXCUNGiv7bBPME';
+    rtCommonProps["images.sizes.small"] =160;
+    rtCommonProps["images.sizes.mobile"] =640;
+    rtCommonProps["images.sizes.tablet"] =1280;
+    rtCommonProps["images.sizes.desktop"] =1920;
+    rtCommonProps["modules.resources.cdn"] =true;
+    rtCommonProps["import.images.storage.imageCDN"] = 'https://lirp.cdn-website.com/';
+    rtCommonProps["feature.flag.runtime.inp.threshold"] =150;
+    rtCommonProps["feature.flag.performance.logs"] =true;
+    rtCommonProps["site.widget.form.captcha.type"] = 'g_recaptcha';
+    rtCommonProps["friendly.captcha.site.key"] = 'FCMGSQG9GVNMFS8K';
+    rtCommonProps["cookiebot.mapbox.consent.category"] = 'marketing';
+    // feature flags that's used out of runtime module (in  legacy files)
+    rtCommonProps["platform.monolith.personalization.dateTimeCondition.popupMsgAction.moveToclient.enabled"] =true;
+    rtCommonProps["streamline.monolith.personalization.skipRuleConditionsForPreview.enabled"] =true;
+    rtCommonProps["streamline.personalization.decodeTimeZone.enabled"] =true;
+
+    window.rtFlags = {};
+    rtFlags["unsuspendEcwidStoreOnRuntime.enabled"] =true;
+    rtFlags["scripts.widgetCount.enabled"] =true;
+    rtFlags["fnb.animations.tracking.enabled"] =true;
+    rtFlags["ecom.ecwidNewUrlStructure.enabled"] = false;
+    rtFlags["ecom.ecwid.accountPage.emptyBaseUrl.enabled"] = true;
+    rtFlags["ecom.ecwid.pages.links.disable.listeners"] = true;
+    rtFlags["ecom.ecwid.storefrontV3.enabled"] = false;
+    rtFlags["ecom.ecwid.old.store.fix.facebook.share"] = true;
+    rtFlags["feature.flag.photo.gallery.exact.size"] =true;
+    rtFlags["geocode.search.localize"] =false;
+    rtFlags["feature.flag.runtime.newAnimation.asyncInit.setTimeout.enabled"] =false;
+    rtFlags["twitter.heightLimit.enabled"] = true;
+    rtFlags["runtime.lottieOverflow"] =false;
+    rtFlags["runtime.monitoring.sentry.ignoreErrors"] = "";
+    rtFlags["contact.form.browserValidation.enabled"] =true;
+    rtFlags["streamline.monolith.personalization.supportMultipleConditions.enabled"] =false;
+    rtFlags["runtime.cwv.report.cls.enabled"] =true;
+    rtFlags["runtime.cwv.report.lcp.enabled"] =false;
+    rtFlags["flex.runtime.popup.with.show"] =true;
+    rtFlags["contact.form.useActiveForm"] =true;
+    rtFlags["runtime.ssr.productStore.internal.observer"] =true;
+    rtFlags["runtime.ssr.productCustomizations"] =true;
+</script>
+<script src="https://static.cdn-website.com/mnlt/production/5939/_dm/s/rt/dist/scripts/d-js-one-runtime-unified-desktop.min.js"  id="d-js-core"></script>
+<!-- End of HEAD RT JS Include -->
+<script src="https://static.cdn-website.com/mnlt/production/5939/_dm/s/rt/dist/scripts/d-js-jquery-migrate.min.js" ></script>
+<script>
+    
+    $(window).bind("orientationchange", function (e) {
+        $.layoutManager.initLayout();
+        
+    });
+    $(document).resize(function () {
+        
+    });
+</script>
+<script type="text/javascript" id="d_track_campaign">
+(function() {
+    if (!window.location.search) {
+        return;
+    }
+	const cleanParams = window.location.search.substring(1); // Strip ?
+	const queryParams = cleanParams.split('&');
+
+	const expires = 'expires=' + new Date().getTime() + 24 * 60 * 60 * 1000;
+	const domain = 'domain=' + window.location.hostname;
+	const path = "path=/";
+
+	queryParams.forEach((param) => {
+		const [key, value = ''] = param.split('=');
+		if (key.startsWith('utm_')) {
+			const cookieName = "_dm_rt_" + key.substring(4);
+			const cookie = cookieName + "=" + value;
+			const joined = [cookie, expires, domain, path].join(";");
+			document.cookie = joined;
+		}
+	});
+}());
+</script>
+<script type="text/javascript" >
+  var _dm_gaq = {};
+  var _gaq = _gaq || [];
+  var _dm_insite = [];
+</script>
+
+<script type="text/javascript" id="d_track_sp">
+;(function(p,l,o,w,i,n,g){if(!p[i]){p.GlobalSnowplowNamespace=p.GlobalSnowplowNamespace||[];
+p.GlobalSnowplowNamespace.push(i);p[i]=function(){(p[i].q=p[i].q||[]).push(arguments)
+};p[i].q=p[i].q||[];n=l.createElement(o);g=l.getElementsByTagName(o)[0];n.async=1;
+n.src=w;g.parentNode.insertBefore(n,g)}}(window,document,"script","//d32hwlnfiv2gyn.cloudfront.net/sp-2.0.0-dm-0.1.min.js","snowplow"));
+window.dmsnowplow  = window.snowplow;
+
+dmsnowplow('newTracker', 'cf', 'd32hwlnfiv2gyn.cloudfront.net', { // Initialise a tracker
+  appId: 'fc071698'
+});
+
+// snowplow queries element styles so we wait until CSS calculations are done.
+requestAnimationFrame(() => {
+	dmsnowplow('trackPageView');
+	_dm_insite.forEach((rule) => {
+		// Specifically in popup only the client knows if it is shown or not so we don't always want to track its impression here
+		// the tracking is in popup.js
+		if (rule.actionName !== "popup") {
+			dmsnowplow('trackStructEvent', 'insite', 'impression', rule.ruleType, rule.ruleId);
+		}
+		window?.waitForDeferred?.('dmAjax', () => {
+			$.DM.events.trigger('event-ruleTriggered', {value: rule});
+		});
+	});
+});
+</script>
+   <div style="display:none;" id="P6iryBW0Wu"></div>
+
+<!-- photoswipe markup -->
+
+
+
+
+
+
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div id="fb-root"
+        data-locale="en"></div>
+<!-- Alias: fc071698 -->
+<div class="dmPopupMask" id="dmPopupMask"></div>
+<div id="dmPopup" class="dmPopup">
+	<div class="dmPopupCloseWrapper"> <div class="dmPopupClose dm-common-icons-close oneIcon" onclick="dmHidePopup(event);"></div> </div>
+ 	<div class="dmPopupTitle"> <span></span> Share by:</div> 
+	<div class="data"></div>
+</div><script id="d_track_personalization">
+	window?.waitForDeferred?.('dmAjax', () => {
+		// Collects client data and updates cookies used by smart sites
+		window.expireDays = 365;
+		window.visitLength = 30 * 60000;
+		$.setCookie("dm_timezone_offset", (new Date()).getTimezoneOffset(), window.expireDays);
+			setSmartSiteCookiesInternal("dm_this_page_view","dm_last_page_view","dm_total_visits","dm_last_visit");
+	});
+</script>
+<script type="text/javascript">
+    
+    Parameters.NavigationAreaParams.MoreButtonText = 'MORE';
+    
+    Parameters.NavigationAreaParams.LessButtonText = 'LESS';
+    Parameters.HomeLinkText = 'Home';
+    </script>
+<!--  End Script tags -->
+<!--  Site Wide Html Markup -->
+<!--  Site Wide Html Markup -->
+</body>
+</html>
