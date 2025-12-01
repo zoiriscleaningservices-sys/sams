@@ -46,70 +46,88 @@
 
 
 
-
 <style>
-    /* Background white */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #ffffff; /* White background */
-      min-height: 100vh;
-      color: #000;
-    }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #ffffff;
+    min-height: 100vh;
+    color: #000;
+  }
 
-    /* Floating bubbles container */
-    .floating-bubbles {
-      position: fixed;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: -1; /* stays behind content */
-    }
+  .floating-items {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+  }
 
-    /* Bubble Base */
-    .bubble {
-      position: absolute;
-      bottom: -120px;
-      width: var(--size);
-      height: var(--size);
-      border-radius: 50%;
-      opacity: 0.5;
-      animation: rise var(--dur, 14s) linear infinite;
-      filter: drop-shadow(0 6px 12px rgba(0,0,0,.1));
-    }
+  .item {
+    position: absolute;
+    bottom: -150px;
+    width: var(--size);
+    height: var(--size);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.9;
+    animation: rise var(--dur, 14s) linear infinite;
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,.2));
+    transform: rotate(var(--rotate));
+  }
 
-    /* Red Bubble */
-    .bubble.red {
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.2), transparent 60%),
-                  linear-gradient(135deg, #ef4444, #b91c1c); /* red shades */
-    }
+  @keyframes rise {
+    0%   { transform: translate(-50%, 0) rotate(var(--rotate)); opacity: .7; }
+    50%  { transform: translate(calc(-50% + var(--drift)/2), -50vh) rotate(calc(var(--rotate) + 25deg)); opacity: 1; }
+    100% { transform: translate(calc(-50% + var(--drift)), -100vh) rotate(calc(var(--rotate) + 45deg)); opacity: 0; }
+  }
+</style>
 
-    /* Blue Bubble */
-    .bubble.blue {
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.2), transparent 60%),
-                  linear-gradient(135deg, #3b82f6, #1d4ed8); /* blue shades */
-    }
+<div class="floating-items">
 
-    /* Rise Animation */
-    @keyframes rise {
-      0%   { transform: translate(-50%, 0) scale(1); opacity: .5; }
-      50%  { transform: translate(calc(-50% + var(--drift)/2), -50vh) scale(1.1); opacity: .7; }
-      100% { transform: translate(calc(-50% + var(--drift)), -100vh) scale(1.2); opacity: 0; }
-    }
-  </style>
-</head>
-<body>
-  <!-- Floating bubbles -->
-  <div class="floating-bubbles">
-    <div class="bubble red" style="--size:60px; --drift:40px; --dur:12s; left:15%;"></div>
-    <div class="bubble blue" style="--size:100px; --drift:-30px; --dur:15s; left:45%;"></div>
-    <div class="bubble red" style="--size:80px; --drift:70px; --dur:14s; left:75%;"></div>
-    <div class="bubble blue" style="--size:120px; --drift:50px; --dur:18s; left:90%;"></div>
+  <!-- Hammer -->
+  <div class="item"
+       style="--size:100px; --drift:30px; --dur:15s; --rotate:5deg; left:12%;
+       background-image:url('https://i.ibb.co/r2xdgR9j/2025-06-28.webp');">
   </div>
-  </section>
-</body>
-</html>
+
+  <!-- Saw -->
+  <div class="item"
+       style="--size:120px; --drift:-25px; --dur:16s; --rotate:-10deg; left:30%;
+       background-image:url('https://i.ibb.co/KzLjvNM1/2025-06-22.webp');">
+  </div>
+
+  <!-- Drill -->
+  <div class="item"
+       style="--size:130px; --drift:40px; --dur:17s; --rotate:10deg; left:50%;
+       background-image:url('https://i.ibb.co/1J9cy3vC/2025-06-28-1.webp');">
+  </div>
+
+  <!-- Screwdriver -->
+  <div class="item"
+       style="--size:80px; --drift:-35px; --dur:18s; --rotate:-20deg; left:68%;
+       background-image:url('https://i.ibb.co/B5qD3dH0/2025-06-28-2.webp');">
+  </div>
+
+  <!-- Wrench -->
+  <div class="item"
+       style="--size:90px; --drift:30px; --dur:14s; --rotate:15deg; left:82%;
+       background-image:url('https://i.ibb.co/Xxk0Ph0H/2025-06-28-3.webp');">
+  </div>
+
+  <!-- Toolbox -->
+  <div class="item"
+       style="--size:110px; --drift:-30px; --dur:19s; --rotate:0deg; left:92%;
+       background-image:url('https://i.ibb.co/XfLpxJ5X/2025-06-28-4.webp');">
+  </div>
+
+
+
+
+</div>
+
 
 
 
