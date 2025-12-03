@@ -1820,7 +1820,6 @@ border: 3px dashed #FF0000; /* red dashed border */
   </section>
 </div>
 
-<!-- FINAL PERFECT INFINITE + RESPONSIVE SCRIPT -->
 <script>
   const track = document.getElementById('sliderTrack');
   const totalRealSlides = 12;
@@ -1833,6 +1832,7 @@ border: 3px dashed #FF0000; /* red dashed border */
   }
 
   let current = 3; // Start at first real slide
+  let autoplayInterval = null;
 
   function update() {
     const isMobile = window.innerWidth < 768;
@@ -1846,11 +1846,17 @@ border: 3px dashed #FF0000; /* red dashed border */
   function next() {
     current++;
     update();
+
+    // Seamless loop reset
     if (current >= totalRealSlides + 3) {
       setTimeout(() => {
         track.style.transition = 'none';
         current = 3;
         update();
+        // Re-enable transition after reset
+        requestAnimationFrame(() => {
+          track.style.transition = 'transform 0.7s ease-in-out';
+        });
       }, 710);
     }
   }
@@ -1858,28 +1864,73 @@ border: 3px dashed #FF0000; /* red dashed border */
   function prev() {
     current--;
     update();
+
     if (current < 3) {
       setTimeout(() => {
         track.style.transition = 'none';
         current = totalRealSlides + 2;
         update();
+        requestAnimationFrame(() => {
+          track.style.transition = 'transform 0.7s ease-in-out';
+        });
       }, 710);
     }
   }
 
-  document.getElementById('nextBtn').addEventListener('click', next);
-  document.getElementById('prevBtn').addEventListener('click', prev);
+  // === AUTO PLAY EVERY 4 SECONDS ===
+  function startAutoplay() {
+    autoplayInterval = setInterval(next, 3000);
+  }
 
-  // Touch swipe
+  function stopAutoplay() {
+    clearInterval(autoplayInterval);
+  }
+
+  // Start autoplay on load
+  startAutoplay();
+
+  // Pause when hovering (optional but nice UX)
+  const sliderContainer = document.querySelector('#our-story');
+  sliderContainer.addEventListener('mouseenter', stopAutoplay);
+  sliderContainer.addEventListener('mouseleave', startAutoplay);
+
+  // Also pause on touch (mobile)
+  sliderContainer.addEventListener('touchstart', stopAutoplay, { passive: true });
+  sliderContainer.addEventListener('touchend', startAutoplay);
+
+  // Manual controls (arrows)
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    stopAutoplay();
+    next();
+    startAutoplay(); // resume after manual action
+  });
+
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    stopAutoplay();
+    prev();
+    startAutoplay();
+  });
+
+  // Touch swipe support
   let startX = 0;
-  track.addEventListener('touchstart', e => startX = e.touches[0].clientX, {passive: true});
+  track.addEventListener('touchstart', e => startX = e.touches[0].clientX, { passive: true });
   track.addEventListener('touchend', e => {
     const diff = startX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) (diff > 0 ? next : prev)();
+    if (Math.abs(diff) > 50) {
+      stopAutoplay();
+      diff > 0 ? next() : prev();
+      startAutoplay();
+    }
   });
 
   // Re-calculate on resize
-  window.addEventListener('resize', () => setTimeout(update, 100));
+  window.addEventListener('resize', () => {
+    stopAutoplay();
+    setTimeout(() => {
+      update();
+      startAutoplay();
+    }, 100);
+  });
 
   // Initial position
   update();
@@ -1896,199 +1947,237 @@ border: 3px dashed #FF0000; /* red dashed border */
 
 
 
+<!-- Commercial Services - MOBILE: 1 CARD CENTERED | DESKTOP: 3 CARDS -->
+<div class="mb-16" data-aos="fade-up">
+  <section class="py-20 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
-
- <!-- Commercial Services - MOBILE: 1 CENTERED | DESKTOP: 3 | ARROWS + SWIPE --><section class="py-20 ">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div data-aos="fade-up">
-      <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+      <!-- Title -->
+      <h3 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800">
         Commercial Services
       </h3>
 
-  <!-- Slider Wrapper -->
-  <div class="relative">
+      <!-- Slider Wrapper -->
+      <div class="relative">
 
-    <!-- Left Arrow -->
-    <button id="commPrevBtn" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 bg-white/95 hover:bg-white shadow-xl rounded-full flex items-center justify-center transition-all hover:scale-110 focus:outline-none">
-      <svg class="w-7 h-7 md:w-8 md:h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
-      </svg>
-    </button>
+        <!-- Left Arrow -->
+        <button id="commPrevBtn" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 bg-white/95 hover:bg-white shadow-xl rounded-full flex items-center justify-center transition-all hover:scale-110 focus:outline-none">
+          <svg class="w-7 h-7 md:w-8 md:h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </button>
 
-    <!-- Right Arrow -->
-    <button id="commNextBtn" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 bg-white/95 hover:bg-white shadow-xl rounded-full flex items-center justify-center transition-all hover:scale-110 focus:outline-none">
-      <svg class="w-7 h-7 md:w-8 md:h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
-      </svg>
-    </button>
+        <!-- Right Arrow -->
+        <button id="commNextBtn" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 bg-white/95 hover:bg-white shadow-xl rounded-full flex items-center justify-center transition-all hover:scale-110 focus:outline-none">
+          <svg class="w-7 h-7 md:w-8 md:h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
 
-    <!-- Commercial Slider -->
-    <div class="overflow-hidden">
-      <div class="slider-track flex transition-transform duration-700 ease-in-out" id="commSliderTrack">
+        <!-- Slider -->
+        <div class="overflow-hidden">
+          <div class="slider-track flex transition-transform duration-700 ease-in-out" id="commSliderTrack">
 
-        <!-- 1. Financial Institution -->
-        <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
-          <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-            <div class="btn flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9a3 3 0 0 0 0 6h6a3 3 0 0 1 0 6H7"/></svg>
+            <!-- CARD 1 -->
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
+              <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
+                <div class="btn flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9a3 3 0 0 0 0 6h6a3 3 0 0 1 0 6H7"/></svg>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">Financial Institution And Banks</h4>
+                <p class="text-gray-600">Maintenance and repair services for financial facilities.</p>
+                <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Financial" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
+              </div>
             </div>
-            <h4 class="text-xl font-semibold mb-2">Financial Institution And Banks</h4>
-            <p class="text-gray-600">Maintenance and repair services for financial facilities.</p>
-            <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Financial" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
+
+            <!-- CARD 2 -->
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
+              <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
+                <div class="btn flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">Healthcare Facilities Hospital</h4>
+                <p class="text-gray-600">Specialized maintenance for healthcare environments.</p>
+                <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Healthcare" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
+              </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
+              <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
+                <div class="btn flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><polygon points="12 2 15 8.5 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 9 8.5 12 2"/></svg>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">Hotels And Hospitality</h4>
+                <p class="text-gray-600">Maintenance solutions for hospitality businesses.</p>
+                <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Hotels" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
+              </div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
+              <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
+                <div class="btn flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82L4.21 7a2 2 0 1 1 2.83-2.83l.06.06c.46.46 1.13.61 1.82.33H9c.7-.28 1.18-.91 1.18-1.66V3a2 2 0 1 1 4 0v.09c0 .75.48 1.38 1.18 1.66h.12c.69.28 1.36.13 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.12c.28.69.91 1.17 1.66 1.17H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">Manufacturing</h4>
+                <p class="text-gray-600">Industrial maintenance and repair services.</p>
+                <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Manufacturing" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
+              </div>
+            </div>
+
+            <!-- CARD 5 -->
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
+              <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
+                <div class="btn flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">Municipal And Government</h4>
+                <p class="text-gray-600">Maintenance services for government facilities.</p>
+                <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Municipal" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
+              </div>
+            </div>
+
+            <!-- CARD 6 -->
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
+              <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
+                <div class="btn flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v8a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">Restaurants And Food Services</h4>
+                <p class="text-gray-600">Specialized maintenance for food service establishments.</p>
+                <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Restaurants" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
+              </div>
+            </div>
+
+            <!-- CARD 7 -->
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
+              <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
+                <div class="btn flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M6 2l1 7h10l1-7z"/><path d="M6 9h12l-1.5 11h-9z"/></svg>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">Retail And Shopping Malls</h4>
+                <p class="text-gray-600">Maintenance solutions for retail environments.</p>
+                <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Retail" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
+              </div>
+            </div>
+
+            <!-- CARD 8 -->
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
+              <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
+                <div class="btn flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 3H8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"/></svg>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">Small Business And Corporate Offices</h4>
+                <p class="text-gray-600">Comprehensive maintenance for office spaces.</p>
+                <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Offices" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
+              </div>
+            </div>
+
           </div>
         </div>
-
-        <!-- 2. Healthcare -->
-        <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
-          <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-            <div class="btn flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </div>
-            <h4 class="text-xl font-semibold mb-2">Healthcare Facilities Hospital</h4>
-            <p class="text-gray-600">Specialized maintenance for healthcare environments.</p>
-            <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Healthcare" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
-          </div>
-        </div>
-
-        <!-- 3. Hotels -->
-        <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
-          <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-            <div class="btn flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><polygon points="12 2 15 8.5 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 9 8.5 12 2"/></svg>
-            </div>
-            <h4 class="text-xl font-semibold mb-2">Hotels And Hospitality</h4>
-            <p class="text-gray-600">Maintenance solutions for hospitality businesses.</p>
-            <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Hotels" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
-          </div>
-        </div>
-
-        <!-- 4. Manufacturing -->
-        <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
-          <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-            <div class="btn flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82L4.21 7a2 2 0 1 1 2.83-2.83l.06.06c.46.46 1.13.61 1.82.33H9c.7-.28 1.18-.91 1.18-1.66V3a2 2 0 1 1 4 0v.09c0 .75.48 1.38 1.18 1.66h.12c.69.28 1.36.13 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.12c.28.69.91 1.17 1.66 1.17H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-            </div>
-            <h4 class="text-xl font-semibold mb-2">Manufacturing</h4>
-            <p class="text-gray-600">Industrial maintenance and repair services.</p>
-            <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Manufacturing" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
-          </div>
-        </div>
-
-        <!-- 5. Municipal -->
-        <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
-          <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-            <div class="btn flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-            </div>
-            <h4 class="text-xl font-semibold mb-2">Municipal And Government</h4>
-            <p class="text-gray-600">Maintenance services for government facilities.</p>
-            <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Municipal" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
-          </div>
-        </div>
-
-        <!-- 6. Restaurants -->
-        <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
-          <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-            <div class="btn flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v8a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-            </div>
-            <h4 class="text-xl font-semibold mb-2">Restaurants And Food Services</h4>
-            <p class="text-gray-600">Specialized maintenance for food service establishments.</p>
-            <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Restaurants" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
-          </div>
-        </div>
-
-        <!-- 7. Retail -->
-        <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
-          <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-            <div class="btn flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M6 2l1 7h10l1-7z"/><path d="M6 9h12l-1.5 11h-9z"/></svg>
-            </div>
-            <h4 class="text-xl font-semibold mb-2">Retail And Shopping Malls</h4>
-            <p class="text-gray-600">Maintenance solutions for retail environments.</p>
-            <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Retail" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
-          </div>
-        </div>
-
-        <!-- 8. Offices -->
-        <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
-          <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-            <div class="btn flex items-center justify-center mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 3H8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"/></svg>
-            </div>
-            <h4 class="text-xl font-semibold mb-2">Small Business And Corporate Offices</h4>
-            <p class="text-gray-600">Comprehensive maintenance for office spaces.</p>
-            <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Offices" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
-          </div>
-        </div>
-
       </div>
     </div>
-  </div>
-</div>  </div>
-</section>
+  </section>
+</div>
 
-<!-- JavaScript for Commercial Slider (place before </body>) -->
+<!-- PERFECT INFINITE + AUTO-SLIDE + RESPONSIVE SCRIPT (Commercial Version) -->
 <script>
-  const commTrack = document.getElementById('commSliderTrack');
-  const commSlides = Array.from(commTrack.children);
-  const commTotal = commSlides.length;
+  document.addEventListener("DOMContentLoaded", function () {
+    const track = document.getElementById('commSliderTrack');
+    const totalRealSlides = 8; // 8 real cards
 
-  let commIndex = 0;
+    // Clone first 3 + last 3 for seamless infinite loop
+    const children = Array.from(track.children);
+    for (let i = 0; i < 3; i++) {
+      track.appendChild(children[i].cloneNode(true));
+      track.insertBefore(children[totalRealSlides - 1 - i].cloneNode(true), track.firstChild);
+    }
 
-  // Clone first & last for infinite loop
-  const commFirstClone = commSlides[0].cloneNode(true);
-  const commLastClone = commSlides[commTotal - 1].cloneNode(true);
-  commTrack.appendChild(commFirstClone);
-  commTrack.insertBefore(commLastClone, commTrack.firstChild);
+    let current = 3; // Start at first real slide
+    let autoplayInterval = null;
 
-  // Start positioned correctly
-  commTrack.style.transform = 'translateX(-100%)';
+    function update() {
+      const isMobile = window.innerWidth < 768;
+      const slidePercent = isMobile ? 100 : 33.3333333333;
+      const offset = current * slidePercent;
 
-  function updateCommercialSlide() {
-    const percentage = -100 * (commIndex + 1);
-    commTrack.style.transition = 'transform 0.7s ease-in-out';
-    commTrack.style.transform = `translateX(${percentage}%)`;
+      track.style.transition = 'transform 0.7s ease-in-out';
+      track.style.transform = `translateX(-${offset}%)`;
+    }
 
-    commTrack.addEventListener('transitionend', function resetComm() {
-      if (commIndex >= commTotal) {
-        commTrack.style.transition = 'none';
-        commIndex = 0;
-        commTrack.style.transform = 'translateX(-100%)';
+    function next() {
+      current++;
+      update();
+      if (current >= totalRealSlides + 3) {
+        setTimeout(() => {
+          track.style.transition = 'none';
+          current = 3;
+          update();
+          requestAnimationFrame(() => track.style.transition = 'transform 0.7s ease-in-out');
+        }, 710);
       }
-      if (commIndex < 0) {
-        commTrack.style.transition = 'none';
-        commIndex = commTotal - 1;
-        commTrack.style.transform = `translateX(${-100 * commTotal}%)`;
+    }
+
+    function prev() {
+      current--;
+      update();
+      if (current < 3) {
+        setTimeout(() => {
+          track.style.transition = 'none';
+          current = totalRealSlides + 2;
+          update();
+          requestAnimationFrame(() => track.style.transition = 'transform 0.7s ease-in-out');
+        }, 710);
       }
-      commTrack.removeEventListener('transitionend', resetComm);
+    }
+
+    // Auto-play every 4 seconds
+    function startAutoplay() {
+      autoplayInterval = setInterval(next, 4000);
+    }
+    function stopAutoplay() {
+      clearInterval(autoplayInterval);
+    }
+    startAutoplay();
+
+    // Pause on hover / touch
+    const sliderSection = document.querySelector('section.py-20.relative.overflow-hidden.bg-gray-50');
+    sliderSection.addEventListener('mouseenter', stopAutoplay);
+    sliderSection.addEventListener('mouseleave', startAutoplay);
+    sliderSection.addEventListener('touchstart', stopAutoplay, { passive: true });
+    sliderSection.addEventListener('touchend', startAutoplay);
+
+    // Arrows
+    document.getElementById('commNextBtn').addEventListener('click', () => {
+      stopAutoplay(); next(); startAutoplay();
     });
-  }
+    document.getElementById('commPrevBtn').addEventListener('click', () => {
+      stopAutoplay(); prev(); startAutoplay();
+    });
 
-  document.getElementById('commNextBtn').addEventListener('click', () => {
-    commIndex++;
-    updateCommercialSlide();
-  });
+    // Touch swipe
+    let startX = 0;
+    track.addEventListener('touchstart', e => startX = e.touches[0].clientX, { passive: true });
+    track.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        stopAutoplay();
+        diff > 0 ? next() : prev();
+        startAutoplay();
+      }
+    });
 
-  document.getElementById('commPrevBtn').addEventListener('click', () => {
-    commIndex--;
-    updateCommercialSlide();
-  });
+    // Resize
+    window.addEventListener('resize', () => {
+      stopAutoplay();
+      setTimeout(() => { update(); startAutoplay(); }, 100);
+    });
 
-  // Mobile swipe support
-  let commStartX = 0;
-  commTrack.addEventListener('touchstart', e => commStartX = e.touches[0].clientX);
-  commTrack.addEventListener('touchend', e => {
-    const commEndX = e.changedTouches[0].clientX;
-    if (commStartX - commEndX > 50) { commIndex++; updateCommercialSlide(); }
-    if (commEndX - commStartX > 50) { commIndex--; updateCommercialSlide(); }
+    // Initial
+    update();
   });
 </script>
-
-
-
-
-
 
 
 
@@ -2461,8 +2550,6 @@ feather.replace();
     .animate-slide { animation-duration: 18s; }
   }
 </style>
-
-
 
 
 
