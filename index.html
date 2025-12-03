@@ -1191,7 +1191,6 @@ border: 3px dashed #FF0000; /* red dashed border */
 
 
 
-
   </style>
 </head>
 <body class="bg-gray-50">
@@ -1385,7 +1384,48 @@ border: 3px dashed #FF0000; /* red dashed border */
 
 
 
+<!-- Floating Call & WhatsApp Buttons - Always Visible Bottom Right -->
+<div class="fixed bottom-6 right-6 z-50 flex flex-col gap-4 pointer-events-none">
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/12039694125" 
+     target="_blank"
+     class="pointer-events-auto w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-green-500 to-green-600 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transform transition-all duration-300 animate-bounce-slow">
+    <i class="fab fa-whatsapp text-2xl md:text-3xl"></i>
+  </a>
 
+  <!-- Call Button -->
+  <a href="tel:+12039694125"
+     class="pointer-events-auto w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-blue-600 to-blue-700 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transform transition-all duration-300 animate-bounce-slow delay-200">
+    <i class="fas fa-phone-alt text-2xl md:text-3xl"></i>
+  </a>
+</div>
+
+<!-- Font Awesome (add once in <head> if not already there) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- Tiny CSS for smooth floating animation -->
+<style>
+  .animate-bounce-slow {
+    animation: bounce 3s infinite;
+  }
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+  }
+  /* Extra safe on very small screens */
+  @media (max-width: 640px) {
+    .fixed.bottom-6.right-6 {
+      bottom: 20px;
+      right: 16px;
+    }
+  }
+</style>
 
 
 
@@ -1620,49 +1660,49 @@ border: 3px dashed #FF0000; /* red dashed border */
 
 
 
-<!-- Residential Services - HOVER DIRECTION + ARROWS + MOBILE SWIPE -->
+<!-- Residential Services - MOBILE: 1 CARD CENTERED | DESKTOP: 3 CARDS -->
 <div class="mb-16" data-aos="fade-up">
-  <section id="our-story" class="py-20 bg-gray-50 relative overflow-hidden">
+  <section id="our-story" class="py-20  relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
 
-      <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Our Residential Services</h2>
+ 
 
       <!-- Slider Wrapper -->
-      <div class="relative group">
+      <div class="relative">
 
-        <!-- Left Arrow (Functional) -->
-        <button id="prevBtn" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white/90 hover:bg-white shadow-2xl rounded-full flex items-center justify-center transition-all hover:scale-110">
-          <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- Left Arrow -->
+        <button id="prevBtn" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 bg-white/95 hover:bg-white shadow-xl rounded-full flex items-center justify-center transition-all hover:scale-110 focus:outline-none">
+          <svg class="w-7 h-7 md:w-8 md:h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
           </svg>
         </button>
 
-        <!-- Right Arrow (Functional) -->
-        <button id="nextBtn" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white/90 hover:bg-white shadow-2xl rounded-full flex items-center justify-center transition-all hover:scale-110">
-          <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- Right Arrow -->
+        <button id="nextBtn" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 bg-white/95 hover:bg-white shadow-xl rounded-full flex items-center justify-center transition-all hover:scale-110 focus:outline-none">
+          <svg class="w-7 h-7 md:w-8 md:h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
           </svg>
         </button>
 
-        <!-- Hover Zones + Slider -->
-        <div id="sliderContainer" class="relative overflow-hidden cursor-pointer">
-          <div class="slider-track" id="sliderTrack">
+        <!-- Slider -->
+        <div class="overflow-hidden">
+          <div class="slider-track flex transition-transform duration-700 ease-in-out" id="sliderTrack">
 
-            <!-- YOUR 12 ORIGINAL CARDS (EXACTLY AS YOU GAVE) -->
-            <div class="slider-item">
+            <!-- YOUR 12 ORIGINAL CARDS -->
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
               <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-                <div class="btn items-center justify-center mb-4">
+                <div class="btn flex items-center justify-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 </div>
                 <h4 class="text-xl font-semibold mb-2">Residential Repair</h4>
                 <p class="text-gray-600">Complete home repair solutions for all your household needs.</p>
-                <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Repair" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain">
+                <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Residential Repair" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain">
               </div>
             </div>
 
-            <div class="slider-item">
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
               <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-                <div class="btn items-center justify-center mb-4">
+                <div class="btn flex items-center justify-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 </div>
                 <h4 class="text-xl font-semibold mb-2">Safety And Mobility Services</h4>
@@ -1671,9 +1711,9 @@ border: 3px dashed #FF0000; /* red dashed border */
               </div>
             </div>
 
-            <div class="slider-item">
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
               <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-                <div class="btn items-center justify-center mb-4">
+                <div class="btn flex items-center justify-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M14.7 6.3a1 1 0 0 1 0 1.4L7.4 15H6v-1.4l7.3-7.3a1 1 0 0 1 1.4 0z"/><path d="M16 12l6 6"/></svg>
                 </div>
                 <h4 class="text-xl font-semibold mb-2">Carpentry Installation And Repair</h4>
@@ -1682,10 +1722,10 @@ border: 3px dashed #FF0000; /* red dashed border */
               </div>
             </div>
 
-            <!-- Add the rest of your 9 cards exactly like this (I'll include all 12) -->
-            <div class="slider-item">
+            <!-- Add the rest of your 9 cards exactly the same way -->
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
               <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-                <div class="btn items-center justify-center mb-4">
+                <div class="btn flex items-center justify-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
                 </div>
                 <h4 class="text-xl font-semibold mb-2">Drywall And Ceiling</h4>
@@ -1694,9 +1734,9 @@ border: 3px dashed #FF0000; /* red dashed border */
               </div>
             </div>
 
-            <div class="slider-item">
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
               <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-                <div class="btn items-center justify-center mb-4">
+                <div class="btn flex items-center justify-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M21 16V8a2 2 0 0 0-1-1.73L13 2.27a2 2 0 0 0-2 0L4 6.27A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.73z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/></svg>
                 </div>
                 <h4 class="text-xl font-semibold mb-2">Assembly Service</h4>
@@ -1705,9 +1745,9 @@ border: 3px dashed #FF0000; /* red dashed border */
               </div>
             </div>
 
-            <div class="slider-item">
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
               <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-                <div class="btn items-center justify-center mb-4">
+                <div class="btn flex items-center justify-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.32 0z"/></svg>
                 </div>
                 <h4 class="text-xl font-semibold mb-2">Plumbing</h4>
@@ -1716,9 +1756,9 @@ border: 3px dashed #FF0000; /* red dashed border */
               </div>
             </div>
 
-            <div class="slider-item">
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
               <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-                <div class="btn items-center justify-center mb-4">
+                <div class="btn flex items-center justify-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.13-3.36L23 10"/><path d="M20.49 15a9 9 0 0 1-14.13 3.36L1 14"/></svg>
                 </div>
                 <h4 class="text-xl font-semibold mb-2">Remodel</h4>
@@ -1727,9 +1767,9 @@ border: 3px dashed #FF0000; /* red dashed border */
               </div>
             </div>
 
-            <div class="slider-item">
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
               <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-                <div class="btn items-center justify-center mb-4">
+                <div class="btn flex items-center justify-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
                 </div>
                 <h4 class="text-xl font-semibold mb-2">Floor Installation And Repair</h4>
@@ -1738,9 +1778,9 @@ border: 3px dashed #FF0000; /* red dashed border */
               </div>
             </div>
 
-            <div class="slider-item">
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
               <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-                <div class="btn items-center justify-center mb-4">
+                <div class="btn flex items-center justify-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                 </div>
                 <h4 class="text-xl font-semibold mb-2">Lighting And Electrical</h4>
@@ -1749,9 +1789,9 @@ border: 3px dashed #FF0000; /* red dashed border */
               </div>
             </div>
 
-            <div class="slider-item">
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
               <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-                <div class="btn items-center justify-center mb-4">
+                <div class="btn flex items-center justify-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
                 </div>
                 <h4 class="text-xl font-semibold mb-2">Window And Door Services</h4>
@@ -1760,9 +1800,9 @@ border: 3px dashed #FF0000; /* red dashed border */
               </div>
             </div>
 
-            <div class="slider-item">
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
               <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-                <div class="btn items-center justify-center mb-4">
+                <div class="btn flex items-center justify-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M20.71 4.63a2.5 2.5 0 0 0-3.54 0L11 10.79V14h3.21l6.17-6.17a2.5 2.5 0 0 0 0-3.54z"/><path d="M7 17a4 4 0 0 0 7 3h4"/></svg>
                 </div>
                 <h4 class="text-xl font-semibold mb-2">Painting</h4>
@@ -1771,9 +1811,9 @@ border: 3px dashed #FF0000; /* red dashed border */
               </div>
             </div>
 
-            <div class="slider-item">
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
               <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
-                <div class="btn items-center justify-center mb-4">
+                <div class="btn flex items-center justify-center mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
                 </div>
                 <h4 class="text-xl font-semibold mb-2">Other Services</h4>
@@ -1781,7 +1821,7 @@ border: 3px dashed #FF0000; /* red dashed border */
                 <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Other" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain">
               </div>
             </div>
-            <!-- END OF CARDS -->
+
           </div>
         </div>
       </div>
@@ -1789,69 +1829,262 @@ border: 3px dashed #FF0000; /* red dashed border */
   </section>
 </div>
 
-<!-- CSS -->
-<style>
-  .slider-track {
-    display: flex;
-    width: max-content;
-    animation: scrollRight 45s linear infinite;
-  }
-  .slider-item {
-    flex: 0 0 380px;
-    padding: 0 12px;
-  }
-  @keyframes scrollRight { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-  @keyframes scrollLeft  { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
-
-  #sliderContainer:hover .slider-track { animation-play-state: paused; }
-
-  @media (max-width: 768px) {
-    .slider-item { flex: 0 0 320px; }
-    #prevBtn, #nextBtn { width: 50px; height: 50px; }
-  }
-  @media (max-width: 480px) {
-    .slider-item { flex: 0 0 280px; }
-  }
-</style>
-
-<!-- JavaScript - Full Control (Arrows + Hover Direction + Touch) -->
+<!-- JavaScript - One by One + Mobile Centered + Infinite Loop -->
 <script>
   const track = document.getElementById('sliderTrack');
-  const container = document.getElementById('sliderContainer');
+  const slides = Array.from(track.children);
+  const totalSlides = slides.length;
 
-  // Duplicate cards for infinite loop
-  track.innerHTML += track.innerHTML;
+  let currentIndex = 0;
 
-  // Arrow buttons
-  document.getElementById('prevBtn').onclick = () => {
-    track.style.animation = 'scrollLeft 25s linear infinite';
-  };
-  document.getElementById('nextBtn').onclick = () => {
-    track.style.animation = 'scrollRight 25s linear infinite';
-  };
+  // Clone first & last slides for seamless loop
+  const firstClone = slides[0].cloneNode(true);
+  const lastClone = slides[totalSlides - 1].cloneNode(true);
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, track.firstChild);
 
-  // Hover direction control
-  container.addEventListener('mousemove', (e) => {
-    const rect = container.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const width = rect.width;
+  // Start at real first slide
+  track.style.transform = 'translateX(-100%)';
 
-    if (x < width * 0.35) {
-      track.style.animation = 'scrollLeft 20s linear infinite';
-    } else if (x > width * 0.65) {
-      track.style.animation = 'scrollRight 20s linear infinite';
-    } else {
-      track.style.animationPlayState = 'paused';
-    }
+  function updateSlide() {
+    const percentage = -100 * (currentIndex + 1);
+    track.style.transition = 'transform 0.7s ease-in-out';
+    track.style.transform = `translateX(${percentage}%)`;
+
+    // Seamless infinite loop
+    track.addEventListener('transitionend', function reset() {
+      if (currentIndex >= totalSlides) {
+        track.style.transition = 'none';
+        currentIndex = 0;
+        track.style.transform = 'translateX(-100%)';
+      }
+      if (currentIndex < 0) {
+        track.style.transition = 'none';
+        currentIndex = totalSlides - 1;
+        track.style.transform = `translateX(${-100 * totalSlides}%)`;
+      }
+      track.removeEventListener('transitionend', reset);
+    });
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    currentIndex++;
+    updateSlide();
   });
 
-  // Mobile touch swipe
-  let touchStartX = 0;
-  container.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX);
-  container.addEventListener('touchmove', e => {
-    const touchX = e.touches[0].clientX;
-    if (touchX < touchStartX - 50) track.style.animation = 'scrollRight 15s linear infinite';
-    if (touchX > touchStartX + 50) track.style.animation = 'scrollLeft 15s linear infinite';
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    currentIndex--;
+    updateSlide();
+  });
+
+  // Mobile swipe
+  let startX = 0;
+  track.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+  track.addEventListener('touchend', e => {
+    const endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) { currentIndex++; updateSlide(); } // swipe left → next
+    if (endX - startX > 50) { currentIndex--; updateSlide(); } // swipe right → prev
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Commercial Services - MOBILE: 1 CENTERED | DESKTOP: 3 | ARROWS + SWIPE -->
+<section class="py-20 ">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div data-aos="fade-up">
+      <h3 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">
+        Commercial Services
+      </h3>
+
+      <!-- Slider Wrapper -->
+      <div class="relative">
+
+        <!-- Left Arrow -->
+        <button id="commPrevBtn" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 bg-white/95 hover:bg-white shadow-xl rounded-full flex items-center justify-center transition-all hover:scale-110 focus:outline-none">
+          <svg class="w-7 h-7 md:w-8 md:h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/>
+          </svg>
+        </button>
+
+        <!-- Right Arrow -->
+        <button id="commNextBtn" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 md:w-14 md:h-14 bg-white/95 hover:bg-white shadow-xl rounded-full flex items-center justify-center transition-all hover:scale-110 focus:outline-none">
+          <svg class="w-7 h-7 md:w-8 md:h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+          </svg>
+        </button>
+
+        <!-- Commercial Slider -->
+        <div class="overflow-hidden">
+          <div class="slider-track flex transition-transform duration-700 ease-in-out" id="commSliderTrack">
+
+            <!-- 1. Financial Institution -->
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
+              <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
+                <div class="btn flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9a3 3 0 0 0 0 6h6a3 3 0 0 1 0 6H7"/></svg>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">Financial Institution And Banks</h4>
+                <p class="text-gray-600">Maintenance and repair services for financial facilities.</p>
+                <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Financial" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
+              </div>
+            </div>
+
+            <!-- 2. Healthcare -->
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
+              <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
+                <div class="btn flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">Healthcare Facilities Hospital</h4>
+                <p class="text-gray-600">Specialized maintenance for healthcare environments.</p>
+                <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Healthcare" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
+              </div>
+            </div>
+
+            <!-- 3. Hotels -->
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
+              <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
+                <div class="btn flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><polygon points="12 2 15 8.5 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 9 8.5 12 2"/></svg>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">Hotels And Hospitality</h4>
+                <p class="text-gray-600">Maintenance solutions for hospitality businesses.</p>
+                <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Hotels" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
+              </div>
+            </div>
+
+            <!-- 4. Manufacturing -->
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
+              <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
+                <div class="btn flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82L4.21 7a2 2 0 1 1 2.83-2.83l.06.06c.46.46 1.13.61 1.82.33H9c.7-.28 1.18-.91 1.18-1.66V3a2 2 0 1 1 4 0v.09c0 .75.48 1.38 1.18 1.66h.12c.69.28 1.36.13 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.12c.28.69.91 1.17 1.66 1.17H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">Manufacturing</h4>
+                <p class="text-gray-600">Industrial maintenance and repair services.</p>
+                <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Manufacturing" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
+              </div>
+            </div>
+
+            <!-- 5. Municipal -->
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
+              <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
+                <div class="btn flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">Municipal And Government</h4>
+                <p class="text-gray-600">Maintenance services for government facilities.</p>
+                <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Municipal" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
+              </div>
+            </div>
+
+            <!-- 6. Restaurants -->
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
+              <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
+                <div class="btn flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v8a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">Restaurants And Food Services</h4>
+                <p class="text-gray-600">Specialized maintenance for food service establishments.</p>
+                <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Restaurants" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
+              </div>
+            </div>
+
+            <!-- 7. Retail -->
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
+              <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
+                <div class="btn flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M6 2l1 7h10l1-7z"/><path d="M6 9h12l-1.5 11h-9z"/></svg>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">Retail And Shopping Malls</h4>
+                <p class="text-gray-600">Maintenance solutions for retail environments.</p>
+                <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Retail" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
+              </div>
+            </div>
+
+            <!-- 8. Offices -->
+            <div class="slider-item flex-shrink-0 w-full md:w-1/3 px-4 md:px-6">
+              <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300 hover:shadow-2xl hover:-translate-y-3">
+                <div class="btn flex items-center justify-center mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 3H8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"/></svg>
+                </div>
+                <h4 class="text-xl font-semibold mb-2">Small Business And Corporate Offices</h4>
+                <p class="text-gray-600">Comprehensive maintenance for office spaces.</p>
+                <img src="https://i.ibb.co/tMgxLjBv/unnamed.webp" alt="Offices" class="rounded-xl shadow-lg w-full max-h-[450px] object-contain mt-4">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JavaScript for Commercial Slider (place before </body>) -->
+<script>
+  const commTrack = document.getElementById('commSliderTrack');
+  const commSlides = Array.from(commTrack.children);
+  const commTotal = commSlides.length;
+
+  let commIndex = 0;
+
+  // Clone first & last for infinite loop
+  const commFirstClone = commSlides[0].cloneNode(true);
+  const commLastClone = commSlides[commTotal - 1].cloneNode(true);
+  commTrack.appendChild(commFirstClone);
+  commTrack.insertBefore(commLastClone, commTrack.firstChild);
+
+  // Start positioned correctly
+  commTrack.style.transform = 'translateX(-100%)';
+
+  function updateCommercialSlide() {
+    const percentage = -100 * (commIndex + 1);
+    commTrack.style.transition = 'transform 0.7s ease-in-out';
+    commTrack.style.transform = `translateX(${percentage}%)`;
+
+    commTrack.addEventListener('transitionend', function resetComm() {
+      if (commIndex >= commTotal) {
+        commTrack.style.transition = 'none';
+        commIndex = 0;
+        commTrack.style.transform = 'translateX(-100%)';
+      }
+      if (commIndex < 0) {
+        commTrack.style.transition = 'none';
+        commIndex = commTotal - 1;
+        commTrack.style.transform = `translateX(${-100 * commTotal}%)`;
+      }
+      commTrack.removeEventListener('transitionend', resetComm);
+    });
+  }
+
+  document.getElementById('commNextBtn').addEventListener('click', () => {
+    commIndex++;
+    updateCommercialSlide();
+  });
+
+  document.getElementById('commPrevBtn').addEventListener('click', () => {
+    commIndex--;
+    updateCommercialSlide();
+  });
+
+  // Mobile swipe support
+  let commStartX = 0;
+  commTrack.addEventListener('touchstart', e => commStartX = e.touches[0].clientX);
+  commTrack.addEventListener('touchend', e => {
+    const commEndX = e.changedTouches[0].clientX;
+    if (commStartX - commEndX > 50) { commIndex++; updateCommercialSlide(); }
+    if (commEndX - commStartX > 50) { commIndex--; updateCommercialSlide(); }
   });
 </script>
 
@@ -1874,254 +2107,151 @@ border: 3px dashed #FF0000; /* red dashed border */
 
 
 
-    <!-- Commercial Services -->
-<div data-aos="fade-up">
-       <h3 class="text-2xl font-semibold text-blue-600 mb-8 text-center">Commercial Services</h3>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-        <!-- Financial Institution -->
-        <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300">
-          <div class="btn items-center justify-center mb-4">
-            <!-- dollar-sign -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9a3 3 0 0 0 0 6h6a3 3 0 0 1 0 6H7"/></svg>
-          </div>
-          <h4 class="text-xl font-semibold mb-2">Financial Institution And Banks</h4>
-          <p class="text-gray-600">Maintenance and repair services for financial facilities.</p><img 
-    src="https://i.ibb.co/tMgxLjBv/unnamed.webp" 
-    alt="Handyman working on repair" 
-    class="rounded-xl shadow-lg w-full max-h-[450px] object-contain"
-  >
-        </div>
-
-        <!-- Healthcare Facilities -->
-        <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300">
-          <div class="btn items-center justify-center mb-4">
-            <!-- heart -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </div>
-          <h4 class="text-xl font-semibold mb-2">Healthcare Facilities Hospital</h4>
-          <p class="text-gray-600">Specialized maintenance for healthcare environments.</p><img 
-    src="https://i.ibb.co/tMgxLjBv/unnamed.webp" 
-    alt="Handyman working on repair" 
-    class="rounded-xl shadow-lg w-full max-h-[450px] object-contain"
-  >
-        </div>
-
-        <!-- Hotels -->
-        <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300">
-          <div class="btn items-center justify-center mb-4">
-            <!-- star -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><polygon points="12 2 15 8.5 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 9 8.5 12 2"/></svg>
-          </div>
-          <h4 class="text-xl font-semibold mb-2">Hotels And Hospitality</h4>
-          <p class="text-gray-600">Maintenance solutions for hospitality businesses.</p><img 
-    src="https://i.ibb.co/tMgxLjBv/unnamed.webp" 
-    alt="Handyman working on repair" 
-    class="rounded-xl shadow-lg w-full max-h-[450px] object-contain"
-  >
-        </div>
-
-        <!-- Manufacturing -->
-        <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300">
-          <div class="btn items-center justify-center mb-4">
-            <!-- settings -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82L4.21 7a2 2 0 1 1 2.83-2.83l.06.06c.46.46 1.13.61 1.82.33H9c.7-.28 1.18-.91 1.18-1.66V3a2 2 0 1 1 4 0v.09c0 .75.48 1.38 1.18 1.66h.12c.69.28 1.36.13 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.12c.28.69.91 1.17 1.66 1.17H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-          </div>
-          <h4 class="text-xl font-semibold mb-2">Manufacturing</h4>
-          <p class="text-gray-600">Industrial maintenance and repair services.</p><img 
-    src="https://i.ibb.co/tMgxLjBv/unnamed.webp" 
-    alt="Handyman working on repair" 
-    class="rounded-xl shadow-lg w-full max-h-[450px] object-contain"
-  >
-        </div>
-
-        <!-- Municipal -->
-        <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300">
-          <div class="btn items-center justify-center mb-4">
-            <!-- award -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-          </div>
-          <h4 class="text-xl font-semibold mb-2">Municipal And Government</h4>
-          <p class="text-gray-600">Maintenance services for government facilities.</p><img 
-    src="https://i.ibb.co/tMgxLjBv/unnamed.webp" 
-    alt="Handyman working on repair" 
-    class="rounded-xl shadow-lg w-full max-h-[450px] object-contain"
-  >
-        </div>
-
-        <!-- Restaurants -->
-        <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300">
-          <div class="btn items-center justify-center mb-4">
-            <!-- coffee -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v8a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-          </div>
-          <h4 class="text-xl font-semibold mb-2">Restaurants And Food Services</h4>
-          <p class="text-gray-600">Specialized maintenance for food service establishments.</p><img 
-    src="https://i.ibb.co/tMgxLjBv/unnamed.webp" 
-    alt="Handyman working on repair" 
-    class="rounded-xl shadow-lg w-full max-h-[450px] object-contain"
-  >
-        </div>
-
-        <!-- Retail -->
-        <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300">
-          <div class="btn items-center justify-center mb-4">
-            <!-- shopping-bag -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M6 2l1 7h10l1-7z"/><path d="M6 9h12l-1.5 11h-9z"/></svg>
-          </div>
-          <h4 class="text-xl font-semibold mb-2">Retail And Shopping Malls</h4>
-          <p class="text-gray-600">Maintenance solutions for retail environments.</p><img 
-    src="https://i.ibb.co/tMgxLjBv/unnamed.webp" 
-    alt="Handyman working on repair" 
-    class="rounded-xl shadow-lg w-full max-h-[450px] object-contain"
-  >
-        </div>
-
-        <!-- Offices -->
-        <div class="btn1 service-card bg-gray-50 p-6 rounded-xl border border-gray-100 transition-all duration-300">
-          <div class="btn items-center justify-center mb-4">
-            <!-- briefcase -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-600 w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 3H8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"/></svg>
-          </div>
-          <h4 class="text-xl font-semibold mb-2">Small Business And Corporate Offices</h4>
-          <p class="text-gray-600">Comprehensive maintenance for office spaces.</p><img 
-    src="https://i.ibb.co/tMgxLjBv/unnamed.webp" 
-    alt="Handyman working on repair" 
-    class="rounded-xl shadow-lg w-full max-h-[450px] object-contain"
-  >
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 
 
 
-<!-- Contact Form Section -->
-    <section id="quote" class="py-16 scroll-mt-28">
-  <div class="container mx-auto px-4 max-w-6xl">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ADD THIS ONCE IN YOUR <head> (only if not already there) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- Contact Form Section --><section id="quote" class="py-16 scroll-mt-28">  <div class="container mx-auto px-4 max-w-6xl">
     <div class="grid lg:grid-cols-2 gap-12">
       <!-- Contact Form -->
       <div class="bg-white rounded-2xl shadow-xl p-8 card-hover">
         <h2 class="text-3xl font-bold text-gray-800 mb-6">Get a Free Quote</h2>
         
-        <form id="contactForm" action="https://formspree.io/f/xkgvorgd" method="POST" class="space-y-6">
-          <!-- Hidden subject -->
-          <input type="hidden" name="_subject" value="New Cleaning Quote Request from Zoiris Website">
+<form id="contactForm" action="https://formspree.io/f/xkgvorgd" method="POST" class="space-y-6">
+  <!-- Hidden subject -->
+  <input type="hidden" name="_subject" value="New Cleaning Quote Request from Zoiris Website">
 
-          <div class="grid md:grid-cols-2 gap-4">
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
-              <input type="text" name="firstName" required 
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none form-input">
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-              <input type="text" name="lastName" required 
-                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none form-input">
-            </div>
-          </div>
-          
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-            <input type="email" name="email" required 
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none form-input">
-          </div>
-          
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-            <input type="tel" name="phone" required 
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none form-input">
-          </div>
-          
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Service Type</label>
-            <select name="serviceType" required 
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none form-input">
-              <option value="">Select a service</option>
-              <option value="residential">Residential Cleaning</option>
-              <option value="commercial">Commercial Cleaning</option>
-              <option value="deep">Deep Cleaning</option>
-              <option value="move-in-out">Move In/Out Cleaning</option>
-              <option value="office">Office Cleaning</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-          
-          <div>
-            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
-            <textarea name="message" rows="4" 
-              placeholder="Tell us about your cleaning needs..."
-              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none form-input"></textarea>
-          </div>
-          
-          <btn type="submit" 
-            class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-4 px-6 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition duration-300 pulse-animation">
-            <i class="fas fa-paper-plane mr-2"></i>
-            Send Message
-          </btn>
-        </form>
+  <div class="grid md:grid-cols-2 gap-4">
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+      <input type="text" name="firstName" required 
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none form-input">
+    </div>
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+      <input type="text" name="lastName" required 
+        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none form-input">
+    </div>
+  </div>
+  
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+    <input type="email" name="email" required 
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none form-input">
+  </div>
+  
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+    <input type="tel" name="phone" required 
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none form-input">
+  </div>
+  
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-2">Service Type</label>
+    <select name="serviceType" required 
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none form-input">
+      <option value="">Select a service</option>
+      <option value="residential">Residential Cleaning</option>
+      <option value="commercial">Commercial Cleaning</option>
+      <option value="deep">Deep Cleaning</option>
+      <option value="move-in-out">Move In/Out Cleaning</option>
+      <option value="office">Office Cleaning</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+  
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+    <textarea name="message" rows="4" 
+      placeholder="Tell us about your cleaning needs..."
+      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none form-input"></textarea>
+  </div>
+  
+  <btn type="submit" 
+    class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white py-4 px-6 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition duration-300 pulse-animation">
+    <i class="fas fa-paper-plane mr-2"></i>
+    Send Message
+  </btn>
+</form>
 
-        <!-- Success / Error Messages -->
-        <div id="formSuccess" class="hidden mt-4 text-green-600 font-semibold">
-          ✅ Thanks! Your message has been sent. We'll contact you shortly.
-        </div>
-        <div id="formError" class="hidden mt-4 text-red-600 font-semibold">
-          ❌ Oops! Something went wrong. Please try again.
-        </div>
-      </div>
+<!-- Success / Error Messages -->
+<div id="formSuccess" class="hidden mt-4 text-green-600 font-semibold">
+   Thanks! Your message has been sent. We'll contact you shortly.
+</div>
+<div id="formError" class="hidden mt-4 text-red-600 font-semibold">
+   Oops! Something went wrong. Please try again.
+</div>  </div>
 
-      <!-- Contact Information -->
-      <div>
-        <div class="bg-white rounded-2xl shadow-xl p-8 card-hover mb-8">
-          <h3 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
-          <div class="space-y-6">
-            <div class="flex items-center">
-              <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
-                <i class="fas fa-phone text-green-600 text-xl"></i>
-              </div>
-              <div>
-                <p class="font-semibold text-gray-800">Phone</p>
-                <a href="tel:+1 (203) 969-4125" class="text-gray-600 hover:text-purple-600">+1 (203) 969-4125</a>
-              </div>
-            </div>
-            <div class="flex items-center">
-              <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                <i class="fas fa-envelope text-blue-600 text-xl"></i>
-              </div>
-              <div>
-                <p class="font-semibold text-gray-800">Email</p>
-                <a href="mailto:zoiriscleaningservices@gmail.com" class="text-gray-600 hover:text-purple-600">
-                  zoiriscleaningservices@gmail.com
-                </a>
-              </div>
-            </div>
-            <div class="flex items-center">
-              <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-                <i class="fas fa-clock text-purple-600 text-xl"></i>
-              </div>
-              <div>
-                <p class="font-semibold text-gray-800">Hours</p>
-                <p class="text-gray-600">24/7 Emergency Service</p>
-              </div>
-            </div>
+  <!-- Contact Information -->
+  <div>
+    <div class="bg-white rounded-2xl shadow-xl p-8 card-hover mb-8">
+      <h3 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
+      <div class="space-y-6">
+        <div class="flex items-center">
+          <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+            <i class="fas fa-phone text-green-600 text-xl"></i>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-800">Phone</p>
+            <a href="tel:+1 (203) 969-4125" class="text-gray-600 hover:text-purple-600">+1 (203) 969-4125</a>
           </div>
         </div>
-
-        <!-- WhatsApp Quick Contact -->
-        <div class="bg-gradient-to-r from-green-400 to-green-600 rounded-2xl shadow-xl p-8 text-white">
-          <h3 class="text-2xl font-bold mb-4">Quick WhatsApp</h3>
-          <p class="mb-4 opacity-90">Get instant response via WhatsApp</p>
-          <a href="https://wa.me/1+1 (203) 969-4125" target="_blank" 
-            class="inline-flex items-center bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
-            <i class="fab fa-whatsapp text-2xl mr-2"></i>
-            Chat Now
-          </a>
+        <div class="flex items-center">
+          <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+            <i class="fas fa-envelope text-blue-600 text-xl"></i>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-800">Email</p>
+            <a href="mailto:zoiriscleaningservices@gmail.com" class="text-gray-600 hover:text-purple-600">
+              sammyscarpentry@gmail.com
+            </a>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+            <i class="fas fa-clock text-purple-600 text-xl"></i>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-800">Hours</p>
+            <p class="text-gray-600">24/7 Emergency Service</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+
+<!-- WhatsApp Quick Contact -->
+<div class="bg-gradient-to-r from-green-400 to-green-600 rounded-2xl shadow-xl p-8 text-white">
+  <h3 class="text-2xl font-bold mb-4">Quick WhatsApp</h3>
+  <p class="mb-4 opacity-90">Get instant response via WhatsApp</p>
+  <a href="https://wa.me/1+1 (203) 969-4125" target="_blank" 
+    class="inline-flex items-center bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+    <i class="fab fa-whatsapp text-2xl mr-2"></i>
+    Chat Now
+  </a>
+</div>  </div>
+</div>  </div>
 </section>
 <!-- JS to prevent redirect -->
 <script>
@@ -2130,47 +2260,40 @@ border: 3px dashed #FF0000; /* red dashed border */
   const errorMsg = document.getElementById("formError");
 
   form.addEventListener("submit", async function(e) {
-    e.preventDefault();
-
-    const formData = new FormData(form);
-    try {
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (response.ok) {
-        successMsg.classList.remove("hidden");
-        errorMsg.classList.add("hidden");
-        form.reset();
-      } else {
-        throw new Error("Form submission failed.");
-      }
-    } catch (error) {
-      successMsg.classList.add("hidden");
-      errorMsg.classList.remove("hidden");
-    }
-  });
-</script>
-<!-- Scripts -->
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
-        
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        });
-        
-        // Replace feather icons
-        feather.replace();
-        </script>
+    e.preventDefault();const formData = new FormData(form);
+try {
+  const response = await fetch(form.action, {
+    method: form.method,
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  });  if (response.ok) {
+    successMsg.classList.remove("hidden");
+    errorMsg.classList.add("hidden");
+    form.reset();
+  } else {
+    throw new Error("Form submission failed.");
+  }
+} catch (error) {
+  successMsg.classList.add("hidden");
+  errorMsg.classList.remove("hidden");
+}  });
+</script><!-- Scripts --><script>
+    // Initialize AOS
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
+    });
+    
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    });
+    
+    // Replace feather icons
+    feather.replace();
+    </script> 
 
 
 
@@ -2185,171 +2308,172 @@ border: 3px dashed #FF0000; /* red dashed border */
 
 
 
+<!-- ADD THIS ONCE IN <head> FOR ICONS (if not already there) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+<!-- GOOGLE REVIEWS + FULL FOOTER (Place at the very bottom, before </body>) -->
+<footer class="bg-gray-900 text-white pt-20 pb-8">
+  <div class="container mx-auto px-6 max-w-7xl">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<section class="google-widget">
-    <div class="google-header">
-        <img src="https://cdn-icons-png.flaticon.com/512/3711/3711230.png" class="biz-icon">
-        <div>
-            <h3>Sammy's Carpentry Services</h3>
-            <div class="rating-line">
-                <span class="rating-number">5.0</span>
-                <span class="stars">★★★★★</span>
-            </div>
-            <p class="review-count">Based on 11 reviews</p>
-            <p class="powered">powered by <span class="google">Google</span></p>
+    <!-- Google Reviews Widget + Infinite Slider -->
+    <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-10 mb-16 overflow-hidden">
+      
+      <!-- Header -->
+      <div class="flex flex-col md:flex-row items-center md:items-start gap-6 mb-8">
+        <img src="https://cdn-icons-png.flaticon.com/512/3711/3711230.png" alt="Business Icon" class="w-20 h-20 rounded-full shadow-lg">
+        <div class="text-center md:text-left">
+          <h3 class="text-2xl md:text-3xl font-bold text-gray-800">Sammy's Carpentry Services</h3>
+          <div class="flex items-center justify-center md:justify-start gap-3 mt-3">
+            <span class="text-3xl font-bold text-amber-500">5.0</span>
+            <div class="text-3xl text-amber-500">★★★★★</div>
+            <span class="text-gray-600 text-sm">11 reviews</span>
+          </div>
+          <p class="text-gray-500 text-sm mt-1">powered by <span class="font-bold text-blue-600">Google</span></p>
         </div>
+        <a href="https://g.page/r/CZ8i5v9v9v9v/review" target="_blank" class="ml-auto btn bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 shadow-lg transition">
+          <img src="https://www.gstatic.com/images/branding/product/1x/gsa_64dp.png" alt="Google" class="h-8">
+          Review Us on Google
+        </a>
+      </div>
+
+      <!-- Infinite Review Slider -->
+      <div class="relative overflow-hidden">
+        <div class="loop-track flex animate-slide">
+          <!-- Review 1 -->
+          <div class="loop-card min-w-full md:min-w-[380px] bg-gray-50 p-6 rounded-2xl shadow-md mx-3">
+            <div class="flex mb-3 text-amber-500">★★★★★</div>
+            <p class="text-gray-700 italic mb-3">“An excellent job they did in my house. Top quality work, I recommend them!”</p>
+            <p class="font-semibold text-gray-800">- Flakito Ramos</p>
+          </div>
+          <!-- Review 2 -->
+          <div class="loop-card min-w-full md:min-w-[380px] bg-gray-50 p-6 rounded-2xl shadow-md mx-3">
+            <div class="flex mb-3 text-amber-500">★★★★★</div>
+            <p class="text-gray-700 italic mb-3">“Very professional and the finish was perfect. Will hire again.”</p>
+            <p class="font-semibold text-gray-800">- José Martinez</p>
+          </div>
+          <!-- Review 3 -->
+          <div class="loop-card min-w-full md:min-w-[380px] bg-gray-50 p-6 rounded-2xl shadow-md mx-3">
+            <div class="flex mb-3 text-amber-500">★★★★★</div>
+            <p class="text-gray-700 italic mb-3">“Amazing service! Respectful, fast, and clean work.”</p>
+            <p class="font-semibold text-gray-800">- Sandy B.</p>
+          </div>
+
+          <!-- Duplicates for seamless loop -->
+          <div class="loop-card min-w-full md:min-w-[380px] bg-gray-50 p-6 rounded-2xl shadow-md mx-3">
+            <div class="flex mb-3 text-amber-500">★★★★★</div>
+            <p class="text-gray-700 italic mb-3">“An excellent job they did in my house. Top quality work, I recommend them!”</p>
+            <p class="font-semibold text-gray-800">- Flakito Ramos</p>
+          </div>
+          <div class="loop-card min-w-full md:min-w-[380px] bg-gray-50 p-6 rounded-2xl shadow-md mx-3">
+            <div class="flex mb-3 text-amber-500">★★★★★</div>
+            <p class="text-gray-700 italic mb-3">“Very professional and the finish was perfect. Will hire again.”</p>
+            <p class="font-semibold text-gray-800">- José Martinez</p>
+          </div>
+          <div class="loop-card min-w-full md:min-w-[380px] bg-gray-50 p-6 rounded-2xl shadow-md mx-3">
+            <div class="flex mb-3 text-amber-500">★★★★★</div>
+            <p class="text-gray-700 italic mb-3">“Amazing service! Respectful, fast, and clean work.”</p>
+            <p class="font-semibold text-gray-800">- Sandy B.</p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <a href="https://www.google.com/search?hl=en-US&gl=us&q=Sammys+Carpentry+Services&ludocid=9721617263816663547&lsig=AB86z5WE1L577n5tsYOGpMIL1c-o#lrd=0x89e80fba723bcedf:0x86ea1f64e418e1fb,3" target="_blank" class="google-btn">
-        review us on <img src="https://www.gstatic.com/images/branding/product/1x/gsa_64dp.png">
-    </a>
-
-    <!-- Infinite Review Slider -->
-    <div class="review-loop">
-        <div class="loop-track">
-
-            <!-- REVIEW 1 -->
-            <div class="loop-card">
-                <p>“An excellent job they did in my house. Top quality work, I recommend them!”</p>
-                <span>- Flakito Ramos</span>
-            </div>
-
-            <!-- REVIEW 2 -->
-            <div class="loop-card">
-                <p>“Very professional and the finish was perfect. Will hire again.”</p>
-                <span>- José Martinez</span>
-            </div>
-
-            <!-- REVIEW 3 -->
-            <div class="loop-card">
-                <p>“Amazing service! Respectful, fast, and clean work.”</p>
-                <span>- Sandy B.</span>
-            </div>
-
-            <!-- Duplicate for infinite loop -->
-            <div class="loop-card">
-                <p>“An excellent job they did in my house. Top quality work, I recommend them!”</p>
-                <span>- Flakito Ramos</span>
-            </div>
-
-            <div class="loop-card">
-                <p>“Very professional and the finish was perfect. Will hire again.”</p>
-                <span>- José Martinez</span>
-            </div>
-
-            <div class="loop-card">
-                <p>“Amazing service! Respectful, fast, and clean work.”</p>
-                <span>- Sandy B.</span>
-            </div>
-
-
-
-
-
+    <!-- Main Footer -->
+    <div class="grid md:grid-cols-4 gap-10 text-center md:text-left">
+      
+      <!-- Company Info -->
+      <div>
+        <h4 class="text-2xl font-bold mb-4 text-blue-400">Sammy's Carpentry</h4>
+        <p class="text-gray-400 text-sm leading-relaxed">
+          Professional carpentry, home repair, and remodeling services in Connecticut. Quality work, fair prices, 100% satisfaction.
+        </p>
+        <div class="flex justify-center md:justify-start gap-4 mt-6">
+          <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-600 transition">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-600 transition">
+            <i class="fab fa-instagram"></i>
+          </a>
         </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-3 text-gray-400">
+          <li><a href="#home" class="hover:text-blue-400 transition">Home</a></li>
+          <li><a href="#services" class="hover:text-blue-400 transition">Services</a></li>
+          <li><a href="#about" class="hover:text-blue-400 transition">About Us</a></li>
+          <li><a href="#quote" class="hover:text-blue-400 transition">Get Quote</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h4 class="text-xl font-semibold mb-4">Our Services</h4>
+        <ul class="space-y-3 text-gray-400 text-sm">
+          <li>→ Residential Repair</li>
+          <li>→ Carpentry & Installation</li>
+          <li>→ Painting & Drywall</li>
+          <li>→ Flooring & Remodeling</li>
+          <li>→ Commercial Maintenance</li>
+        </ul>
+      </div>
+
+      <!-- Contact & WhatsApp -->
+      <div>
+        <h4 class="text-xl font-semibold mb-4">Contact Us</h4>
+        <div class="space-y-4 text-gray-400">
+          <p class="flex items-center justify-center md:justify-start gap-3">
+            <i class="fas fa-phone text-green-500"></i>
+            <a href="tel:+12039694125">+1 (203) 969-4125</a>
+          </p>
+          <p class="flex items-center justify-center md:justify-start gap-3">
+            <i class="fas fa-envelope text-blue-500"></i>
+            sammyscarpentry@gmail.com
+          </p>
+          <p class="flex items-center justify-center md:justify-start gap-3">
+            <i class="fas fa-clock text-purple-500"></i>
+            24/7 Emergency Service
+          </p>
+        </div>
+
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/12039694125" target="_blank" class="mt-6 inline-flex items-center bg-green-600 hover:bg-green-700 text-white px-6 py-4 rounded-xl font-bold shadow-lg transition transform hover:scale-105">
+          <i class="fab fa-whatsapp text-2xl mr-3"></i>
+          Chat on WhatsApp
+        </a>
+      </div>
     </div>
 
+    <!-- Copyright -->
+    <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+      <p>&copy; 2025 Sammy's Carpentry Services. All rights reserved. | Trusted in Connecticut</p>
+    </div>
+  </div>
+</footer>
+
+<!-- CSS for Infinite Slider (Add to your <style> or CSS file) -->
+<style>
+  .animate-slide {
+    display: flex;
+    width: max-content;
+    animation: slide 25s linear infinite;
+  }
+  @keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .loop-card {
+    flex: 0 0 auto;
+  }
+  @media (max-width: 768px) {
+    .animate-slide { animation-duration: 18s; }
+  }
+</style>
 
 
 
-
-
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script>
-const track = document.querySelector('.loop-track');
-track.addEventListener('mouseover', () => track.style.animationPlayState = 'paused');
-track.addEventListener('mouseout', () => track.style.animationPlayState = 'running');
-</script>
-<div class="map-wrapper" style="border: 4px solid #000; border-radius:12px; overflow:hidden; width:100%; height:600px; max-width:1200px; margin:0 auto;">
-  <iframe
-    width="100%"
-    height="100%"
-    style="border:0;"
-    loading="lazy"
-    allowfullscreen
-    referrerpolicy="no-referrer-when-downgrade"
-    src="https://maps.google.com/maps?q=Bridgeport%20Connecticut%2C%20USA&#038;t=m&#038;z=10&#038;output=embed&#038;iwloc=near">
-  </iframe>
-</div>
-
-
-
-
-
-</body>
-</html>
